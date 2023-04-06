@@ -1,0 +1,140 @@
+//===========================================================================
+//
+// Cacodemon
+//
+//===========================================================================
+ACTOR Cacodemon2 Replaces Cacodemon //3005
+{
+	Game Doom
+	SpawnID 19
+	Health 400
+	Radius 31
+	Height 56
+	Mass 400
+	Speed 8
+	PainChance 128
+	Monster
+	+FLOAT +NOGRAVITY
+	SeeSound "caco/sight"
+	PainSound "caco/pain"
+	DeathSound "caco/death"
+	ActiveSound "caco/active"
+	Obituary "$OB_CACO"
+	HitObituary "$OB_CACOHIT"
+	DropItem "DropSpawner5", 128
+	DropItem "DeadClip5Inv", 160
+	States
+	{
+	Spawn:
+		HEAD A 10 A_Look
+		Loop
+	See:
+		HEAD A 3 A_Chase
+		Loop
+	Missile:
+		HEAD B 5 A_FaceTarget
+		HEAD C 5 A_FaceTarget
+		HEAD D 5 BRIGHT A_HeadAttack
+		Goto See
+	Pain:
+		HEAD E 3
+		HEAD E 3 A_Pain
+		HEAD F 6
+		Goto See
+
+	Pain.FLASHBANGFREEZE:
+		HEAD E 3
+		HEAD E 3 A_Pain
+		HEAD F 175
+		Goto See
+
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 400)
+		HEAD G 8
+		HEAD H 8 A_Scream
+		HEAD I 8
+		HEAD J 8
+		HEAD K 8 A_NoBlocking
+		HEAD L -1 A_SetFloorClip
+		Stop
+
+
+
+
+	Raise:
+		HEAD L 8 A_UnSetFloorClip
+		HEAD KJIHG 8
+		Goto See
+	}
+}
+
+/*
+//===========================================================================
+//
+// Cacodemon plasma ball
+//
+//===========================================================================
+ACTOR CacodemonBall2 : CacodemonBall
+{
+	Game Doom
+	SpawnID 126
+	Radius 6
+	Height 8
+	Speed 10
+	FastSpeed 20
+	Damage 5
+	Projectile 
+	+RANDOMIZE
+	RenderStyle Add
+	Alpha 1
+	SeeSound "caco/attack"
+	DeathSound "caco/shotx"
+	States
+	{
+	Spawn:
+		BAL2 AB 4 BRIGHT
+		Loop
+	Death:
+		BAL2 CDE 6 BRIGHT
+		Stop
+	}
+}
+*/
+
+//Visual FX
+ACTOR CacoBall replaces CacodemonBall
+{
+Spawnid 12
+Radius 6
+Height 8
+Speed 20
+Damage 3
+Scale 0.35
+RenderStyle Add
+Seesound "imp/attack"
+Deathsound "imp/shotx"
+
+//+CLIENTSIDEONLY
+PROJECTILE
++RANDOMIZE
+
+States
+ {
+ Spawn:
+ CACB A 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CABB A 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CACB B 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CABB B 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CACB C 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CABB C 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0) 
+ CACB D 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ CABB D 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0) 
+ Loop
+
+ Death:
+ NULL A 0 A_PlaySound("imp/shotx")
+ NULL AAAAAA 0 bright A_CustomMissile("D3_ImpESPR",random(-4,4),random(-4,4),random(0, 255), 10, random(-15, 60))
+ NULL ABC 2 bright
+    stop
+  }
+}

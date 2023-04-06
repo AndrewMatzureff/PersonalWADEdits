@@ -1,0 +1,11 @@
+clearplayerclasses
+addplayerclass 1911Player
+addplayerclass Here1911Player
+addplayerclass Chex1911Player
+
+
+addkeysection "SMWGkeys" SMWGkeys                    
+addmenukey "Tertiary Fire" +tertfir
+alias +tertfir "use WeapMele1ON"
+alias -tertfir "use WeapMele1OFF"
+defaultbind r +tertfir

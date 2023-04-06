@@ -1,0 +1,9 @@
+actor 357SIGAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 52
+    inventory.maxamount 52
+    ammo.backpackamount 52
+    ammo.backpackmaxamount 52
+    +IGNORESKILL
+}

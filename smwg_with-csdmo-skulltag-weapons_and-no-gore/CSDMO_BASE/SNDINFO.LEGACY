@@ -1,0 +1,131 @@
+//This is the "Sndinfo" for WHL 3
+//Made by AlphaEnt
+//www.youtube.com/alphaent
+//www.freewebs.com/alphaent
+//hosted.filefront.com/alphaent
+//www.fotolog.com/alphaent
+
+$pitchshiftrange 0
+
+
+//******************************************************************
+//
+// Players (General)
+//
+//******************************************************************
+//Player
+$playeralias	CSDMO_Human	male	*death		PLDTH3
+$playeralias	CSDMO_Human	male	*xdeath		PLDTH2
+$playeralias	CSDMO_Human	male	*gibbed		Gib/RenderS
+$playeralias	CSDMO_Human	male	*pain100	plhit2
+$playeralias	CSDMO_Human	male	*pain75		plhit2
+$playeralias	CSDMO_Human	male	*pain50		plhit1
+$playeralias	CSDMO_Human	male	*pain25		plhit3
+$playersound	CSDMO_Human	male	*grunt		Jump/landing
+$playeralias	CSDMO_Human	male	*land		Jump/landing
+$playeralias	CSDMO_Human	male	*jump		dsjump
+$playeralias	CSDMO_Human	male	*fist		DSPUNCH
+$playeralias	CSDMO_Human	male	*usefail	USEDENY
+$playeralias 	CSDMO_Human male 	*taunt 		DSEMPTY
+
+
+$random world/footstep	{ world/footstep1 world/footstep2 world/footstep3 world/footstep4 }
+world/footstep1		step1
+world/footstep2		step2
+world/footstep3		step3
+world/footstep4		step4
+
+$volume Jump/landing 0.35
+
+$random Jump/landing { Jump/landing1 Jump/landing2 Jump/landing3 Jump/landing4 }
+Jump/landing1		"sounds/jumplanding1.wav"
+Jump/landing2		"sounds/jumplanding2.wav"
+Jump/landing3		"sounds/jumplanding3.wav"
+Jump/landing4		"sounds/jumplanding4.wav"
+Jump/landingZ		"sounds/jumplanding_zombie.wav"
+
+
+$random PLDTH	{ PLDTH1 PLDTH2 PLDTH3 PLDTH4 PLDTH5 PLDTH6 }
+PLDTH1		PLDTH1
+PLDTH2		PLDTH2
+PLDTH3		PLDTH3
+PLDTH4		PLDTH4
+PLDTH5		PLDTH5
+PLDTH6		PLDTH6
+
+
+PLHIT1			plhit1
+PLHIT2			plhit2
+PLHIT3			plhit3
+
+
+
+// Humans (General)
+
+$random adgmsight 		{ adgmsight1  adgmsight2  adgmsight3 }
+$random adgmdeath		{ adgmdeath1  adgmdeath2  adgmdeath3 adgmdeath2 adgmdeath1 adgmdeath1 }
+adgmsight1			dsempty
+adgmsight2			dsempty
+adgmsight3			dsempty
+adgmactive			dsempty
+adgmpain			plhit3
+adgmdeath1			pldeth1
+adgmdeath2			pldeth2
+adgmdeath3			pldeth3
+
+// Daisy Pain And Death
+dasydeath			rabbit
+melee				dsclaw
+
+//******************************************************************
+//
+// Things (General)
+//
+//******************************************************************
+//Menu
+misc/secret			powerup
+
+misc/w_pkup			DSWPNUP		// Pickup weapon
+misc/p_pkup			powerup		// Pickup powerup
+misc/i_pkup			DSITEMUP		// Pickup item
+misc/k_pkup			key		// Pickup key
+$alias misc/spawn			Teleport/new		// Item respawn
+misc/chat			dsradio		// Doom 2 chat sound
+misc/chat2			dstink		// Chat sound for everything else
+
+switches/normbutn		dsswtchn
+switches/exitbutn		dsswtchx
+
+misc/teleport			"sounds/pl_respawn.wav"
+
+menu/activate			menu1	        // Activate a new menu
+menu/backup			menu3	        // Backup to previous menu
+menu/prompt			dsswtchn	// Activate a prompt "menu"
+menu/cursor			menu2		// Move cursor up/down
+menu/change			menu1		// Select new value for option
+menu/invalid			dsoof		// Menu not available
+menu/dismiss			menu1      	// Dismiss a prompt message
+menu/choose			menu1  	        // Choose a menu item
+menu/clear			menu3	        // Close top menu
+
+// Items (General)
+Health			Health
+Health2			health2
+PMEDIKIT		PMEDIKIT
+Armor2			Armor2
+Armor			Armor
+
+// Doors And Plats (General)
+TTRAINST		TTRAINST
+TTRAIN1			TTRAIN1
+TTRAINBK		TTRAINBK
+DOORMOV1		DOORMOV1
+DOORMOV2		DOORMOV2
+DOORSTO1		DOORSTO1
+DOORSTO2		DOORSTO2
+PLAT1			PLAT1
+PLAT2			PLAT2
+PLAT3			PLAT3
+PLAT4			PLAT4
+
+//Last Modified: 31/08/2008

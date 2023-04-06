@@ -1,0 +1,161 @@
+// --------------------------------------------------------------------------
+//
+// NEGEV (Weapon)
+//
+// --------------------------------------------------------------------------
+
+
+//Weapon Auxiliar
+Actor NegevRefire : Inventory
+{
+Inventory.MaxAmount 2
+}
+
+
+ACTOR "NEGEV" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+Weapon.SelectionOrder 1900
+  weapon.ammotype "NEGEVClip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "556mmBoxAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //100
+	obituary "%k killed %o with NEGEV."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a NEGEV."
+	Tag "NEGEV"
+	Weapon.UpSound "NEGEV/Ready"
+	//AttackSound "NEGEV/Fire" 
+	Scale 0.15
+
+DamageType "NEGEV"
+
+	States
+	{
+	Ready:
+		W28E E 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+	BobLoop:
+		W28Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+		TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 195, 0, 0)//Weapon Weight
+		TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+		TNT1 A 1 A_WeaponReady(WRF_NOFIRE)
+		W28A DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28B ABCDEFGHIJKLMNOPQR 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+		
+		
+		
+	Deselect:
+				TNT1 A 1 A_ZoomFactor(1.0)
+                TNT1 A 0 A_TakeInventory("NegevRefire", 3)
+				TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
+                TNT1 AAAAAA 1 A_Lower
+		Loop			
+				
+		
+		
+	Fire:
+	
+	W28C A 0 A_JumpIfNoAmmo("AltFire")
+
+
+
+	    TNT1 A 0 A_JumpIfInventory("NegevRefire", 2, "Fire3")
+		TNT1 A 0 A_JumpIfInventory("NegevRefire", 1, "Fire2")
+		W28D A 1 A_Gunflash
+		TNT1 A 0 A_GiveInventory("NegevRefire", 1)
+		W28D B 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("NegevRefire", 3)
+		W28D CDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W28E ABCD 1 A_WeaponReady
+		Goto Ready
+
+	Fire2:
+		W28D C 1 A_Gunflash
+		TNT1 A 0 A_GiveInventory("NegevRefire", 1)
+		W28D A 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("NegevRefire", 3)
+		W28D BCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W28E ABCD 1 A_WeaponReady
+		Goto Ready
+		
+	Fire3:
+		W28D B 1 A_Gunflash
+		TNT1 A 0 A_TakeInventory("NegevRefire", 3)
+		W28D C 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("NegevRefire", 3)
+		W28D DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W28E ABCD 1 A_WeaponReady
+		Goto Ready	
+
+
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("NEGEVClip",150,"Ready")
+    TNT1 A 0 A_JumpIfInventory("556mmBoxAmmo",1,"ReloadStart")
+    goto Ready
+
+
+	ReloadStart:
+		W28N AB 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28F ABCDEFGHIJKLMNOPQRSTU 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("NEGEV/Reload", 6)
+		W28F VWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28G ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28H ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28I ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28J ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28K ABCDEFG 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28K HIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28L ABCDEFGHIJKLMNOP 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+		
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("NEGEVClip",1)
+    TNT1 A 0 A_TakeInventory("556mmBoxAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("NEGEVClip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("556mmBoxAmmo",1,"ReloadAmmo")
+    goto ReloadEnd		
+
+	ReloadEnd:
+		W28L QRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W28M ABCDEFGHIJKLMNOPQRSTUVW 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("CrosshairGrow", 6)
+TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,12,3)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("NEGEV/FIRE")
+		TNT1 A 0 A_PlaySound("NEGEV/Distant", 8)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 1 A_FireBullets(7, 7, -1, 7.0, "negevBullet")
+		Goto LightDone
+ 	Spawn:
+		W28Z A -1
+		Stop
+	}
+}

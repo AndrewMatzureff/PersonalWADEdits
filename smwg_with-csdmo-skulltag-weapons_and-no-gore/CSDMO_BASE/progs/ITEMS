@@ -1,0 +1,234 @@
+
+
+//******************************************************************
+//
+// Things (For Game)
+//
+//******************************************************************
+Actor GreenArmor2 : GreenArmor replaces GreenArmor //2018
+{
+	Game Doom
+	SpawnID 68
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMOR"
+	Inventory.Icon "NWRMR1"
+	Inventory.PickupSound "Armor"
+	Armor.Savepercent 30
+	Armor.Saveamount 75
+	States
+	{
+	Spawn:
+		ARM1 A 6
+		ARM1 B 7 bright
+		loop
+	}
+}
+
+Actor BlueArmor2 : BlueArmor replaces BlueArmor//2019
+{
+	Game Doom
+	SpawnID 69
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTMEGA"
+	Inventory.Icon "NWRMR3"
+	Inventory.PickupSound "Armor2"
+	Armor.Savepercent 60
+	Armor.Saveamount 150
+	States
+	{
+	Spawn:
+		ARM2 A 6
+		ARM2 B 6 bright
+		loop
+	}
+}
+
+Actor ArmorBonus2 : ArmorBonus replaces ArmorBonus //2015
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	Inventory.Icon "NWRMR2"
+	Armor.Savepercent 30
+	Armor.Saveamount 1
+	Armor.Maxsaveamount 100
+	+COUNTITEM
+	//+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+		BON2 ABCDCB 6
+		loop
+	}
+}
+
+ACTOR HealthBonus2 : HealthBonus replaces HealthBonus //2014
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	//+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 1
+	Inventory.MaxAmount 125
+	Inventory.Icon "STIMA0"
+	Inventory.PickupMessage "$GOTHTHBONUS"
+	States
+	{
+	Spawn:
+		BON1 ABCDCB 6
+		Loop
+	}
+}
+
+ACTOR Stimpack2 : Stimpack replaces Stimpack//2011
+{
+	Game Doom
+	SpawnID 23
+	Inventory.Amount 10
+	Inventory.PickupMessage "$GOTSTIM"
+	Inventory.PickupSound "Health"
+	States
+	{
+	Spawn:
+		STIM A -1
+		Stop
+	}
+}
+
+ACTOR Medikit2 : Medikit replaces Medikit//2012
+{
+	Game Doom
+	SpawnID 24
+	Inventory.Amount 25
+	Inventory.PickupMessage "$GOTMEDIKIT"
+	Health.LowMessage 25, "$GOTMEDINEED"
+	Inventory.PickupSound "Health2"
+	States
+	{
+	Spawn:
+		MEDI A -1
+		Stop
+	}
+}
+/*
+ACTOR MedPatch2 : HealthPickup //2005
+{
+	Game Doom
+	Health 100
+	+FLOORCLIP
+	+INVENTORY.INVBAR
+	Inventory.MaxAmount 1
+	Tag "Med_patch"
+	Inventory.PickupSound "PMEDIKIT"
+	Inventory.Icon "BON3E0"
+	Inventory.PickupMessage "You got a Portable Health Bonus"
+	States
+	{
+	Spawn:
+		BON3 ABCDCB 5 BRIGHT
+		Loop
+	}
+}
+
+ACTOR MedPatch3 : HealthPickup //8
+{
+	Game Doom
+	Health 25
+	+FLOORCLIP
+	+INVENTORY.INVBAR
+	Inventory.MaxAmount 3
+	Tag "Med_patch"
+	Inventory.PickupSound "PMEDIKIT"
+	Inventory.Icon "MED2C0"
+	Inventory.PickupMessage "You got a Portable Medikit Pack"
+	States
+	{
+	Spawn:
+		MED2 AB 5 Bright
+		Loop
+	}
+}
+
+ACTOR MedPatch4 : HealthPickup //2023
+{
+	Game Doom
+	Health 75
+	+FLOORCLIP
+	+INVENTORY.INVBAR
+	Inventory.MaxAmount 1
+	Tag "Med_patch"
+	Inventory.PickupSound "PMEDIKIT"
+	Inventory.Icon "FULLC0"
+	Inventory.PickupMessage "You got a Portable Full Health Pack"
+	States
+	{
+	Spawn:
+		FULL AB 5 Bright
+		Loop
+	}
+}
+
+ACTOR MedPatch5 : HealthPickup //2013
+{
+	Game Doom
+	Health 10
+	+FLOORCLIP
+	+INVENTORY.INVBAR
+	Inventory.MaxAmount 5
+	Tag "Med_patch"
+	Inventory.PickupSound "PMEDIKIT"
+	Inventory.Icon "STI2D0"
+	Inventory.PickupMessage "You got a Portable Health Pack"
+	States
+	{
+	Spawn:
+		STI2 ABCB 5 Bright
+		Loop
+	}
+}
+*/
+// Mega sphere --------------------------------------------------------------
+
+ACTOR MegasphereHealth2 : Health	// for manipulation by Dehacked
+{
+	Inventory.Amount 125
+	Inventory.MaxAmount 125
+	+INVENTORY.ALWAYSPICKUP
+		Inventory.PickupSound "PMEDIKIT"
+}
+
+// DeHackEd can only modify the blue armor's type, not the megasphere's.
+actor BlueArmorForMegasphere2 : BlueArmor
+{
+	Armor.SavePercent 50
+	Armor.SaveAmount 100
+			Inventory.PickupSound "PMEDIKIT"
+}
+
+ACTOR Megasphere2 : CustomInventory replaces Megasphere //w83
+{
+	Game Doom
+	SpawnID 132
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupMessage "$GOTMSPHERE"
+	Inventory.PickupSound "PMEDIKIT"
+	States
+	{
+	Spawn:
+		MEGA ABCD 6 BRIGHT
+		Loop
+	Pickup:
+		TNT1 A 0 A_GiveInventory("BlueArmor2", 1)
+		TNT1 A 0 A_GiveInventory("MegasphereHealth2", 125)
+		Stop
+	}
+}
+
+
+//Last Modified: 15/05/2008 (Old date, because it's a piece of "CSD2" code)
+//Megasphere made in 08/12/2011

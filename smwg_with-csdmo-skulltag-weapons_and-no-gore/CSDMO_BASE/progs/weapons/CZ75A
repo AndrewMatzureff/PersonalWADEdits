@@ -1,0 +1,202 @@
+// --------------------------------------------------------------------------
+//
+// M4A1 (Demo weapon "Appears on weapons training")
+//
+// --------------------------------------------------------------------------
+
+Actor CZ75AExtraClip : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR "CZ75A" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "CZ75AClip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "45acpAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //30
+	obituary "%k killed %o with CZ75A."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a CZ75A."
+	Tag "C275A"
+//	Weapon.UpSound "CZ75A/Ready"
+	//AttackSound "M4A1/Fire" 
+	Scale 0.155
+
+	States
+	{
+	Ready:
+		W43H Z 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+	Ready2clip:
+		W43G Z 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop2")
+		Loop
+		
+	BobLoop:
+		W43Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready		
+
+	BobLoop2:
+		43WY AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready2clip		
+
+
+	Deselect:
+				TNT1 A 0 A_StopSound (6)
+				TNT1 A 1 A_ZoomFactor(1.0)
+    TNT1 A 0 A_TakeInventory("CZ75AExtraClip",1)
+                TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
+                TNT1 AAAAAA 1 A_Lower
+		Loop
+
+		
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 240, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+    TNT1 A 0 A_JumpIfInventory("CZ75AClip",12,"ExtraClip_SelectCheck")
+
+TNT1 A 0 A_PlayWeaponSound("CZ75A/Ready")
+		TNT1 A 4 A_WEAPONREADY(WRF_NOFIRE)
+		W43D GHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43E ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43F ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+  ExtraClip_SelectCheck:
+    TNT1 A 0 A_GiveInventory("CZ75AExtraClip",1)
+    goto Select2clip		
+
+
+
+	Select2clip:
+
+TNT1 A 0 A_PlayWeaponSound("CZ75A/Ready2clip")
+
+		TNT1 A 5 A_WEAPONREADY(WRF_NOFIRE)
+		W43A HIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43B ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43C ABCDEFGHIJKLMNOP 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready2clip
+
+
+
+
+	Fire:
+	
+	W43D Q 0 A_JumpIfNoAmmo("AltFire")
+    TNT1 A 0 A_JumpIfInventory("CZ75AExtraClip",1,"Fire2clip")
+	
+	
+		W43H A 1 A_GunFlash
+		W43H B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43H C 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		W43H DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		Goto Ready
+
+	Fire2clip:
+	
+	
+		W43G A 1 A_GunFlash
+		W43G B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43G C 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		W43G DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		Goto Ready2clip
+
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("CZ75AExtraClip",1,"Altfire2clip")
+  
+    TNT1 A 0 A_JumpIfInventory("CZ75AClip",12,"Ready")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadStart")
+    goto Ready
+
+  Altfire2clip:
+  
+    TNT1 A 0 A_JumpIfInventory("CZ75AClip",12,"Ready2clip")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadStart2clip")
+    goto Ready
+
+
+
+	ReloadStart:
+		W43M ABCDEFGHIJKLM 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("CZ75A/Reload", 6)
+		W43M NOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43N ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43O ABCDEFGHIJK 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+		
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("CZ75AClip",1)
+    TNT1 A 0 A_TakeInventory("45acpAmmo",1)
+    TNT1 A 0 A_TakeInventory("CZ75AExtraClip",1)
+    TNT1 A 0 A_JumpIfInventory("CZ75AClip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadAmmo")
+    goto ReloadEnd		
+
+
+	ReloadEnd:
+		W43O LMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43P ABCDEFGHIJKLMNOPQR 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+
+	ReloadStart2clip:
+		W43I ABCDEFGHIJ 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("CZ75A/Reload2Clip", 6)
+		W43I KLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43J ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43K ABCDEFGHIJK 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo2clip
+		
+  ReloadAmmo2clip:
+    TNT1 A 0 A_GiveInventory("CZ75AClip",1)
+    TNT1 A 0 A_TakeInventory("45acpAmmo",1)
+    TNT1 A 0 A_TakeInventory("CZ75AExtraClip",1)
+    TNT1 A 0 A_JumpIfInventory("CZ75AClip",0,"ReloadEnd2clip")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadAmmo2clip")
+    goto ReloadEnd2clip		
+
+
+	ReloadEnd2clip:
+		W43K LMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W43L ABCDEFGHIJKLMNOPQRST 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("CrosshairGrow", 6)
+TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,11,4)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("CZ75A/FIRE")
+		TNT1 A 0 A_PlaySound("cz75a/Distant", 8)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 2 A_FireBullets(5, 5, -1, 7.15, "cz75aBullet")
+		Goto LightDone
+ 	Spawn:
+		W43Z A -1
+		Stop
+	}
+}

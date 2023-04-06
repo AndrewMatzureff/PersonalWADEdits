@@ -1,0 +1,25 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for Hegrenade
+
+Hegrenade/Ready		"sounds/weapons/Hegrenade/W16A.ogg"
+Hegrenade/Pinpull	"sounds/weapons/Hegrenade/W16PIN.ogg"
+Hegrenade/Bounce	"sounds/weapons/Hegrenade/he_bounce-1.wav"
+Hegrenade/Explode3	"sounds/weapons/Hegrenade/explode3.wav"
+Hegrenade/Explode4	"sounds/weapons/Hegrenade/explode4.wav"
+Hegrenade/Explode5	"sounds/weapons/Hegrenade/explode5.wav"
+
+$random Hegrenade/Explode { Hegrenade/Explode3 Hegrenade/Explode4 Hegrenade/Explode5 }
+
+$limit hegrenade/explode 0
+
+$rolloff Hegrenade/Explode3 200 2000 
+$rolloff Hegrenade/Explode4 200 2000 
+$rolloff Hegrenade/Explode5 200 2000 

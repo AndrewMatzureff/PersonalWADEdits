@@ -1,0 +1,21 @@
+//Misc sounds
+//Casings extracted from "Brutal DoomV20b"
+
+
+$volume weapons/casing2 0.7 
+
+$random weapons/casing  { weapons/casing2 weapons/casing3 } 
+$limit weapons/casing  5
+weapons/casing2	dscasin1
+weapons/casing2	dscasin2
+weapons/casing3	dscasin3
+
+$rolloff  weapons/casing 100 600
+
+
+
+weapons/shell1			dsshell1
+weapons/shell2			dsshell2
+weapons/shell3			dsshell3
+$random weapons/shell		{weapons/shell1 weapons/shell2 weapons/shell3}
+

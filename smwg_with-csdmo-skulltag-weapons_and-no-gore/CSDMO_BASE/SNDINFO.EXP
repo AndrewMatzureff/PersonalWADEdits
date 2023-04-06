@@ -1,0 +1,36 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for additional weapons (updated weaponry)
+
+cz75a/Ready		"sounds/weapons/cz75a/W43A0.wav"
+cz75a/Ready2Clip		"sounds/weapons/cz75a/W43A1.wav"
+cz75a/Fire		"sounds/weapons/cz75a/W43F.wav"
+cz75a/Reload	"sounds/weapons/cz75a/W43R0.wav"
+cz75a/Reload2Clip	"sounds/weapons/cz75a/W43R1.wav"
+
+
+revolver/Ready		"sounds/weapons/revolver/W46A.wav"
+revolver/Hammer		"sounds/weapons/revolver/W46F0.wav"
+revolver/Fire		"sounds/weapons/revolver/W46F.wav"
+revolver/Reload	"sounds/weapons/revolver/W46R.wav"
+
+usp/Ready		"sounds/weapons/usp/W44A.wav"
+usp/Fire		"sounds/weapons/usp/W44F.wav"
+usp/Fire_sil		"sounds/weapons/usp/W44F_S.wav"
+usp/sil		"sounds/weapons/usp/W44SIL.wav"
+usp/Unsil		"sounds/weapons/usp/W44UNSIL.wav"
+usp/Reload	"sounds/weapons/usp/W44R.wav"
+
+m4a1_sil/Ready		"sounds/weapons/m4a1_sil/W45A.wav"
+m4a1_sil/Fire		"sounds/weapons/m4a1_sil/W45F.wav"
+m4a1_sil/Fire_sil		"sounds/weapons/m4a1_sil/W45F_s.wav"
+m4a1_sil/sil		"sounds/weapons/m4a1_sil/W45sil.wav"
+m4a1_sil/unsil		"sounds/weapons/m4a1_sil/W45unsil.wav"
+m4a1_sil/Reload	"sounds/weapons/m4a1_sil/W45R.wav"

@@ -1,0 +1,119 @@
+ACTOR T_CSDMOPlayerMP : PlayerPawn REPLACES PLAYERPAWN
+{
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+Player.ColorRange 112, 127
+	Player.DisplayName "CSD:MO T"
+	Player.CrouchSprite "CAMO"
+	player.soundclass "CSDMO_Human"
+        Player.StartItem Glock
+        Player.StartItem ak47clip, 30
+        Player.StartItem awpclip, 10
+        Player.StartItem bizonclip, 64
+        Player.StartItem deagleclip, 7
+        Player.StartItem eliteclip, 30
+        Player.StartItem fivesevenclip, 20
+        Player.StartItem g3sg1clip, 20
+        Player.StartItem m4a1clip, 30
+        Player.StartItem m249clip, 100
+        Player.StartItem negevclip, 150
+        Player.StartItem novaclip, 8
+        Player.StartItem p90clip, 50
+        Player.StartItem xm1014clip, 7
+
+        Player.StartItem glockclip, 20
+        Player.StartItem 9mmammo, 120
+        Player.StartItem hkp2000clip, 13
+        Player.StartItem p250clip, 13
+        Player.StartItem tec9clip, 32
+        Player.StartItem mac10clip, 30
+        Player.StartItem ump45clip, 25
+	    Player.StartItem mp9clip, 30
+        Player.StartItem mp7clip, 30
+		Player.StartItem galilarclip, 35
+		Player.StartItem mag7clip, 5
+		Player.StartItem sawedoffclip, 7
+		Player.StartItem augclip, 30
+		Player.StartItem famasclip, 25
+		Player.StartItem sg553clip, 30
+		Player.StartItem ssg08clip, 10
+		Player.StartItem scar20clip, 20
+		Player.StartItem cz75aclip, 12
+		Player.StartItem revolverclip, 8
+		Player.StartItem uspclip, 12
+		Player.StartItem m4a1_sil_clip, 20
+		Player.StartItem Slot2Filled, 1
+
+Player.StartItem USP45AltFire, 1
+Player.StartItem M4A1_sil_AltFire, 1
+
+
+
+
+
+        Player.StartItem Knife
+		Player.StartItem Action_AltFire, 1
+		Player.StartItem Action_AltFireCancel, 1
+	
+	//DamageFactor "M249", 1000
+	
+	
+	States
+	{
+		Spawn:
+		CAMO A -1
+		Loop
+	See:
+//		CAMO A 0 ACS_ExecuteAlways(808,0,0,0,0)
+		CAMO AB 6
+//		CAMO A 0 ACS_ExecuteAlways(808,0,0,0,0)
+		CAMO CD 6
+		Loop
+	Missile:
+		CAMO E 1
+		CAMO A 0 //ACS_ExecuteAlways(807,0,0,0,0)
+		CAMO E 11
+		Goto Spawn
+	Melee:
+		CAMO F 6 BRIGHT
+		Goto Missile
+	Pain:
+		CAMO G 4
+		CAMO G 4 A_Pain
+		Goto Spawn
+	Death:
+TNT1 A 0 A_GiveToTarget("Killstreak", 1)
+TNT1 A 0 A_GiveToTarget("EnemyDied", 1)
+		CAMO H 5 
+		//CAMO A 0 ACS_ExecuteAlways(807,0,0,0,0)
+		CAMO I 5 A_PlayerScream
+		CAMO J 5 A_NoBlocking
+		CAMO KLM 5
+		CAMO N -1
+		Stop
+	XDeath:
+TNT1 A 0 A_GiveToTarget("Killstreak", 1)
+TNT1 A 0 A_GiveToTarget("EnemyDied", 1)
+		CAMO M 0 
+		//CAMO A 0 ACS_ExecuteAlways(807,0,0,0,0)
+		POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator9",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator10",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+		CAMO O 5 A_Playsound("Gib/Render")
+POSS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+		CAMO P 5 A_XScream
+POSS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+		CAMO Q 5 A_NoBlocking
+POSS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+		CAMO RSTUV 5
+		CAMO W -1
+		Stop
+
+	}
+}

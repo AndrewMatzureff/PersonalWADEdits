@@ -1,0 +1,123 @@
+// --------------------------------------------------------------------------
+//
+// NOVA (Demo weapon)
+//
+// --------------------------------------------------------------------------
+
+ACTOR "NOVA" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "NOVAClip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "BuckshotAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //8
+	obituary "%k killed %o with Nova."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a Nova."
+	Tag "Nova"
+	Weapon.UpSound "NOVA/Ready"
+	//AttackSound "NOVA/Fire" 
+	Scale 0.12
+
+	States
+	{
+	Ready:
+		W29E B 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+	BobLoop:
+		W29Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 220, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 1, 0, 0)
+		TNT1 A 4 A_WEAPONREADY(WRF_NOFIRE)
+		W29A GHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W29B ABCDEFGHIJ 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+	Fire:
+	
+	W29D Q 0 A_JumpIfNoAmmo("AltFire")
+	
+	
+		W29D A 1 A_GunFlash
+		W29D BCDEFGHIJKLMNOPQ 1 a_weaponReady(wrf_nofire)
+		W29D RSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W29E A 1 A_WEAPONREADY(WRF_NOFIRE)
+		W29E B 5 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("NOVAClip",8,"Ready")
+    TNT1 A 0 A_JumpIfInventory("BuckshotAmmo",1,"ReloadStart")
+    goto Ready
+
+
+	ReloadStart:
+		W29F ABCDEFGHIJKL 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+		
+  ReloadAmmo:
+		W29G ABCDEFGHIJKL 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("Shell/Insert", 6)
+    TNT1 A 0 A_GiveInventory("NOVAClip",1)
+    TNT1 A 0 A_TakeInventory("BuckshotAmmo",1)
+		W29G MNOPQRST 1 A_WEAPONREADY(WRF_NOSECONDARY)
+    TNT1 A 0 A_JumpIfInventory("NOVAClip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("BuckshotAmmo",1,"ReloadAmmo2")
+    goto ReloadEnd		
+
+
+
+  ReloadAmmo2:
+		W29G ABCDEFGHIJKL 1 A_WEAPONREADY(WRF_NOSECONDARY)
+		TNT1 A 0 A_PlaySound("Shell/Insert", 6)
+    TNT1 A 0 A_GiveInventory("NOVAClip",1)
+    TNT1 A 0 A_TakeInventory("BuckshotAmmo",1)
+		W29G MNOPQRST 1 A_WEAPONREADY(WRF_NOSECONDARY)
+    TNT1 A 0 A_JumpIfInventory("NOVAClip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("BuckshotAmmo",1,"ReloadAmmo2")
+    goto ReloadEnd	
+
+
+
+	ReloadEnd:
+		W29H ABCDEFGHIJKLMNOPQ 1 A_WEAPONREADY(WRF_NOSECONDARY)//(WRF_NOFIRE)
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",5,0,12,-6)
+		TNT1 A 0 A_PlaySound("Nova/Pump")
+		W29H RSTUVWXYZ 1 A_WEAPONREADY(WRF_NOSECONDARY)//(WRF_NOFIRE)
+		W29I ABCD 1 A_WEAPONREADY(WRF_NOSECONDARY)//(WRF_NOFIRE)
+		Goto Ready
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 2, 0, 0)
+		TNT1 A 0 A_GiveInventory("CrosshairGrow", 40)
+TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,8,10)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("NOVA/FIRE")
+		TNT1 A 0 A_PlaySound("NOVA/Distant", 8)
+		TNT1 A 16 A_FireBullets(7, 7, 14, 3.5, "novaBullet")
+		TNT1 A 0 A_FireCustomMissile("ShotCaseSpawn",5,0,12,-6)
+
+		Goto LightDone
+ 	Spawn:
+		W29Z A -1
+		Stop
+	}
+}

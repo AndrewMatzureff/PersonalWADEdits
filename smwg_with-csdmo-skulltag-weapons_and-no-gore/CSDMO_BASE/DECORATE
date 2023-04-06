@@ -1,0 +1,100 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+
+//Extra decorate ()
+#include "progs/EXTRA/PUFF"				//Additional, simplistic bullet puff (replaces the RGAV3 bulletpuff)
+
+
+
+//Generic decorate
+#include "progs/ammo/DEAD_ONES"			//Ammo for Each Slot
+#include "progs/PICKUPS"				//Things replacer.
+#include "progs/PLAYER_T"				//The Terrorist player
+#include "progs/PLAYER_CT"				//The Counter-Terrorist player
+#include "progs/GLOBAL"					//Just stuff
+#include "progs/LIMITER"				//Weapons limiter (plus scripts)
+#include "progs/ITEMS"					//Legacy modified decorate
+
+
+
+//Weapons decorate
+#include "progs/weapons/DEFAULT" 		//Common flags and info.
+#include "progs/weapons/BULLETS" 		//Specific Damagetype (include bulletpuff).
+#include "progs/weapons/PICKUPS" 		//Weapons pickup (based on RGAV3)
+#include "progs/weapons/AK47"			//W01
+#include "progs/weapons/AUG"			//W02
+#include "progs/weapons/AWP"			//W03
+#include "progs/weapons/BIZON"			//W04
+#include "progs/weapons/C4"				//W05 (Test animation)
+#include "progs/weapons/DEAGLE"			//W07
+#include "progs/weapons/DECOY"			//W08 (Test animation)
+#include "progs/weapons/ELITE"			//W09
+#include "progs/weapons/FAMAS"			//W10
+#include "progs/weapons/FIVESEVEN"		//W11
+#include "progs/weapons/FLASHBANG"		//W12 (Test animation)
+#include "progs/weapons/G3SG1" 			//W13
+#include "progs/weapons/GALILAR" 		//W14
+#include "progs/weapons/GLOCK"			//W15
+#include "progs/weapons/HEGRENADE"		//W16
+#include "progs/weapons/HKP2000"		//W17
+#include "progs/weapons/INCGRENADE"		//W18 (Test animation)
+#include "progs/weapons/KNIFE"			//W19
+#include "progs/weapons/M4A1"			//W20
+#include "progs/weapons/M249"			//W21
+#include "progs/weapons/MAC10" 			//W22
+#include "progs/weapons/MAG7"			//W23
+#include "progs/weapons/MOLOTOV"		//W25 (Test animation)
+#include "progs/weapons/MP7" 			//W26
+#include "progs/weapons/MP9" 			//W27
+#include "progs/weapons/NEGEV" 			//W28
+#include "progs/weapons/NOVA" 			//W29
+#include "progs/weapons/P90" 			//W30
+#include "progs/weapons/P250"			//W31
+#include "progs/weapons/SAWEDOFF"		//W32
+#include "progs/weapons/SCAR20"			//W33
+#include "progs/weapons/SG553"			//W34
+#include "progs/weapons/SMOKEGRENADE"	//W35 (Test animation)
+#include "progs/weapons/SSG08"			//W36
+#include "progs/weapons/TASER" 			//W37
+#include "progs/weapons/TEC9"			//W38
+#include "progs/weapons/UMP45" 			//W39
+#include "progs/weapons/XM1014" 		//W40
+//Expansion weapons
+#include "progs/weapons/CZ75A" 		//W43
+#include "progs/weapons/USP" 		//W44
+#include "progs/weapons/M4A1_SIL" 	//W45
+#include "progs/weapons/REVOLVER"	//W46 (revolver)
+
+
+
+
+//Ammo decorate (Shared ammo)
+#include "progs/ammo/CLIPS"			//For each weapon
+
+#include "progs/ammo/BUCKSHOT" 		//Shells
+#include "progs/ammo/338MAG"		//Specific ammotypes
+#include "progs/ammo/357SIG"		//
+#include "progs/ammo/45ACP"			//
+#include "progs/ammo/50AE"			//
+#include "progs/ammo/REVOLVER"			//
+#include "progs/ammo/556MM"			//
+#include "progs/ammo/556MMBOX"		//
+#include "progs/ammo/57MM"			//
+#include "progs/ammo/762MM"			//
+#include "progs/ammo/9MM"			//
+#include "progs/ammo/HEGRENADE"		//W16
+#include "progs/ammo/TASER" 		//W37
+
+
+
+//Powerups decorate
+
+
+//Monsters decorate

@@ -1,0 +1,9 @@
+actor 9MMAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 120
+    inventory.maxamount 120
+    ammo.backpackamount 120
+    ammo.backpackmaxamount 120
+    +IGNORESKILL
+}

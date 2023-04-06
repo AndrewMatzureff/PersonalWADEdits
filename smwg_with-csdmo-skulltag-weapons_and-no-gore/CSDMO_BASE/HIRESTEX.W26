@@ -1,0 +1,204 @@
+//Hirestex for MP7
+
+//A
+remap W26AB0 W26AB0H   
+remap W26AC0 W26AC0H   
+remap W26AD0 W26AD0H   
+remap W26AE0 W26AE0H   
+remap W26AF0 W26AF0H   
+remap W26AG0 W26AG0H   
+remap W26AH0 W26AH0H   
+remap W26AI0 W26AI0H   
+remap W26AJ0 W26AJ0H   
+remap W26AK0 W26AK0H   
+remap W26AL0 W26AL0H   
+remap W26AM0 W26AM0H   
+remap W26AN0 W26AN0H   
+remap W26AO0 W26AO0H   
+remap W26AP0 W26AP0H   
+remap W26AQ0 W26AQ0H   
+remap W26AR0 W26AR0H   
+remap W26AS0 W26AS0H   
+remap W26AT0 W26AT0H   
+remap W26AU0 W26AU0H   
+remap W26AV0 W26AV0H   
+remap W26AW0 W26AW0H   
+remap W26AX0 W26AX0H   
+remap W26AY0 W26AY0H   
+remap W26AZ0 W26AZ0H   
+                       
+                       
+//B                    
+remap W26BA0 W26BA0H   
+remap W26BB0 W26BB0H   
+remap W26BC0 W26BC0H   
+remap W26BD0 W26BD0H   
+remap W26BE0 W26BE0H   
+remap W26BF0 W26BF0H   
+remap W26BG0 W26BG0H   
+remap W26BH0 W26BH0H   
+remap W26BI0 W26BI0H   
+remap W26BJ0 W26BJ0H   
+remap W26BK0 W26BK0H   
+
+
+//D                   
+remap W26DA0 W26DA0H  
+remap W26DB0 W26DB0H  
+remap W26DC0 W26DC0H  
+remap W26DD0 W26DD0H  
+remap W26DE0 W26DE0H  
+remap W26DF0 W26DF0H  
+remap W26DG0 W26DG0H  
+remap W26DH0 W26DH0H  
+remap W26DI0 W26DI0H  
+remap W26DJ0 W26DJ0H  
+remap W26DK0 W26DK0H  
+remap W26DL0 W26DL0H  
+remap W26DM0 W26DM0H  
+remap W26DN0 W26DN0H  
+remap W26DO0 W26DO0H  
+remap W26DP0 W26DP0H  
+remap W26DQ0 W26DQ0H  
+remap W26DR0 W26DR0H  
+remap W26DS0 W26DS0H  
+remap W26DT0 W26DT0H  
+remap W26DU0 W26DU0H  
+remap W26DV0 W26DV0H  
+remap W26DW0 W26DW0H  
+remap W26DX0 W26DX0H  
+remap W26DY0 W26DY0H  
+remap W26DZ0 W26DZ0H  
+                      
+                      
+//E                   
+remap W26EA0 W26EA0H  
+remap W26EB0 W26EB0H  
+remap W26EC0 W26EC0H  
+remap W26ED0 W26ED0H  
+
+
+//F                  
+remap W26FA0 W26FA0H 
+remap W26FB0 W26FB0H 
+remap W26FC0 W26FC0H 
+remap W26FD0 W26FD0H 
+remap W26FE0 W26FE0H 
+remap W26FF0 W26FF0H 
+remap W26FG0 W26FG0H 
+remap W26FH0 W26FH0H 
+remap W26FI0 W26FI0H 
+remap W26FJ0 W26FJ0H 
+remap W26FK0 W26FK0H 
+remap W26FL0 W26FL0H 
+remap W26FM0 W26FM0H 
+remap W26FN0 W26FN0H 
+remap W26FO0 W26FO0H 
+remap W26FP0 W26FP0H 
+remap W26FQ0 W26FQ0H 
+remap W26FR0 W26FR0H 
+remap W26FS0 W26FS0H 
+remap W26FT0 W26FT0H 
+remap W26FU0 W26FU0H 
+remap W26FV0 W26FV0H 
+remap W26FW0 W26FW0H 
+remap W26FX0 W26FX0H 
+remap W26FY0 W26FY0H 
+remap W26FZ0 W26FZ0H 
+                     
+                     
+//G                  
+remap W26GA0 W26GA0H 
+remap W26GB0 W26GB0H 
+remap W26GC0 W26GC0H 
+remap W26GD0 W26GD0H 
+remap W26GE0 W26GE0H 
+remap W26GF0 W26GF0H 
+remap W26GG0 W26GG0H 
+remap W26GH0 W26GH0H 
+remap W26GI0 W26GI0H 
+remap W26GJ0 W26GJ0H 
+remap W26GK0 W26GK0H 
+remap W26GL0 W26GL0H 
+remap W26GM0 W26GM0H 
+remap W26GN0 W26GN0H 
+remap W26GO0 W26GO0H 
+remap W26GP0 W26GP0H 
+remap W26GQ0 W26GQ0H 
+remap W26GR0 W26GR0H 
+remap W26GS0 W26GS0H 
+remap W26GT0 W26GT0H 
+remap W26GU0 W26GU0H 
+remap W26GV0 W26GV0H 
+remap W26GW0 W26GW0H 
+remap W26GX0 W26GX0H 
+remap W26GY0 W26GY0H 
+remap W26GZ0 W26GZ0H 
+                     
+//H                  
+remap W26HA0 W26HA0H 
+remap W26HB0 W26HB0H 
+remap W26HC0 W26HC0H 
+remap W26HD0 W26HD0H 
+remap W26HE0 W26HE0H 
+remap W26HF0 W26HF0H 
+remap W26HG0 W26HG0H 
+remap W26HH0 W26HH0H 
+remap W26HI0 W26HI0H 
+remap W26HJ0 W26HJ0H 
+remap W26HK0 W26HK0H 
+remap W26HL0 W26HL0H 
+remap W26HM0 W26HM0H 
+remap W26HN0 W26HN0H 
+remap W26HO0 W26HO0H 
+remap W26HP0 W26HP0H 
+remap W26HQ0 W26HQ0H 
+remap W26HR0 W26HR0H 
+remap W26HS0 W26HS0H 
+remap W26HT0 W26HT0H 
+remap W26HU0 W26HU0H 
+remap W26HV0 W26HV0H 
+remap W26HW0 W26HW0H 
+remap W26HX0 W26HX0H 
+remap W26HY0 W26HY0H 
+remap W26HZ0 W26HZ0H 
+                     
+                     
+//I                  
+remap W26IA0 W26IA0H 
+remap W26IB0 W26IB0H 
+remap W26IC0 W26IC0H 
+remap W26ID0 W26ID0H 
+remap W26IE0 W26IE0H 
+remap W26IF0 W26IF0H 
+remap W26IG0 W26IG0H 
+remap W26IH0 W26IH0H 
+remap W26II0 W26II0H 
+remap W26IJ0 W26IJ0H 
+remap W26IK0 W26IK0H 
+remap W26IL0 W26IL0H 
+remap W26IM0 W26IM0H 
+remap W26IN0 W26IN0H 
+remap W26IO0 W26IO0H 
+remap W26IP0 W26IP0H 
+remap W26IQ0 W26IQ0H 
+remap W26IR0 W26IR0H 
+remap W26IS0 W26IS0H 
+remap W26IT0 W26IT0H 
+remap W26IU0 W26IU0H 
+remap W26IV0 W26IV0H 
+remap W26IW0 W26IW0H 
+remap W26IX0 W26IX0H 
+remap W26IY0 W26IY0H 
+remap W26IZ0 W26IZ0H 
+                     
+                     
+//J                  
+remap W26JA0 W26JA0H 
+remap W26JB0 W26JB0H 
+remap W26JC0 W26JC0H 
+remap W26JD0 W26JD0H 
+remap W26JE0 W26JE0H 
+remap W26JF0 W26JF0H 
+remap W26JG0 W26JG0H 
+remap W26JH0 W26JH0H 

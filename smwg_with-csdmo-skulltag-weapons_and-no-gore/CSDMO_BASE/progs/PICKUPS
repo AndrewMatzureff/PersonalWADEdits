@@ -1,0 +1,305 @@
+//Empty gunspawner
+actor GunSpawner : RandomSpawner
+{
+}
+
+
+
+//Monster drops
+actor DropSpawner2 : RandomSpawner 
+{
+DropItem "GlockPickup2"
+DropItem "DeaglePickup2"
+DropItem "ElitePickup2"
+DropItem "FivesevenPickup2"
+DropItem "Tec9Pickup2"
+DropItem "P250Pickup2"
+DropItem "HKP2000Pickup2"
+DropItem "CZ75APickup2"
+DropItem "RevolverPickup2"
+DropItem "USPPickup2"
+}
+actor DropSpawner3 : RandomSpawner 
+{
+DropItem "NovaPickup2"
+DropItem "SawedOffPickup2"
+DropItem "XM1014Pickup2"
+DropItem "Mag7Pickup2"
+}
+
+actor DropSpawner4 : RandomSpawner 
+{
+DropItem "BizonPickup2"
+DropItem "Mac10Pickup2"
+DropItem "MP7Pickup2"
+DropItem "MP9Pickup2"
+DropItem "P90Pickup2"
+DropItem "UMP45Pickup2"
+}
+
+
+actor DropSpawner5 : RandomSpawner 
+{
+DropItem "G3SG1Pickup2"
+DropItem "SCAR20Pickup2"
+DropItem "SSG08Pickup2"
+DropItem "AWPPickup2"
+}
+
+actor DropSpawner6 : RandomSpawner 
+{
+DropItem "GalilarPickup2"
+DropItem "FamasPickup2"
+DropItem "Ak47Pickup2"
+DropItem "M4a1Pickup2"
+DropItem "AUGPickup2"
+DropItem "SG553Pickup2"
+DropItem "M4A1_silPickup2"
+}
+
+actor DropSpawner7 : RandomSpawner 
+{
+
+DropItem "M249Pickup2"
+DropItem "NEGEVPickup2"
+}
+
+/*
+actor DropSpawnerX : RandomSpawner 
+{
+DropItem "Pickup2"
+}
+*/
+
+
+
+actor DropSpawner20 : RandomSpawner 
+{
+DropItem "AK47Pickup2"
+DropItem "AUGPickup2"
+DropItem "AWPPickup2"
+DropItem "BIZONPickup2"
+//DropItem "C4Pickup2"
+DropItem "DEAGLEPickup2"
+//DropItem "DECOYPickup2"
+DropItem "ELITEPickup2"
+DropItem "FAMASPickup2"
+DropItem "FIVESEVENPickup2"
+//DropItem "FLASHBANGPickup2"
+DropItem "G3SG1Pickup2"
+DropItem "GALILARPickup2"
+DropItem "GLOCKPickup2"
+DropItem "HEGRENADEPickup2"
+DropItem "HKP2000Pickup2"
+//DropItem "INCGRENADEPickup2"
+//DropItem "KNIFEPickup2" ALREADY HAVE ONE
+DropItem "M4A1Pickup2"
+DropItem "M249Pickup2"
+DropItem "MAC10Pickup2"
+DropItem "MAG7Pickup2"
+DropItem "MP7Pickup2"
+DropItem "MP9Pickup2"
+DropItem "NEGEVPickup2"
+DropItem "NOVAPickup2"
+DropItem "P90Pickup2"
+DropItem "P250Pickup2"
+DropItem "SAWEDOFFPickup2"
+DropItem "SCAR20Pickup2"
+DropItem "SG556Pickup2"
+//DropItem "SMOKEGRENADEPickup2"
+DropItem "SSG08Pickup2"
+DropItem "TASERPickup2"
+DropItem "TEC9Pickup2"
+DropItem "UMP45Pickup2"
+DropItem "XM1014Pickup2"
+DropItem "USPPickup2"
+DropItem "M4A12_silPickup2"
+}
+
+
+
+
+
+
+
+//Weapon pickups
+actor GunSpawner3 : RandomSpawner 
+{
+DropItem "NovaPickup2"
+DropItem "SawedOffPickup2"
+}
+actor GunSpawner4 : RandomSpawner 
+{
+DropItem "XM1014Pickup2"
+DropItem "Mag7Pickup2"
+}
+actor GunSpawner5 : RandomSpawner 
+{
+DropItem "BizonPickup2"
+DropItem "MP7Pickup2"
+DropItem "MP9Pickup2"
+}
+actor GunSpawner6 : RandomSpawner 
+{
+DropItem "P90Pickup2"
+DropItem "MAC10Pickup2"
+DropItem "UMP45Pickup2"
+DropItem "AUGPickup2"
+DropItem "SG553Pickup2"
+}
+actor GunSpawner7 : RandomSpawner 
+{
+DropItem "G3SG1Pickup2"
+DropItem "SCAR20Pickup2"
+DropItem "SSG08Pickup2"
+DropItem "AWPPickup2"
+}
+actor GunSpawner8 : RandomSpawner 
+{
+DropItem "DeaglePickup2"
+DropItem "ElitePickup2"
+DropItem "Tec9Pickup2"
+DropItem "P250Pickup2"
+}
+actor GunSpawner9 : RandomSpawner 
+{
+DropItem "GALILARPickup2"
+DropItem "FAMASPickup2"
+DropItem "M4A1Pickup2"
+DropItem "AK47Pickup2"
+DropItem "M4A1_silPickup2"
+}
+actor GunSpawner10 : RandomSpawner 
+{
+DropItem "AUGPickup2"
+DropItem "SG553Pickup2"
+}
+actor GunSpawner12 : RandomSpawner 
+{
+DropItem "M249Pickup2"
+DropItem "NEGEVPickup2"
+}
+
+
+//actor GunSpawnerA : GunSpawner1 replaces Chainsaw {}
+//actor GunSpawnerB : GunSpawner2 replaces Pistol{}
+actor GunSpawner1 : GunSpawner replaces Chainsaw {DropItem "DeaglePickup2"}
+actor GunSpawner2 : GunSpawner replaces Pistol{DropItem "DeadClip2Inv"}
+actor GunSpawnerC : GunSpawner3 replaces Shotgun{}
+actor GunSpawnerD : GunSpawner4 replaces SuperShotgun{}
+actor GunSpawnerE : GunSpawner5 replaces Chaingun{}
+actor GunSpawnerF : GunSpawner6 replaces Minigun{}
+actor GunSpawnerG : GunSpawner7 replaces RocketLauncher{}
+actor GunSpawnerH : GunSpawner8 replaces GrenadeLauncher{}
+actor GunSpawnerI : GunSpawner9 replaces PlasmaRifle{}
+actor GunSpawnerJ : GunSpawner10 replaces Railgun{}
+//actor GunSpawnerK : GunSpawner11 replaces BFG9000{}
+actor GunSpawner11 : GunSpawner replaces BFG9000{DropItem "AWPPickup2"}
+actor GunSpawnerL : GunSpawner12 replaces BFG10k{}
+
+actor GunSpawner16 : RandomSpawner 
+{
+DropItem "M249Pickup2"
+DropItem "NEGEVPickup2"
+}
+
+
+//actor GunSpawner13 : GunSpawner replaces Clip{DropItem "DeadClip2Inv"}
+actor GunSpawner14 : GunSpawner replaces RocketAmmo{DropItem "HEGrenadePickup2"}
+actor GunSpawner15 : GunSpawner replaces BlurSphere{DropItem "Taser"}
+actor GunSpawnerP : GunSpawner16 replaces Berserk{}
+
+
+actor AmmoSpawner01 : GunSpawner replaces Clip {DropItem "DeadClip2Inv"}
+actor AmmoSpawner02 : GunSpawner replaces ClipBox {DropItem "DeadClip4Inv"}
+actor AmmoSpawner03 : GunSpawner replaces Shell {DropItem "DeadClip3Inv"}
+actor AmmoSpawner04 : GunSpawner replaces ShellBox {DropItem "DeadClip3Inv"}
+actor AmmoSpawner05 : GunSpawner replaces Cell {DropItem "DeadClip6Inv"}
+actor AmmoSpawner06 : GunSpawner replaces CellPack {DropItem "DeadClip7Inv"}
+actor AmmoSpawner07 : GunSpawner replaces RocketBox {DropItem "DeadClip5Inv"}
+
+
+
+
+
+//actor NullItem1 replaces HealthBonus{}
+//actor NullItem2 replaces ArmorBonus{}
+/*
+//actor NullActor01 replaces Clip {}
+actor NullActor02 replaces ClipBox {DropItem "DeadClip4Inv"}
+actor NullActor03 replaces Shell {DropItem "DeadClip3Inv"}
+actor NullActor04 replaces ShellBox {DropItem "DeadClip3Inv"}
+actor NullActor05 replaces Cell {DropItem "DeadClip6Inv"}
+actor NullActor06 replaces CellPack {DropItem "DeadClip7Inv"}
+actor NullActor07 replaces RocketBox {DropItem "DeadClip5Inv"}
+*/
+
+
+
+
+ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
+{
+	Game Doom
+	SpawnID 133
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.BIGPOWERUP
+	Inventory.MaxAmount 0
+	Powerup.Type Invulnerable
+	Powerup.Color White //InverseMap
+	Inventory.PickupMessage "$GOTINVUL"
+	States
+	{
+	Spawn:
+		PINV AAABBBCCCDDD 2 Bright 
+		Loop
+	}
+}
+
+
+
+/*
+actor GunSpawner : RandomSpawner
+{
+    DropItem "MP412Pickup2"
+    DropItem "KSG12Pickup2"
+    DropItem "L118APickup2"
+    DropItem "PM9Pickup2"
+    DropItem "SCARLPickup2"
+    DropItem "M320Pickup2"
+    DropItem "DeaglePickup2"
+    DropItem "AA12Pickup2"
+    DropItem "MK46Pickup2"
+    DropItem "MP7Pickup2"
+    DropItem "AK47Pickup2"
+    DropItem "MSRPickup2"
+    DropItem "JavelinPickup2"
+    DropItem "M4A1Pickup2"
+    DropItem "M16A4Pickup2"
+    DropItem "P90Pickup2"
+    DropItem "Model1887Pickup2"
+    DropItem "PP90M1Pickup2"
+    DropItem "DragunovPickup2"
+    DropItem "P99Pickup2"
+    DropItem "L86Pickup2"
+    DropItem "G36CPickup2"
+    DropItem "M14Pickup2"
+    DropItem "PKPPickup2"
+    DropItem "FADPickup2"
+    DropItem "RiotShieldPickup2"
+}
+
+actor GunSpawner1 : GunSpawner replaces Chainsaw {}
+actor GunSpawner2 : GunSpawner replaces Pistol{}
+actor GunSpawner3 : GunSpawner replaces Shotgun{}
+actor GunSpawner4 : GunSpawner replaces SuperShotgun{}
+actor GunSpawner5 : GunSpawner replaces Chaingun{}
+actor GunSpawner6 : GunSpawner replaces Minigun{}
+actor GunSpawner7 : GunSpawner replaces RocketLauncher{}
+actor GunSpawner8 : GunSpawner replaces GrenadeLauncher{}
+actor GunSpawner9 : GunSpawner replaces PlasmaRifle{}
+actor GunSpawner10 : GunSpawner replaces Railgun{}
+actor GunSpawner11 : GunSpawner replaces BFG9000{}
+actor GunSpawner12 : GunSpawner replaces BFG10k{}
+*/

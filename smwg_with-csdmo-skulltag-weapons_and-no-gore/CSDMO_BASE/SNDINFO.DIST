@@ -1,0 +1,275 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for distant weapons
+
+$pitchshiftrange 0
+
+ak47/Distant					"sounds/weapons_distant/ak47.wav"
+aug/Distant						"sounds/weapons_distant/aug.wav"
+awp/Distant						"sounds/weapons_distant/awp.wav"
+bizon/Distant					"sounds/weapons_distant/bizon.wav"
+deagle/Distant					"sounds/weapons_distant/deagle.wav"
+elite/Distant					"sounds/weapons_distant/elite.wav"
+famas/Distant					"sounds/weapons_distant/famas.wav"
+fiveseven/Distant				"sounds/weapons_distant/fiveseven.wav"
+flashbangxp1/Distant			"sounds/weapons_distant/flashbang_explode1.wav"
+flashbangxp2/Distant			"sounds/weapons_distant/flashbang_explode2.wav"
+g3sg1/Distant					"sounds/weapons_distant/g3sg1.wav"
+galilar/Distant					"sounds/weapons_distant/galil.wav"
+glock/Distant					"sounds/weapons_distant/glock18.wav"
+explode3/Distant				"sounds/weapons_distant/explode3.wav"
+explode4/Distant				"sounds/weapons_distant/explode4.wav"
+explode5/Distant				"sounds/weapons_distant/explode5.wav"
+hkp2000/Distant					"sounds/weapons_distant/hkp2000.wav"
+inc_grenade_detonate1/Distant	"sounds/weapons_distant/inc_grenade_detonate_1.wav"
+inc_grenade_detonate2/Distant	"sounds/weapons_distant/inc_grenade_detonate_2.wav"
+inc_grenade_detonate3/Distant	"sounds/weapons_distant/inc_grenade_detonate_3.wav"
+m4a1/Distant					"sounds/weapons_distant/m4a1.wav"
+m249/Distant					"sounds/weapons_distant/m249.wav"
+mac10/Distant					"sounds/weapons_distant/mac10.wav"
+mag7/Distant					"sounds/weapons_distant/mag7.wav"
+molotov_detonate1/Distant		"sounds/weapons_distant/molotov_detonate_1.wav"
+molotov_detonate2/Distant		"sounds/weapons_distant/molotov_detonate_2.wav"
+molotov_detonate3/Distant		"sounds/weapons_distant/molotov_detonate_3.wav"
+mp7/Distant						"sounds/weapons_distant/mp7.wav"
+mp9/Distant						"sounds/weapons_distant/mp9.wav"
+negev/Distant					"sounds/weapons_distant/negev.wav"
+nova/Distant					"sounds/weapons_distant/nova.wav"
+p90/Distant						"sounds/weapons_distant/p90.wav"
+p250/Distant					"sounds/weapons_distant/p250.wav"
+sawedoff/Distant				"sounds/weapons_distant/sawedoff.wav"
+scar20/Distant					"sounds/weapons_distant/scar20_unsil.wav"
+sg553/Distant					"sounds/weapons_distant/sg556.wav"
+sg_explode/Distant				"sounds/weapons_distant/sg_explode.wav"
+ssg08/Distant					"sounds/weapons_distant/ssg08.wav"
+tec9/Distant					"sounds/weapons_distant/tec9.wav"
+ump45/Distant					"sounds/weapons_distant/ump45.wav"
+xm1014/Distant					"sounds/weapons_distant/xm1014.wav"
+cz75a/Distant					"sounds/weapons_distant/cz75a.wav"
+revolver/Distant					"sounds/weapons_distant/revolver.wav"
+usp/Distant					"sounds/weapons_distant/usp.wav"
+usp/Distant_sil					"sounds/weapons_distant/usp_sil.wav"
+m4a1_sil/Distant					"sounds/weapons_distant/m4a1_sil.wav"
+m4a1_sil/Distant_sil					"sounds/weapons_distant/m4a1_sil_sil.wav"
+
+
+
+//Roloff setting
+$rolloff ak47/Distant 325 4000 				
+$rolloff aug/Distant 325 4000 					
+$rolloff awp/Distant 325 4000 					
+$rolloff bizon/Distant 325 4000 				
+$rolloff deagle/Distant 325 4000 			
+$rolloff elite/Distant 325 4000 				
+$rolloff famas/Distant 325 4000 				
+$rolloff fiveseven/Distant 325 4000 		
+
+$rolloff flashbangxp1/Distant 325 4000 
+$rolloff flashbangxp2/Distant 325 4000 
+$random flashbangxp/Distant { flashbangxp1/Distant flashbangxp2/Distant }
+
+$rolloff g3sg1/Distant 325 4000 				
+$rolloff galilar/Distant 325 4000 				
+$rolloff glock/Distant 325 4000 			
+
+$rolloff explode3/Distant 325 6000 		
+$rolloff explode4/Distant 325 6000 		
+$rolloff explode5/Distant 325 6000 		
+$random explode/Distant { explode3/Distant explode4/Distant explode5/Distant }
+
+$rolloff hkp2000/Distant 325 4000 			
+
+$rolloff inc_grenade_detonate1/Distant 325 4000 
+$rolloff inc_grenade_detonate2/Distant 325 4000 
+$rolloff inc_grenade_detonate3/Distant 325 4000 
+$random inc_grenade_detonate/Distant { inc_grenade_detonate1/Distant inc_grenade_detonate2/Distant inc_grenade_detonate3/Distant }
+
+$rolloff m4a1/Distant 325 4000 				
+$rolloff m249/Distant 325 4000 				
+$rolloff mac10/Distant 325 4000 				
+$rolloff mag7/Distant 325 4000 				
+
+$rolloff molotov_detonate1/Distant 325 4000 
+$rolloff molotov_detonate2/Distant 325 4000 
+$rolloff molotov_detonate3/Distant 325 4000 
+$random molotov_detonate/Distant { molotov_detonate1/Distant molotov_detonate2/Distant molotov_detonate3/Distant }
+
+$rolloff mp7/Distant 325 4000 					
+$rolloff mp9/Distant 325 4000 					
+$rolloff negev/Distant 325 4000 				
+$rolloff nova/Distant 325 4000 				
+$rolloff p90/Distant 325 4000 				
+$rolloff p250/Distant 325 4000 				
+$rolloff sawedoff/Distant 325 4000 		
+$rolloff scar20/Distant 325 4000 			
+$rolloff sg553/Distant 325 4000 			
+$rolloff sg_explode/Distant 325 4000 	
+$rolloff ssg08/Distant 325 4000 			
+$rolloff tec9/Distant 325 4000 				
+$rolloff ump45/Distant 325 4000 			
+$rolloff xm1014/Distant 325 4000 			
+$rolloff cz75a/Distant 325 4000 			
+$rolloff revolver/Distant 325 4000 			
+$rolloff usp/Distant 325 4000 			
+$rolloff usp/Distant_sil 325 4000 			
+$rolloff m4a1_sil/Distant 325 4000 	
+$rolloff m4a1_sil/Distant_sil 325 4000 	
+
+
+//Volume setting
+$volume ak47/Distant 0.25 				
+$volume aug/Distant 0.25 					
+$volume awp/Distant 0.25 					
+$volume bizon/Distant 0.25 				
+$volume deagle/Distant 0.25 			
+$volume elite/Distant 0.25 				
+$volume famas/Distant 0.25 				
+$volume fiveseven/Distant 0.25 		
+$volume flashbangxp1/Distant 0.25 
+$volume flashbangxp2/Distant 0.25 
+$volume g3sg1/Distant 0.25 				
+$volume galilar/Distant 0.25 				
+$volume glock/Distant 0.25 			
+$volume explode3/Distant 0.5 		
+$volume explode4/Distant 0.5 		
+$volume explode5/Distant 0.5 		
+$volume hkp2000/Distant 0.25 			
+$volume inc_grenade_detonate1/Distant 0.25 
+$volume inc_grenade_detonate2/Distant 0.25 
+$volume inc_grenade_detonate3/Distant 0.25 
+$volume m4a1/Distant 0.25 				
+$volume m249/Distant 0.25 				
+$volume mac10/Distant 0.25 				
+$volume mag7/Distant 0.25 				
+$volume molotov_detonate1/Distant 0.25 
+$volume molotov_detonate2/Distant 0.25 
+$volume molotov_detonate3/Distant 0.25 
+$volume mp7/Distant 0.25 					
+$volume mp9/Distant 0.25 					
+$volume negev/Distant 0.25 				
+$volume nova/Distant 0.25 				
+$volume p90/Distant 0.25 				
+$volume p250/Distant 0.25 				
+$volume sawedoff/Distant 0.25 		
+$volume scar20/Distant 0.25 			
+$volume sg553/Distant 0.25 			
+$volume sg_explode/Distant 0.25 	
+$volume ssg08/Distant 0.25 			
+$volume tec9/Distant 0.25 				
+$volume ump45/Distant 0.25 			
+$volume xm1014/Distant 0.25 			
+$volume cz75a/Distant 0.25 			
+$volume revolver/Distant 0.25 			
+$volume usp/Distant 0.25 			
+$volume usp/Distant_sil 0.25 			
+$volume m4a1_sil/Distant 0.25 
+$volume m4a1_sil/Distant_sil 0.25 
+
+
+//Limit settings
+//Distant sounds
+$limit ak47/Distant 0 				
+$limit aug/Distant 0 					
+$limit awp/Distant 0 					
+$limit bizon/Distant 0 				
+$limit deagle/Distant 0 			
+$limit elite/Distant 0 				
+$limit famas/Distant 0 				
+$limit fiveseven/Distant 0 		
+$limit flashbangxp1/Distant 0 
+$limit flashbangxp2/Distant 0 
+$limit g3sg1/Distant 0 				
+$limit galilar/Distant 0 				
+$limit glock/Distant 0 			
+$limit explode3/Distant 0 		
+$limit explode4/Distant 0 		
+$limit explode5/Distant 0 		
+$limit hkp2000/Distant 0 			
+$limit inc_grenade_detonate1/Distant 0 
+$limit inc_grenade_detonate2/Distant 0 
+$limit inc_grenade_detonate3/Distant 0 
+$limit m4a1/Distant 0 				
+$limit m249/Distant 0 				
+$limit mac10/Distant 0 				
+$limit mag7/Distant 0 				
+$limit molotov_detonate1/Distant 0 
+$limit molotov_detonate2/Distant 0 
+$limit molotov_detonate3/Distant 0 
+$limit mp7/Distant 0 					
+$limit mp9/Distant 0 					
+$limit negev/Distant 0 				
+$limit nova/Distant 0 				
+$limit p90/Distant 0 				
+$limit p250/Distant 0 				
+$limit sawedoff/Distant 0 		
+$limit scar20/Distant 0 			
+$limit sg553/Distant 0 			
+$limit sg_explode/Distant 0 	
+$limit ssg08/Distant 0 			
+$limit tec9/Distant 0 				
+$limit ump45/Distant 0 			
+$limit xm1014/Distant 0 			
+$limit cz75a/Distant 0 			
+$limit revolver/Distant 0 			
+$limit usp/Distant 0 			
+$limit usp/Distant_sil 0 			
+$limit m4a1_sil/Distant 0 			
+$limit m4a1_sil/Distant_sil 0 			
+
+
+
+//Normal sounds
+$limit ak47/fire 0 				
+$limit aug/fire 0 					
+$limit awp/fire 0 					
+$limit bizon/fire 0 				
+$limit deagle/fire 0 			
+$limit elite/fire 0 				
+$limit famas/fire 0 				
+$limit fiveseven/fire 0 		
+//$limit flashbangxp1/fire 0 
+//$limit flashbangxp2/fire 0 
+$limit g3sg1/fire 0 				
+$limit galilar/fire 0 				
+$limit glock/fire 0 			
+$limit explode3/fire 0 		
+$limit explode4/fire 0 		
+$limit explode5/fire 0 		
+$limit hkp2000/fire 0 			
+//$limit inc_grenade_detonate1/fire 0 
+//$limit inc_grenade_detonate2/fire 0 
+//$limit inc_grenade_detonate3/fire 0 
+$limit m4a1/fire 0 				
+$limit m249/fire 0 				
+$limit mac10/fire 0 				
+$limit mag7/fire 0 				
+//$limit molotov_detonate1/fire 0 
+//$limit molotov_detonate2/fire 0 
+//$limit molotov_detonate3/fire 0 
+$limit mp7/fire 0 					
+$limit mp9/fire 0 					
+$limit negev/fire 0 				
+$limit nova/fire 0 				
+$limit p90/fire 0 				
+$limit p250/fire 0 				
+$limit sawedoff/fire 0 		
+$limit scar20/fire 0 			
+$limit sg553/fire 0 			
+//$limit sg_explode/fire 0 	
+$limit ssg08/fire 0 			
+$limit tec9/fire 0 				
+$limit ump45/fire 0 			
+$limit xm1014/fire 0 
+$limit cz75a/fire 0 
+$limit revolver/fire 0 
+$limit usp/fire 0 
+$limit usp/fire_sil 0 
+$limit m4a1_sil/fire 0 
+$limit m4a1_sil/fire_sil 0 

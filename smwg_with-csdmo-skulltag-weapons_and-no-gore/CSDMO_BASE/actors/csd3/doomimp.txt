@@ -1,0 +1,175 @@
+//===========================================================================
+//
+// Imp
+//
+//===========================================================================
+ACTOR DoomImp2 replaces DoomImp //3001
+{
+	Game Doom
+	SpawnID 5
+	Health 70
+	Radius 20
+	Height 56
+	Mass 100
+	Speed 8
+	PainChance 200
+	Monster
+	+FLOORCLIP
+	SeeSound "imp/sight"
+	PainSound "imp/pain"
+	DeathSound "imp/death"
+	ActiveSound "imp/active"
+	HitObituary "$OB_IMPHIT"
+	Obituary "$OB_IMP"
+	DropItem "DropSpawner6", 128
+	DropItem "DeadClip6Inv", 160
+
+
+	States
+	{
+	Spawn:
+		TROO AB 10 A_Look
+		Loop
+	See:
+		TROO AABBCCDD 3 A_Chase
+		Loop
+	Melee:
+	Missile:
+		TROO EF 8 A_FaceTarget
+		TROO G 6 A_CustomMissile("D3_ImpBall",45,0,0)//A_TroopAttack 
+		Goto See
+	Pain:
+		TROO H 2
+		TROO H 2 A_Pain
+		Goto See
+		
+	Pain.FLASHBANGFREEZE:
+		TROO H 2
+		TROO B 175 A_Pain
+		Goto See
+
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 70)
+		TROO I 6
+		TROO J 6 A_Scream
+		TROO K 5
+		TROO L 5 A_NoBlocking
+		TROO M -1
+		Stop
+
+
+
+
+
+XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 140)
+TROO N 0 A_SpawnItemEx("NashGore_GibPieceGenerator9",0,0,0,0,0,0,0,128)
+TROO N 0 A_SpawnItemEx("NashGore_GibPieceGenerator10",0,0,0,0,0,0,0,128)
+TROO N 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+TROO N 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+TROO N 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+TROO N 5 A_Playsound("Gib/Render")
+TROO O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+TROO O 5 A_XScream
+TROO P 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+TROO P 5
+TROO Q 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+TROO Q 5 A_NoBlocking
+TROO RST 5
+TROO U -1
+stop
+	Raise:
+		TROO MLKJI 8
+		Goto See
+	}
+}
+
+
+//Visual FX
+ACTOR D3_ImpBall Replaces DoomImpBall
+{
+Spawnid 10
+Radius 6
+Height 8
+Speed 15
+Damage 3
+Scale 0.2
+RenderStyle Add
+Seesound "imp/attack"
+Deathsound "imp/shotx"
+
+//+CLIENTSIDE
+PROJECTILE
++RANDOMIZE
+
+States
+ {
+ Spawn:
+ IMPB ABCD 1 BRIGHT A_CustomMissile("D3_ImpTrail",random(-4,4),random(-4,4),0,10,0)
+ Loop
+
+ Death:
+ IMPB A 0 A_PlaySound("imp/shotx")
+ IMPB AAAAAA 0 BRIGHT A_CustomMissile("D3_ImpESPR",random(-4,4),random(-4,4),random(0, 255), 10, random(-15, 60))
+ IMPF ABC 2 BRIGHT
+ Stop
+ }
+}
+
+ACTOR D3_ImpTrail
+{ 
+Scale 0.2
+RenderStyle add
+Speed 0
+SeeSound ""
+DeathSound ""
+
+//+CLIENTSIDE
++NOCLIP
++NOGRAVITY
+
+States
+ {
+ Spawn:
+ IMPF A 2 BRIGHT    
+ IMPF B 2 BRIGHT A_SpawnItem("D3_ImpSmoke")
+ IMPF C 2 BRIGHT
+ Goto Death
+	
+ Death:
+ NULL A 0
+ Stop
+ }
+}
+
+ACTOR D3_ImpESPR : D3_ImpTrail
+{
+Scale 0.4
+Speed 3
+}
+
+ACTOR D3_ImpSmoke
+{ 
+Scale 0.3
+Speed 0
+RenderStyle Translucent
+Alpha 0.3
+SeeSound ""
+DeathSound ""
+
+//+CLIENTSIDE
++NOCLIP
++NOGRAVITY
+
+States
+ {
+ Spawn:
+ IMPS ABCDEFGHIJKLM 2
+ Goto Death
+	  
+ Death:
+ NULL A 0
+ Stop
+ }
+}
+

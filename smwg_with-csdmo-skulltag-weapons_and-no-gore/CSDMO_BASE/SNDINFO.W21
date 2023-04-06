@@ -1,0 +1,14 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for M249
+
+M249/Ready		"sounds/weapons/M249/W21A.ogg"
+M249/Fire		"sounds/weapons/M249/W21F.ogg"
+M249/Reload		"sounds/weapons/M249/W21R.ogg"

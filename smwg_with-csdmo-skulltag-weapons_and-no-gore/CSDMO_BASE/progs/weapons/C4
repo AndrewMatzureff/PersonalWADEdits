@@ -1,0 +1,98 @@
+// --------------------------------------------------------------------------
+//
+// C4 (Demo weapon "Appears on weapons training")
+//
+// --------------------------------------------------------------------------
+
+ACTOR "C4" : CSDMOWeapon //5010
+{
+
+	+WEAPON.CHEATNOTWEAPON
+
+	Weapon.SelectionOrder 1900
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive 1
+	Weapon.AmmoType "HEGRENADEAmmo"
+	obituary "%k killed %o with C4."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Pickep up a C4."
+	Tag "C4"
+	Weapon.UpSound "HEGRENADE/Ready"
+	AttackSound "HEGRENADE/Fire" 
+	Scale 0.2
+	 +IGNORESKILL
+	 +WEAPON.EXPLOSIVE
+	//+NOAUTOFIRE
+
+	States
+	{
+	Ready:
+		W05B P 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+	BobLoop:
+		W05Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 245, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+	TNT1 A 1 A_Print("Test Animation", 0.5)
+
+		W05A ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W05B ABCDEFGHIJKLMNOP 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+	SelectUsed:
+		W05A A 1 A_PlaySound("HEGRENADE/Ready")
+		W05A BCDEFGHIJJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W05B ABCDEFGHIJKLMNOP 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+	Fire:
+		//TNT1 A 4 A_FireCustomMissile(HEGRENADEPROJECTILE,0,1,0,0)//A_GunFlash
+		W05D ABCDEFGHIJKLMNOPQRS 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("C4/Fire")
+		W05D TUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W05E ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W05F ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W05G ABCDEFGHIJKLMNOPQRSTUVWX 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 3 A_WEAPONREADY(WRF_NOFIRE)
+		Goto SetWeapon
+
+
+//	AltFire:
+//		TNT1 A 0 A_FireCustomMissile(AccurateGRENADEPROJECTILE,0,0,0,0)
+//		W16B J 16 A_WeaponReady
+//		Goto Ready
+
+
+//		W16F ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+
+
+
+             SetWeapon:  
+        TNT1 A 1 A_SelectWeapon("Knife")
+        Goto Ready	
+
+
+
+	Flash:
+		TNT1 A 0 Bright //A_Light1
+		TNT1 A 0 A_TakeInventory("Slot8Filled", 1)//A_AlertMonsters
+		TNT1 A 2 A_FireCustomMissile(HEGRENADEPROJECTILE,0,1,0,0)
+		Goto LightDone
+ 	Spawn:
+		W05Z A -1
+		Stop
+	}
+}
+
+
+
+
+

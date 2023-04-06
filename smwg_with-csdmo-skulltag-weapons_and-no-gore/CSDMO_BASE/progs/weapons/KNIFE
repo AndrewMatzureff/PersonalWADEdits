@@ -1,0 +1,325 @@
+// --------------------------------------------------------------------------
+//
+// Knife (Demo weapon "Appears on weapons training, duh!")
+//
+// --------------------------------------------------------------------------
+
+
+//Weapon Auxiliar
+ACTOR KnifePuff
+{
+	AttackSound "Knife/Hitwall"
+        
+        seesound "Knife/Hit"
+        
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	States
+	{
+	Spawn:
+    TNT1 A 1 
+		Stop
+	Melee:
+		TNT1 A 1
+		Stop
+	}
+}
+
+//Weapon Auxiliar
+ACTOR KnifePuff2
+{
+	AttackSound "Knife/Hitwall"
+        
+        seesound "Knife/Stab"
+        
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	States
+	{
+	Spawn:
+    TNT1 A 1 
+		Stop
+	Melee:
+		TNT1 A 1
+		Stop
+	}
+}
+
+
+
+//Weapon Auxiliar
+Actor KnifewillStab: Inventory
+{
+Inventory.MaxAmount 1
+}
+
+//KNIFE NOTE: I've used the Zooming button, as the Alternate fire. That's the reason of all those "if zooming" states...
+
+
+ACTOR "Knife" : CSDMOWeapon //5010
+{
+
+	Weapon.SelectionOrder 1900
+	obituary "%k killed %o with Knife."
+	+WEAPON.WIMPY_WEAPON
+	+WEAPON.MELEEWEAPON
+	+INVENTORY.UNDROPPABLE
+	Inventory.Pickupmessage "Picked up a knife!"
+	Tag "Knife"
+	Weapon.UpSound "KNIFE/Ready"
+	//AttackSound "Knife/Slash" 
+	Scale 0.18
+
+	States
+	{
+	Ready:
+		W19B I 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+		
+	BobLoop:
+		W19Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		W19Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		Goto Ready
+		
+		
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 250, 0, 0)//Weapon Weight
+		W19A A 1 ACS_Execute(792, 0, 0, 0, 0)
+TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotSetFiveseven")
+		W19A BCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W19B ABCDEFGHI 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+	Fire:
+		TNT1 A 1 A_PlayWeaponSound("Knife/Slash")
+	TNT1 A 0 A_JUMP(256, 1, "FIRE2")
+		TNT1 A 1 
+
+		Goto Fire1
+
+	Fire1:
+		W19D A 1 A_CustomPunch(9, 0, 0, "KnifePuff")//A_GunFlash
+		W19D BCDEFGHIJKLMNOP 1 A_WeaponReady(WRF_NOFIRE)
+
+
+		W19D Q 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D R 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D S 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D T 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D U 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D V 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D W 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D X 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D Y 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19D Z 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		
+		
+		
+		
+				W19E A 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E B 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E C 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E D 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E E 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E F 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E G 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E H 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E I 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E J 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E K 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E L 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E M 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19E N 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		Goto Ready
+
+	Fire2:
+		W19F A 1 A_CustomPunch(9, 0, 0, "KnifePuff")//A_GunFlash
+		W19F BCDEFGHIJKLMNOP 1 A_WeaponReady(WRF_NOFIRE)
+
+		W19F Q 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F R 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F S 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F T 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F U 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F V 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F W 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F X 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F Y 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19F Z 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+
+
+		W19G A 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G B 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G C 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G D 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G E 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G F 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G G 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G H 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G I 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G J 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G K 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G L 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G M 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G N 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+
+		W19G O 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Altfire")
+		
+		
+		Goto Ready
+
+
+	AltFire:
+		TNT1 A 0 A_PlayWeaponSound("Knife/Slash")
+		W19H ABC 1 A_WeaponReady(WRF_NOFIRE)
+		W19H D 1 A_CustomPunch(32, 0, 0, "KnifePuff2")//A_GunFlash
+		W19H EFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady(WRF_NOFIRE)
+		W19I ABCDEFGH 1 A_WeaponReady(WRF_NOFIRE)
+		W19I IJKLM 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+//Bot compatibility
+             BotSetFiveseven://(Note: In early beta, Fiveseven was the only pistol available.)  
+        TNT1 A 1 A_SelectWeapon("Glock")//IF T
+		TNT1 A 1 A_SelectWeapon("HKP2000")//IF CT
+        Goto Ready	
+
+
+
+
+	Flash:
+		TNT1 A 0 //A_Light0
+		TNT1 A 0 A_PlaySound("Knife/Slash")
+		TNT1 A 2 A_CustomPunch(9, 0, 0, "KnifePuff")
+		Goto LightDone
+
+	AltFlash:
+		TNT1 A 0 //A_Light0
+		TNT1 A 0 A_PlaySound("Knife/Slash")
+		TNT1 A 2 A_CustomPunch(40, 0, 0, "KnifePuff2")
+		Goto LightDone
+
+ 	Spawn:
+		W19Z A -1
+		Stop
+	}
+}
+

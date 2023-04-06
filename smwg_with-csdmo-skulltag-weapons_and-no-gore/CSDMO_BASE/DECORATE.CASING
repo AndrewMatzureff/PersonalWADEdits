@@ -1,0 +1,209 @@
+//Casings extracted from "Brutal DoomV20b"
+
+ACTOR RifleCaseSpawn
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyBrass",1,0,random(-80,-100),2,random(45,80))
+		Stop
+	}
+}
+
+
+
+ACTOR RifleCaseSpawn2
+{
+	Speed 20
+	PROJECTILE
+	+NOCLIP
+	+CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("EmptyBrass",1,0,random(80,100),2,random(45,80))
+		Stop
+	}
+}
+
+
+
+ACTOR ShotCaseSpawn : RifleCaseSpawn
+{
+	States
+	{
+	Spawn:
+        TNT1 A 0
+		TNT1 A 1 A_CustomMissile("ShotgunCasing",0,0,random(-80,-100),2,random(40,60))
+		Stop
+	}
+} 
+
+
+
+
+
+
+
+ACTOR EmptyBrass
+{
+   Height 2
+   Radius 2
+   Speed 6
+   Scale 0.15
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   //+DONTSPLASH
+   //+CANBOUNCEWATER
+   +FLOORCLIP
+//   +THRUACTORS
+   Mass 4
+   BounceFactor 0.3
+   SeeSound "weapons/casing"
+   States
+   {
+   Spawn:
+      CAS3 FGHABCDEFGHABCDEFGH 3 A_JumpIf(waterlevel > 1, "Splash")
+      STOP
+
+   Death:
+       CAS3 I 0
+	   //TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
+      LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
+      Goto Rest1
+    Rest1:
+      CAS3 I 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest2:
+      CAS3 J 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest3:
+      CAS3 K 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest4:
+      CAS3 L 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest5:
+      CAS3 M 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest6:
+      CAS3 I 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest7:
+      CAS3 J 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest8:
+      CAS3 K 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+	 
+	Splash:
+	TNT1 A 0
+	//TNT1 A 0 A_SpawnItem("UnderwaterEmptyBrass")
+	Stop
+	
+	Stoping:
+	TNT1 A 0
+	Stop
+   }
+}
+
+
+
+
+
+
+ACTOR ShotgunCasing
+{
+   Height 12
+   Radius 9
+   Speed 6
+   Scale 0.15
+   +DOOMBOUNCE
+   - NOGRAVITY
+   +WINDTHRUST
+   +CLIENTSIDEONLY
+   +MOVEWITHSECTOR
+   +MISSILE
+   +NOBLOCKMAP
+   -DROPOFF
+   +NOTELEPORT
+   +FORCEXYBILLBOARD
+   +NOTDMATCH
+   +GHOST
+   //+CANBOUNCEWATER
+   //+DONTSPLASH
+   Mass 1
+   BounceFactor 0.3
+   SeeSound "weapons/shell"
+   States
+   {
+    Spawn:
+      CAS2 ABCDEFGHABCDEFGHABCDEFGH 3
+      Stop
+   Death:
+	  TNT1 A 0
+//	  TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0)//Check Effects
+      LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
+      Goto Rest1
+    Rest1:
+      CAS2 I 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest2:
+      CAS2 J 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest3:
+      CAS2 K 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest4:
+      CAS2 L 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest5:
+      CAS2 M 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest6:
+      CAS2 I 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest7:
+      CAS2 J 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+      Goto Stoping
+    Rest8:
+      CAS2 K 400
+	  //TNT1 A 0 A_JumpIfInventory("LowGraphicsMode", 1, "Stoping")
+   Goto Stoping
+   
+	Stoping:
+		TNT1 A 0
+		Stop
+   }
+}

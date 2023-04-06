@@ -1,0 +1,185 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+$pitchshiftrange 0
+
+//SNDINFO for generic purposes
+
+
+// Humans (General)
+
+$random Gensight 		{ Gensight1  Gensight2  Gensight3 }
+$random Gendeath		{ Gendeath1  Gendeath2  Gendeath3 Gendeath2 Gendeath1 Gendeath1 }
+Gensight1			dsempty
+Gensight2			dsempty
+Gensight3			dsempty
+Genactive			dsempty
+Genpain				Ghit3
+Gendeath1			Gdeth1
+Gendeath2			Gdeth2
+Gendeath3			Gdeth3
+
+
+//Enemy Sounds
+dog2/sight		DSDOGSIT
+dog2/attack		DSDOGATK
+dog2/death		DSDOGDTH
+
+
+
+
+//Misc sounds
+Misc/WeaponPickup		"sounds/misc/itempickup.wav"
+Scope/Zoom				"sounds/weapons/zoom.wav"
+Rifle/ZoomIn				"sounds/weapons/riflezoomin.ogg"
+Rifle/ZoomOut				"sounds/weapons/riflezoomout.ogg"
+Function/Alternate				"sounds/weapons/sliderelease1.wav"
+Function/Normal				"sounds/weapons/sliderelease0.wav"
+Shell/Insert			"sounds/weapons/INSHELL.wav"
+
+Teleport/new		"sounds/pl_respawn.wav"
+$volume Teleport/new 0.25
+
+
+
+
+//Announcer streaks
+streak/Bip		strbip
+streak/1		str1
+streak/2		str2
+streak/3		str3
+streak/DOM		strdom
+streak/SUPER	strsup
+$rolloff streak/Bip		32 32
+$rolloff streak/1		32 32
+$rolloff streak/2		32 32
+$rolloff streak/3		32 32
+$rolloff streak/dom		32 32
+$rolloff streak/super		32 32
+
+
+
+//Some aliases
+//$alias				misc/teleport 	Teleport/New
+$alias				world/barrelx 	Hegrenade/Explode
+$alias				misc/gibbed		Gib/RenderS
+
+
+
+
+//Ricochet effect
+$volume generic/ricochet 0.2
+
+$random generic/ricochet {  generic/ricochet6 generic/ricochet7 generic/ricochet8 }
+generic/ricochet6	sounds/rics/ric3.wav
+generic/ricochet7	sounds/rics/ric4.wav
+generic/ricochet8	sounds/rics/ric5.wav
+generic/ricochet9	sounds/rics/ric9.wav
+
+//Use deny
+USEDENY		SUITDENY
+
+
+
+//Gib sounds
+$random Gib/Render { Gib/Render1 Gib/Render2 }
+Gib/Render1		"sounds/post_grenade_fleshy_debris_01.wav"
+Gib/Render2		"sounds/post_grenade_fleshy_debris_02.wav"
+
+$random Gib/RenderS { Gib/RenderS1 Gib/RenderS2 Gib/RenderS3 Gib/RenderS4 Gib/RenderS5 Gib/RenderS6 }
+Gib/RenderS1		"sounds/zombie_slice_1.wav"
+Gib/RenderS2		"sounds/zombie_slice_2.wav"
+Gib/RenderS3		"sounds/zombie_slice_3.wav"
+Gib/RenderS4		"sounds/zombie_slice_4.wav"
+Gib/RenderS5		"sounds/zombie_slice_5.wav"
+Gib/RenderS6		"sounds/zombie_slice_6.wav"
+
+
+
+
+
+//Rolloff settings
+
+//Normal sounds
+$rolloff ak47/ready 128 256 				
+$rolloff aug/ready 128 256 					
+$rolloff awp/ready 128 256 					
+$rolloff bizon/ready 128 256 				
+$rolloff deagle/ready 128 256 			
+$rolloff elite/ready 128 256 				
+$rolloff famas/ready 128 256 				
+$rolloff fiveseven/ready 128 256 
+$rolloff g3sg1/ready 128 256 				
+$rolloff galilar/ready 128 256 				
+$rolloff glock/ready 128 256 			
+$rolloff explode3/ready 128 256 		
+$rolloff explode4/ready 128 256 		
+$rolloff explode5/ready 128 256 		
+$rolloff hkp2000/ready 128 256 		
+$rolloff m4a1/ready 128 256 				
+$rolloff m249/ready 128 256 				
+$rolloff mac10/ready 128 256 				
+$rolloff mag7/ready 128 256 
+$rolloff mp7/ready 128 256 					
+$rolloff mp9/ready 128 256 					
+$rolloff negev/ready 128 256 				
+$rolloff nova/ready 128 256 				
+$rolloff p90/ready 128 256 				
+$rolloff p250/ready 128 256 				
+$rolloff sawedoff/ready 128 256 		
+$rolloff scar20/ready 128 256 			
+$rolloff sg553/ready 128 256 		
+$rolloff ssg08/ready 128 256 			
+$rolloff tec9/ready 128 256 				
+$rolloff ump45/ready 128 256 			
+$rolloff xm1014/ready 128 256 
+$rolloff cz75a/ready 128 256 
+
+
+
+//Normal sounds
+$rolloff ak47/reload 128 256 				
+$rolloff aug/reload 128 256 					
+$rolloff awp/reload 128 256 					
+$rolloff bizon/reload 128 256 				
+$rolloff deagle/reload 128 256 			
+$rolloff elite/reload 128 256 				
+$rolloff famas/reload 128 256 				
+$rolloff fiveseven/reload 128 256 
+$rolloff g3sg1/reload 128 256 				
+$rolloff galilar/reload 128 256 				
+$rolloff glock/reload 128 256 			
+$rolloff explode3/reload 128 256 		
+$rolloff explode4/reload 128 256 		
+$rolloff explode5/reload 128 256 		
+$rolloff hkp2000/reload 128 256 
+$rolloff m4a1/reload 128 256 				
+$rolloff m249/reload 128 256 				
+$rolloff mac10/reload 128 256 				
+$rolloff mag7/reload 128 256  
+$rolloff mp7/reload 128 256 					
+$rolloff mp9/reload 128 256 					
+$rolloff negev/reload 128 256 				
+$rolloff nova/reload 128 256 				
+$rolloff p90/reload 128 256 				
+$rolloff p250/reload 128 256 				
+$rolloff sawedoff/reload 128 256 		
+$rolloff scar20/reload 128 256 			
+$rolloff sg553/reload 128 256 	
+$rolloff ssg08/reload 128 256 			
+$rolloff tec9/reload 128 256 				
+$rolloff ump45/reload 128 256 			
+$rolloff xm1014/reload 128 256 
+$rolloff cz75a/reload 128 256 
+
+
+
+
+
+

@@ -1,0 +1,213 @@
+height 32;
+monospacefonts true, "0";
+
+statusbar fullscreen, forcescaled
+{
+	aspectratio "16:9"
+{
+	drawimage "fullabar", -53, 137;
+	drawimage "fullabdr", -17, 137;
+	drawimage "ammobar", -53, 169;
+	drawimage "hlthbar", 317, 0;
+	drawimage "fragbar", -53, 105;
+	drawimage "armorbar", 316, 31;
+	drawimage "facebar", 282, 0;
+	drawimage "keybar", -6, 169;
+	drawimage "STTPRCNT", 359, 34;
+	drawimage "STTPRCNT", 359, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, -9, 172;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 359, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 359, 34;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", -2, 172;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", -2, 182;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", -2, 192;
+
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip, -17, 142;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Shell, -17, 148;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo RocketAmmo, -17, 154;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Cell, -17, 160;
+
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, HUDFONT_DOOM, untranslated, frags, -21, 108;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawimage "STARMS", -55, 105;
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", -48, 109; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", -36, 109;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", -24, 109;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", -48, 119;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", -36, 119;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", -24, 119;
+	}
+	gamemode cooperative, deathmatch, teamgame
+	{
+		drawimage translatable "STFBANY", 281, 0;
+	}
+	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
+	{
+		drawmugshot 5, 282, 0;
+	}
+}
+	aspectratio "16:10"
+{
+	drawimage "fullabar", -32, 137;
+	drawimage "fullabdr", 4, 137;
+	drawimage "ammobar", -32, 169;
+	drawimage "hlthbar", 295, 0;
+	drawimage "fragbar", -32, 105;
+	drawimage "facebar", 259, 0;
+	drawimage "armorbar", 294, 31;
+	drawimage "keybar", 15, 169;
+	drawimage "STTPRCNT", 337, 34;
+	drawimage "STTPRCNT", 337, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, 12, 172;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 337, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 337, 34;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 19, 172;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 19, 182;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 19, 192;
+
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip, 4, 142;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Shell, 4, 148;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo RocketAmmo, 4, 154;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Cell, 4, 160;
+
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 0, 108;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawimage "STARMS", -34, 105;
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", -27, 109; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", -15, 109;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", -3, 109;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", -27, 119;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", -15, 119;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", -3, 119;
+	}
+	gamemode cooperative, deathmatch, teamgame
+	{
+		drawimage translatable "STFBANY", 258, 0;
+	}
+	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
+	{
+		drawmugshot 5, 259, 0;
+	}
+}
+	aspectratio "4:3"
+{
+	drawimage "fullabar", 0, 136;
+	drawimage "fullabdr", 36, 136;
+	drawimage "ammobar", 0, 168;
+	drawimage "hlthbar", 264, 0;
+	drawimage "fragbar", 0, 104;
+	drawimage "armorbar", 262, 31;
+	drawimage "facebar", 228, 0;
+	drawimage "keybar", 47, 168;
+	drawimage "STTPRCNT", 305, 34;
+	drawimage "STTPRCNT", 305, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, 44, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 305, 3;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 305, 34;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 51, 171;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 51, 181;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 51, 191;
+
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip, 36, 141;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Shell, 36, 147;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo RocketAmmo, 36, 153;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Cell, 36, 159;
+
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 32, 107;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawimage "STARMS", -2, 104;
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 5, 108; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 17, 108;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 29, 108;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 5, 118;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", 17, 118;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 29, 118;
+	}
+	gamemode cooperative, deathmatch, teamgame
+	{
+		drawimage translatable "STFBANY", 226, 0;
+	}
+	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
+	{
+		drawmugshot 5, 228, 0;
+	}
+}
+}
+
+statusbar normal
+{
+	drawimage "STBAR", 0, 168;
+	drawimage "STTPRCNT", 90, 171;
+	drawimage "STTPRCNT", 221, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, 44, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 90, 171;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 221, 171;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 239, 171;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip, 288, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Shell, 288, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo RocketAmmo, 288, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Cell, 288, 191;
+
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Clip, 314, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Shell, 314, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity RocketAmmo, 314, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Cell, 314, 191;
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 138, 171;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawimage "STARMS", 104, 168;
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 111, 172; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 123, 172;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 135, 172;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 111, 182;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", 123, 182;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 135, 182;
+	}
+	gamemode cooperative, deathmatch, teamgame
+	{
+		drawimage translatable "STFBANY", 144, 169;
+	}
+	drawselectedinventory alternateonempty, INDEXFONT, 143, 168
+	{
+		drawmugshot 5, 143, 168;
+	}
+}
+
+statusbar inventory // Standard bar overlay (ZDoom Addition)
+{
+	drawinventorybar Doom, 7, INDEXFONT, 50, 170;
+}
+
+statusbar inventoryfullscreen // ZDoom HUD overlay.
+{
+	drawinventorybar Doom, translucent, 7, INDEXFONT, 50, 170;
+}

@@ -1,0 +1,23 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for Molotov
+
+//(Uses the same as the HE Grenade)
+
+301/FireStart			301XPS
+301/FireLoop			301XPL
+$volume 301/Loop 0.25
+301/FireEnd			301XPE
+
+$random 301/explode { 301/explode1 301/explode2 301/explode3 301/explode4 }
+301/explode1			301XP1
+301/explode2			301XP2
+301/explode3			301XP3
+301/explode4			301XP4

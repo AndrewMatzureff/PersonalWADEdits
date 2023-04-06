@@ -1,0 +1,39 @@
+// Weapon flashes
+flickerlight2 WEAPONATK
+{
+    color 1.0 0.8 0.2
+    size 48
+    secondarySize 56
+    interval 1
+    offset 0 40 0
+}
+
+object Muzzleflash
+{
+    frame MUZZA { light WEAPONATK }
+    frame MUZZB { light WEAPONATK }
+    frame MUZZC { light WEAPONATK }
+    frame MUZZD { light WEAPONATK }
+    frame MUZZE { light WEAPONATK }
+    frame MUZZF { light WEAPONATK }
+}
+
+object Muzzleflash2
+{
+    frame MUZZA { light WEAPONATK }
+    frame MUZZB { light WEAPONATK }
+    frame MUZZC { light WEAPONATK }
+    frame MUZZD { light WEAPONATK }
+    frame MUZZE { light WEAPONATK }
+    frame MUZZF { light WEAPONATK }
+}
+
+object MuzzleflashPost3
+{
+    frame MUZZA { light WEAPONATK }
+    frame MUZZB { light WEAPONATK }
+    frame MUZZC { light WEAPONATK }
+    frame MUZZD { light WEAPONATK }
+    frame MUZZE { light WEAPONATK }
+    frame MUZZF { light WEAPONATK }
+}

@@ -1,0 +1,23 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for Knife
+
+Knife/Ready		"sounds/weapons/Knife/W19A.ogg"
+Knife/Hit1		"sounds/weapons/Knife/knife_hit1.wav"
+Knife/Hit2		"sounds/weapons/Knife/knife_hit2.wav"
+Knife/Hit3		"sounds/weapons/Knife/knife_hit3.wav"
+Knife/Hit4		"sounds/weapons/Knife/knife_hit4.wav"
+Knife/HitWall		"sounds/weapons/Knife/knife_hitwall1.wav"
+Knife/Slash1		"sounds/weapons/Knife/knife_slash1.wav"
+Knife/Slash2		"sounds/weapons/Knife/knife_slash2.wav"
+Knife/Stab	"sounds/weapons/Knife/knife_stab.wav"
+
+$random Knife/Hit  { Knife/Hit1 Knife/Hit2 Knife/Hit3 Knife/Hit4 }
+$random Knife/Slash  { Knife/Slash1 Knife/Slash2 }

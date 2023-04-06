@@ -1,0 +1,25 @@
+actor pistimp_flash {
+	scale 0.4
+	alpha 1.0
+	renderstyle add
+	+FORCEXYBILLBOARD
+	+NOTELEPORT
+	+NOINTERACTION
+	states{
+		spawn:
+			TNT1 A 0 A_Jump(255,"flsh1","flsh2","flsh3","flsh4")
+		flsh1:
+			IPF3 A 2 bright
+			stop
+		flsh2:
+			IPF3 B 2 bright
+			stop
+		flsh3:
+			IPF3 C 2 bright
+			stop
+		flsh4:
+			IPF3 D 2 bright
+			stop
+	
+	}
+}

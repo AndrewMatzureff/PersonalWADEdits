@@ -1,0 +1,336 @@
+
+//===========================================================================
+//
+// Zombie man
+//
+//===========================================================================
+ACTOR ZombieMan2 replaces ZombieMan //3004
+{
+	Game Doom
+	SpawnID 4
+	Health 20
+	Radius 20
+	Height 56
+	Speed 8
+	PainChance 200
+	Monster
+	+FLOORCLIP
+	AttackSound "fiveseven/fire"
+        SeeSound Gensight
+        PainSound Genpain
+        DeathSound Gendeath
+        ActiveSound Genactive
+	Obituary "$OB_ZOMBIE"
+	DropItem "DropSpawner2", 128
+	DropItem "DeadClip2Inv", 160
+
+	
+	States
+	{
+	Spawn:
+		POSS AB 10 A_Look
+		Loop
+	See:
+		POSS AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		POSS E 10 A_FaceTarget
+		POSS F 8 A_PosAttack
+		POSS E 8
+		Goto See
+	Pain:
+		POSS G 3
+		POSS G 3 A_Pain
+		Goto See
+
+	Pain.FLASHBANGFREEZE:
+		POSS G 3
+		POSS A 175 A_Pain
+		Goto See
+
+Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 20)
+POSS H 5
+POSS I 5 A_Scream
+POSS J 5 A_NoBlocking
+POSS K 5
+POSS L -1
+//POSS L 1 A_SpawnItem("NashGore_ZombieManDeadBody",0,0,0,0)
+stop
+
+
+
+XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 40)
+TNT1 A 0 
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator9",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator10",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+POSS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+POSS M 5 A_Playsound("Gib/Render")
+POSS N 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+POSS N 5 A_XScream
+POSS O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+POSS O 5 A_NoBlocking
+POSS P 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+POSS PQRST 5
+POSS U -1
+	Raise:
+		POSS K 5
+		POSS JIH 5
+		Goto See
+	}
+}
+
+//===========================================================================
+//
+// Sergeant / Shotgun guy
+//
+//===========================================================================
+ACTOR ShotgunGuy2 replaces ShotgunGuy //9
+{
+	Game Doom
+	SpawnID 1
+	Health 30
+	Radius 20
+	Height 56
+	Mass 100
+	Speed 8
+	PainChance 170
+	Monster
+	+FLOORCLIP
+	AttackSound "nova/fire"
+        SeeSound Gensight
+        PainSound Genpain
+        DeathSound Gendeath
+        ActiveSound Genactive
+	Obituary "$OB_SHOTGUY"
+	DropItem "DropSpawner3", 128
+	DropItem "DeadClip3Inv", 160
+
+
+	States
+	{
+	Spawn:
+		SPOS AB 10 A_Look
+		Loop
+	See:
+		SPOS AABBCCDD 3 A_Chase
+		Loop
+	Missile:
+		SPOS E 10 A_FaceTarget
+		SPOS F 10 BRIGHT A_SposAttackUseAtkSound
+		SPOS E 10
+		Goto See
+	Pain:
+		SPOS G 3
+		SPOS G 3 A_Pain
+		Goto See
+		
+	Pain.FLASHBANGFREEZE:
+		SPOS G 3
+		SPOS A 175 A_Pain
+		Goto See
+		
+		
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 30)
+		SPOS H 5
+		SPOS I 5 A_Scream
+		SPOS J 5 A_NoBlocking
+		SPOS K 5
+		SPOS L -1
+		Stop
+
+
+
+XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 60)
+SPOS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator9",0,0,0,0,0,0,0,128)
+SPOS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator10",0,0,0,0,0,0,0,128)
+SPOS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+SPOS M 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+SPOS M 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SPOS M 5 A_Playsound("Gib/Render")
+SPOS N 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SPOS N 5 A_XScream
+SPOS O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SPOS O 5 A_NoBlocking
+SPOS P 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SPOS PQRST 5
+SPOS U -1
+stop
+	Raise:
+		SPOS L 5
+		SPOS KJIH 5
+		Goto See
+	}
+}
+
+//===========================================================================
+//
+// Chaingunner
+//
+//===========================================================================
+ACTOR ChaingunGuy2 replaces ChaingunGuy //65
+{
+	Game Doom
+	SpawnID 2
+	Health 70
+	Radius 20
+	Height 56
+	Mass 100
+	Speed 8
+	PainChance 170
+	Monster
+Translation "112:127=96:111"
+	+FLOORCLIP
+        SeeSound Gensight
+        PainSound Genpain
+        DeathSound Gendeath
+        ActiveSound Genactive
+
+	AttackSound "M4A1/Fire"
+	Obituary "$OB_CHAINGUY"
+	DropItem "DropSpawner4", 128
+	DropItem "DeadClip4Inv", 160
+
+
+	States
+	{
+	Spawn:
+		PLY2 AB 10 A_Look
+		Loop
+	See:
+		PLY2 AABBCCDD 3 A_Chase
+		Loop
+	Missile:
+		PLY2 E 10 A_FaceTarget
+		PLY2 F 2 BRIGHT A_CPosAttack
+		PLY2 E 1 A_CPosRefire
+		Goto Missile+1
+	Pain:
+		PLY2 G 3
+		PLY2 G 3 A_Pain
+		Goto See
+		
+	Pain.FLASHBANGFREEZE:
+		PLY2 G 3
+		PLY2 A 175 A_Pain
+		Goto See
+		
+		
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 70)
+		PLY2 H 5
+		PLY2 I 5 A_Scream
+		PLY2 J 5 A_NoBlocking
+		PLY2 KLM 5
+		PLY2 N -1
+		Stop
+
+
+
+
+XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 140)
+PLY2 O 0 A_SpawnItemEx("NashGore_GibPieceGenerator9",0,0,0,0,0,0,0,128)
+PLY2 O 0 A_SpawnItemEx("NashGore_GibPieceGenerator10",0,0,0,0,0,0,0,128)
+PLY2 O 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+PLY2 O 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+PLY2 O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+PLY2 O 5 A_Playsound("Gib/Render")
+PLY2 P 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+PLY2 P 5 A_XScream
+PLY2 Q 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+PLY2 Q 5 A_NoBlocking
+PLY2 R 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+PLY2 RSTUV 5
+PLY2 W -1
+stop
+	Raise:
+		PLY2 N 5
+		PLY2 MLKJIH 5
+		Goto See
+	}
+}
+
+//===========================================================================
+//
+// SS Nazi
+//
+//===========================================================================
+ACTOR WolfensteinSS2 replaces WolfensteinSS //84
+{
+	Game Doom
+	SpawnID 116
+	Health 50
+	Radius 20
+	Height 56
+	Speed 8
+	PainChance 170
+	Monster
+	+FLOORCLIP
+	SeeSound "wolfss/sight"
+	PainSound "wolfss/pain"
+	DeathSound "wolfss/death"
+	ActiveSound "wolfss/active"
+	AttackSound "wolfss/attack"
+	Obituary "$OB_WOLFSS"
+		DropItem "DropSpawner6", 128
+	DropItem "DeadClip6Inv", 160
+
+
+	States
+	{
+	Spawn:
+		SSWV AB 10 A_Look
+		Loop
+	See:
+		SSWV AABBCCDD 3 A_Chase
+		Loop
+	Missile:
+		SSWV E 10 A_FaceTarget
+		SSWV F 10 A_FaceTarget
+		SSWV G 4 BRIGHT A_CPosAttack
+		SSWV F 6 A_FaceTarget
+		SSWV G 4 BRIGHT A_CPosAttack
+		SSWV F 1 A_CPosRefire
+		Goto Missile+1
+	Pain:
+		SSWV H 3
+		SSWV H 3 A_Pain
+		Goto See
+		
+	Pain.FLASHBANGFREEZE:
+		SSWV H 3
+		SSWV A 175 A_Pain
+		Goto See
+		
+		
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 50)
+		SSWV I 5
+		SSWV J 5 A_Scream
+		SSWV K 5 A_NoBlocking
+		SSWV L 5
+		SSWV M -1
+		Stop
+
+
+
+	XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 100)
+		SSWV N 5 A_Playsound("Gib/Render")
+		SSWV O 5 A_XScream
+		SSWV P 5 A_NoBlocking
+		SSWV QRSTU 5
+		SSWV V -1
+		Stop
+	Raise:
+		SSWV M 5
+		SSWV LKJI 5
+		Goto See 
+	}
+}

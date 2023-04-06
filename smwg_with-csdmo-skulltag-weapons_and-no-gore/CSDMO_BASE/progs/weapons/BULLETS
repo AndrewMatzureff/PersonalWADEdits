@@ -1,0 +1,227 @@
+actor HHBulletPuff : BulletPuff replaces BulletPuff
+{
+  spawnid 131
+  renderstyle Translucent
+  alpha 0.5
+  +CLIENTSIDEONLY
+  +NOBLOCKMAP
+  +NOGRAVITY
+  -ALLOWPARTICLES
+  damagetype "Bullet"
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  +PUFFGETSOWNER
+  states
+  {
+  Spawn:
+    TNT1 A 1
+    TNT1 A 0 //A_GiveToTarget("HitIndicator",1)
+    PUFF A 0 A_SpawnItemEx("ImpactSmokePuff", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    //TNT1 A 4 A_SpawnItemEx("Ricochet", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 
+    stop
+  Crash:
+    PUFF A 0 
+    PUFF A 0 A_SpawnItemEx("ImpactSmokePuff", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    //TNT1 A 4 A_SpawnItemEx("Ricochet", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 
+    stop
+  }
+}
+
+actor HHBulletPuffCommon : HHBulletPuff 
+{
+  spawnid 131
+  renderstyle Translucent
+  alpha 0.5
+  +NOBLOCKMAP
+  +NOGRAVITY
+  -ALLOWPARTICLES
+  damagetype "Bullet"
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  +PUFFGETSOWNER
+  states
+  {
+  Spawn:
+    TNT1 A 1
+    TNT1 A 0 //A_GiveToTarget("HitIndicator",1)
+    PUFF A 0 A_SpawnItemEx("ImpactSmokePuff", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 A_SpawnItemEx("Ricochet", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 
+    stop
+  Crash:
+    PUFF A 0 
+    PUFF A 0 A_SpawnItemEx("ImpactSmokePuff", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 A_SpawnItemEx("Ricochet", 0, 0, 0, 0, 0, 0, 0, 128, 0)
+    TNT1 A 4 
+    stop
+  }
+}
+
+
+actor AK47Bullet : HHBulletPuffCommon
+{
+  damagetype "AK47"
+}
+
+actor AUGBullet : HHBulletPuffCommon
+{
+  damagetype "AUG"
+}
+
+actor AWPBullet : HHBulletPuffCommon
+{
+  damagetype "AWP"
+}
+
+actor BizonBullet : HHBulletPuffCommon
+{
+  damagetype "Bizon"
+}
+
+actor DeagleBullet : HHBulletPuffCommon
+{
+  damagetype "Deagle"
+}
+
+actor EliteBullet : HHBulletPuffCommon
+{
+  damagetype "Elite"
+}
+
+actor FamasBullet : HHBulletPuffCommon
+{
+  damagetype "Famas"
+}
+
+actor FivesevenBullet : HHBulletPuffCommon
+{
+  damagetype "Fiveseven"
+}
+
+actor G3SG1Bullet : HHBulletPuffCommon
+{
+  damagetype "G3SG1"
+}
+
+actor GalilarBullet : HHBulletPuffCommon
+{
+  damagetype "Galilar"
+}
+
+actor GlockBullet : HHBulletPuffCommon
+{
+  damagetype "Glock"
+}
+
+actor hkp2000Bullet : HHBulletPuffCommon
+{
+  damagetype "hkp2000"
+}
+
+actor m4a1Bullet : HHBulletPuffCommon
+{
+  damagetype "m4a1"
+}
+
+actor m249Bullet : HHBulletPuffCommon
+{
+  damagetype "m249"
+}
+
+actor mac10Bullet : HHBulletPuffCommon
+{
+  damagetype "mac10"
+}
+
+actor mag7Bullet : HHBulletPuffCommon
+{
+  damagetype "mag7"
+}
+
+actor mp7Bullet : HHBulletPuffCommon
+{
+  damagetype "mp7"
+}
+
+actor mp9Bullet : HHBulletPuffCommon
+{
+  damagetype "mp9"
+}
+
+actor negevBullet : HHBulletPuffCommon
+{
+  damagetype "negev"
+}
+
+actor novaBullet : HHBulletPuffCommon
+{
+  damagetype "nova"
+}
+
+actor p90Bullet : HHBulletPuffCommon
+{
+  damagetype "p90"
+}
+
+actor p250Bullet : HHBulletPuffCommon
+{
+  damagetype "p250"
+}
+
+actor sawedoffBullet : HHBulletPuffCommon
+{
+  damagetype "sawedoff"
+}
+
+actor scar20Bullet : HHBulletPuffCommon
+{
+  damagetype "scar20"
+}
+
+actor sg553Bullet : HHBulletPuffCommon
+{
+  damagetype "sg553"
+}
+
+actor ssg08Bullet : HHBulletPuffCommon
+{
+  damagetype "ssg08"
+}
+
+actor tec9Bullet : HHBulletPuffCommon
+{
+  damagetype "tec9"
+}
+
+actor ump45Bullet : HHBulletPuffCommon
+{
+  damagetype "ump45"
+}
+
+actor xm1014Bullet : HHBulletPuffCommon
+{
+  damagetype "xm1014"
+}
+
+//Expansion weapons
+actor cz75aBullet : HHBulletPuffCommon
+{
+  damagetype "cz75a"
+}
+
+actor revolverBullet : HHBulletPuffCommon
+{
+  damagetype "revolver"
+}
+
+actor uspBullet : HHBulletPuffCommon
+{
+  damagetype "usp"
+}
+
+actor m4a1_sil_Bullet : HHBulletPuffCommon
+{
+  damagetype "m4a1_sil"
+}

@@ -1,0 +1,41 @@
+//Xaser's DualFire Pistol ACS Script
+//Doomrater Inspired!
+
+#library "dualfire"
+#include "zcommon.acs"
+
+//An ACS AltFire emulation, using those oh-so-lovely inventory hacks we all know and hate.
+
+script 891 (void)
+{
+	while(checkinventory("dualselected")>0)
+	{
+		if(getplayerinput(-1, INPUT_BUTTONS) & BT_ATTACK)
+		{
+			giveinventory("dualfire1",1);
+			while(checkinventory("dualfire1">0) || getplayerinput(-1, INPUT_BUTTONS) & BT_ATTACK)
+			{
+				delay(1);
+				if(!checkinventory("dualselected")) break;
+			}
+		}
+		delay(1);
+	}
+}
+
+script 892 (void)
+{
+	while(checkinventory("dualselected")>0)
+	{
+		if(getplayerinput(-1, INPUT_BUTTONS) & BT_ALTATTACK)
+		{
+			giveinventory("dualfire2",1);
+			while(checkinventory("dualfire2">0) || getplayerinput(-1, INPUT_BUTTONS) & BT_ALTATTACK)
+			{
+				delay(1);
+				if(!checkinventory("dualselected")) break;
+			}
+		}
+		delay(1);
+	}
+}

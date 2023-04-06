@@ -1,0 +1,309 @@
+// --------------------------------------------------------------------------
+//
+// Deagle (Demo weapon)
+//
+// --------------------------------------------------------------------------
+
+Actor M4A1_sil_AltFire : Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR "m4a1 silenced" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "M4A1_SIL_Clip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "556mmAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //7
+	obituary "%k killed %o with m4a1 silenced."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a silenced m4a1."
+	Tag "M4A1 Silenced"
+	Weapon.UpSound "m4a1_sil/Ready"
+	//AttackSound "Deagle/Fire" 
+	Scale 0.2
+	//+NOAUTOFIRE
+
+	States
+	{
+	Ready:
+		45WC N 1 A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotReady")
+	TNT1 A 0 A_JumpIfInventory("IsAltFire", 1, "Sil")
+
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+
+	ReadySilencer:
+		W45C N 1 A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotReady")
+	TNT1 A 0 A_JumpIfInventory("IsAltFire", 1, "Unsil")
+
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop2")
+		Loop
+		
+
+	
+
+	BobLoop:
+		45WY A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")
+		45WY B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"Sil")			
+		Goto Ready	
+		
+	BobLoop2:
+		W45Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")
+		W45Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"UnSil")			
+		Goto ReadySilencer	
+
+		
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 225, 0, 0)//Weapon Weight
+	TNT1 A 5 ACS_Execute(792, 0, 0, 0, 0)
+	TNT1 A 0 A_JumpIfInventory("M4A1_sil_AltFire", 1, "SelectSilencer")
+
+		45WA FGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WB ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+	SelectSilencer:
+
+		W45A FGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45B ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReadySilencer
+
+
+
+	Fire:
+
+	W45F H 0 A_JumpIfNoAmmo("AltFire")
+	TNT1 A 0 A_JumpIfInventory("M4A1_sil_AltFire", 1, "FireSilencer")
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotFire")
+	
+		45WC A 1 A_GunFlash
+		45WC B 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WC CD 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		45WC EFGHIJKLMN 1 A_WeaponReady
+		Goto Ready
+
+
+
+	FireSilencer:
+
+	W45F H 0 A_JumpIfNoAmmo("AltFire")
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotFire")
+	
+		W45C A 1 A_GunFlash
+		W45C B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45C CD 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		W45C EFGHIJKLMN 1 A_WeaponReady
+		Goto ReadySilencer
+
+
+
+
+
+
+	Unsil:
+		W45I ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45J AB 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("m4a1_sil/Unsil", 6)
+		W45J CDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45K ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45L ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45M ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45N ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45O ABCDEFGHIJKL 1 A_WEAPONREADY(WRF_NOFIRE)
+		
+		    TNT1 A 0 A_TakeInventory("M4A1_sil_AltFire",1)
+		
+		Goto Ready
+	
+	
+	Sil: //Same as unsil, but reversed because i couldn't rip it properly before hand changes
+		W45O LKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45N ZYXWVUTSRQPONMLKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45M ZYXWVUTSRQPONM 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("m4a1_sil/unSil", 6)
+		W45M LKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45L ZYXWVUTSRQPONMLKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45K ZYXWVUTSRQPONMLKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45J ZYXWVUTSRQPONMLKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45I ZYXWVUTSRQPONMLKJIHGFEDCBA 1 A_WEAPONREADY(WRF_NOFIRE)
+
+		    TNT1 A 0 A_GiveInventory("M4A1_sil_AltFire",1)
+
+
+		Goto ReadySilencer
+
+
+
+
+
+
+
+
+
+
+//Bot compatibility
+
+
+	BotReady:
+		
+		W45F H 1 A_WeaponReady
+		TNT1 A 0 A_REFIRE
+		Loop
+
+	BotFire:
+	
+		W45E A 1 A_GunFlash
+		W45E B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45E CDEFGHIJKL 1 A_WEAPONREADY(WRF_NOFIRE)
+
+
+		W45E MNOPQRSTUVWXYZ 1 A_Refire
+		W45F ABCDEFGH 1 A_Refire
+
+		Goto Ready
+
+
+
+
+  Altfire:
+  TNT1 A 0 A_JumpIfInventory("M4A1_sil_AltFire",1,"AltfireSilencer")
+
+    TNT1 A 0 A_JumpIfInventory("M4A1_SIL_Clip",20,"Ready")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadStart")
+    goto Ready
+
+  AltfireSilencer:
+    TNT1 A 0 A_JumpIfInventory("M4A1_SIL_Clip",20,"ReadySilencer")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadStart")
+    goto ReadySilencer
+
+	ReloadStart:
+	TNT1 A 0 A_JumpIfInventory("M4A1_sil_AltFire", 1, "ReloadStartSilencer")
+
+
+		45WD ABCDEFGHIJKLMNO 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("m4a1_sil/Reload", 6)
+		45WD PQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WE ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WF ABCDEFGHIJKLMNOPQRS 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+	
+	
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("M4A1_SIL_Clip",1)
+    TNT1 A 0 A_TakeInventory("556mmAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("M4A1_SIL_Clip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadAmmo")
+    goto ReloadEnd		
+
+	ReloadEnd:
+		45WF TUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WG ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		45WH ABCDEFG 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+
+	ReloadStartSilencer:
+
+
+		W45D ABCDEFGHIJKLMNO 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("m4a1_sil/Reload", 6)
+		W45D PQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45E ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45F ABCDEFGHIJKLMNOPQRS 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmoSilencer
+	
+	
+  ReloadAmmoSilencer:
+    TNT1 A 0 A_GiveInventory("M4A1_SIL_Clip",1)
+    TNT1 A 0 A_TakeInventory("556mmAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("M4A1_SIL_Clip",0,"ReloadEndSilencer")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadAmmoSilencer")
+    goto ReloadEndSilencer		
+
+	ReloadEndSilencer:
+		W45F TUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45G ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W45H ABCDE 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReadySilencer
+
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+	TNT1 A 0 A_GiveInventory("CrosshairGrow", 6)
+		TNT1 A 0 A_JumpIfInventory("M4A1_sil_AltFire",1,"FlashSilencer")
+	TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,11,1)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("m4a1_sil/FIRE")
+		TNT1 A 0 A_PlaySound("m4a1_sil/Distant", 8)
+//		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"FlashFast")
+		TNT1 A 3 A_FireBullets(5, 5, -1, 9.35, "m4a1_sil_Bullet")
+		Goto LightDone
+
+	FlashSilencer:
+	TNT1 A 0 A_FireCustomMissile("WeaponSMGSILENCEDSmokePuff",0,0,11,1)
+		TNT1 A 0 A_PlaySound ("m4a1_sil/FIRE_sil")
+		TNT1 A 0 A_PlaySound("m4a1_sil/Distant_sil", 8)
+//		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"FlashFast")
+		TNT1 A 3 A_FireBullets(5, 5, -1, 9.35, "m4a1_sil_Bullet")
+		Goto LightDone
+
+		
+	FlashFast:
+		TNT1 A 3 A_FireBullets(9, 7, -1, 9.35, "m4a1_sil_Bullet")
+		Goto LightDone		
+		
+		
+ 	Spawn:
+		W45Z A -1
+		Stop
+	}
+}

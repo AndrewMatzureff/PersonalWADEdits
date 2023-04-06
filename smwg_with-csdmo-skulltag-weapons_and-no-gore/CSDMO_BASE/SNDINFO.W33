@@ -1,0 +1,14 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for scar20
+
+scar20/Ready	"sounds/weapons/scar20/W33A.ogg"
+scar20/Fire		"sounds/weapons/scar20/W33F.ogg"
+scar20/Reload	"sounds/weapons/scar20/W33R.ogg"

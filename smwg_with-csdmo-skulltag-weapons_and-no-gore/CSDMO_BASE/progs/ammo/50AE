@@ -1,0 +1,9 @@
+actor 50AEAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 35
+    inventory.maxamount 35
+    ammo.backpackamount 35
+    ammo.backpackmaxamount 35
+    +IGNORESKILL
+}

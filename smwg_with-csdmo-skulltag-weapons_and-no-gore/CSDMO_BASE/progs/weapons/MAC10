@@ -1,0 +1,162 @@
+// --------------------------------------------------------------------------
+//
+// MAC10 (Weapon)
+//
+// --------------------------------------------------------------------------
+
+
+//Weapon Auxiliar
+Actor Mac10Refire : Inventory
+{
+Inventory.MaxAmount 2
+}
+
+
+ACTOR "MAC10" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "MAC10Clip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "45acpAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //30
+	obituary "%k killed %o with MAC-10."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Pickep up a MAC-10"
+	Tag "MAC-10"
+	Weapon.UpSound "MAC10/Ready"
+	//AttackSound "MAC10/Fire"
+	Scale 0.16
+
+	States
+	{
+	Ready:
+		W22E D 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+	BobLoop:
+		W22Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 225, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+		W22A CDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W22B ABCDEFGHI 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+		
+		
+
+	Deselect:
+				TNT1 A 1 A_ZoomFactor(1.0)
+                TNT1 A 0 A_TakeInventory("Mac10Refire", 3)
+				TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
+                TNT1 AAAAAA 1 A_Lower
+		Loop		
+		
+		
+	Fire:
+
+	W22E D 0 A_JumpIfNoAmmo("AltFire")
+	
+	
+
+
+
+
+
+
+	    TNT1 A 0 A_JumpIfInventory("Mac10Refire", 2, "Fire3")
+		TNT1 A 0 A_JumpIfInventory("Mac10Refire", 1, "Fire2")
+		W22D A 1 A_Gunflash
+		TNT1 A 0 A_GiveInventory("Mac10Refire", 1)
+		W22D B 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("Mac10Refire", 3)
+		W22D CDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W22E ABC 1 A_WeaponReady
+		Goto Ready
+
+	Fire2:
+		W22D C 1 A_Gunflash
+		TNT1 A 0 A_GiveInventory("Mac10Refire", 1)
+		W22D A 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("Mac10Refire", 3)
+		W22D BCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W22E ABC 1 A_WeaponReady
+		Goto Ready
+		
+	Fire3:
+		W22D B 1 A_Gunflash
+		TNT1 A 0 A_TakeInventory("Mac10Refire", 3)
+		W22D C 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		TNT1 A 0 A_TakeInventory("Mac10Refire", 3)
+		W22D DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W22E ABC 1 A_WeaponReady
+		Goto Ready	
+
+
+
+
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("MAC10Clip",30,"Ready")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadStart")
+    goto Ready
+
+
+	ReloadStart:
+		W22F ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("MAC10/Reload", 6)
+		W22F OPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W22G ABCDEFGHIJKLMNOPQR 1 A_WEAPONREADY(WRF_NOFIRE)
+		
+		Goto ReloadAmmo
+
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("MAC10Clip",1)
+    TNT1 A 0 A_TakeInventory("45acpAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("MAC10Clip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("45acpAmmo",1,"ReloadAmmo")
+    goto ReloadEnd
+	
+	
+	ReloadEnd:
+		W22G STUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		
+		W22H ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W22I ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready	
+	
+	
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+	TNT1 A 0 A_GiveInventory("CrosshairGrow", 6)
+	TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,17,1)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("MAC10/FIRE")
+		TNT1 A 0 A_PlaySound("MAC10/Distant", 8)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 2 A_FireBullets(5.2, 5.2, -1, 5.95, "mac10Bullet")
+		Goto LightDone
+ 	Spawn:
+		W22Z A -1
+		Stop
+	}
+}

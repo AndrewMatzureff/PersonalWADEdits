@@ -1,0 +1,109 @@
+//===========================================================================
+//
+// Pink Demon
+//
+//===========================================================================
+ACTOR Demon3 replaces Demon //3002
+{
+	Game Doom
+	SpawnID 8
+	Health 150
+	PainChance 180
+	Speed 10
+	Radius 30
+	Height 56
+	Mass 400
+	Monster
+	+FLOORCLIP +FASTER +FASTMELEE
+	SeeSound "demon/sight"
+	AttackSound "demon/melee"
+	PainSound "demon/pain"
+	DeathSound "demon/death"
+	ActiveSound "demon/active"
+	Obituary "$OB_DEMONHIT"
+	DropItem "DropSpawner7", 128
+	DropItem "DeadClip7Inv" 96
+
+
+	States
+	{
+	Spawn:
+		SARG AB 10 A_Look
+		Loop
+	See:
+		SARG AABBCCDD 2 A_Chase
+		Loop
+	Melee:
+		SARG EF 8 A_FaceTarget
+		SARG G 8 A_SargAttack
+		Goto See
+	Pain:
+		SARG H 2
+		SARG H 2 A_Pain
+		Goto See
+
+	Pain.FLASHBANGFREEZE:
+		SARG H 2
+		SARG A 175 A_Pain
+		Goto See
+
+	Death:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 150)
+
+		SARG I 8
+		SARG J 8 A_Scream
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+		SARG N -1
+		Stop
+
+
+
+
+
+XDeath:
+//TNT1 A 0 A_GiveToTarget("MoneySystem", 300)
+SARG O 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+SARG O 0 A_SpawnItemEx("NashGore_GibPieceGenerator11",0,0,0,0,0,0,0,128)
+SARG O 0 A_SpawnItemEx("NashGore_GibPieceGeneratorSarg",0,0,0,0,0,0,0,128)
+SARG O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SARG O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SARG O 5 A_Playsound("Gib/Render")
+SARG O 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SARG P 5 A_playsound("demon/xdeath")
+SARG P 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SARG Q 5
+SARG Q 0 A_SpawnItemEx("NashGore_GibGenerator",0,0,0,0,0,0,0,128)
+SARG R 5 A_NoBlocking
+SARG STU 5
+SARG V -1
+stop
+	Raise:
+		SARG N 5
+		SARG MLKJI 5
+		Goto See
+	}
+}
+
+//===========================================================================
+//
+// Spectre
+//
+//===========================================================================
+ACTOR Spectre2 : Demon3 replaces spectre//58
+{
+	Game Doom
+	SpawnID 9
+	+SHADOW
+	RenderStyle OptFuzzy
+	Alpha 0.5
+	SeeSound "spectre/sight"
+	AttackSound "spectre/melee"
+	PainSound "spectre/pain"
+	DeathSound "spectre/death"
+	ActiveSound "spectre/active"
+	HitObituary "$OB_SPECTREHIT"
+}
+
+

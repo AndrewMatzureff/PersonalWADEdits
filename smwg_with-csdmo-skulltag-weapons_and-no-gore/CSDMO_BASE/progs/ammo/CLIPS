@@ -1,0 +1,343 @@
+//Clips for Each Ammo
+
+
+actor AK47Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor AWPClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 10
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 10
+    +IGNORESKILL
+}
+
+actor BIZONClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 64
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 64
+    +IGNORESKILL
+}
+
+actor DEAGLEClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 7
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 7
+    +IGNORESKILL
+}
+
+actor ELITEClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor FIVESEVENClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 20
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 20
+    +IGNORESKILL
+}
+
+actor G3SG1Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 20
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 20
+    +IGNORESKILL
+}
+
+actor M4A1Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor M249Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 100
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 100
+    +IGNORESKILL
+}
+
+actor NOVAClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 8
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 8
+    +IGNORESKILL
+}
+
+actor P90Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 50
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 50
+    +IGNORESKILL
+}
+
+actor XM1014Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 7
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 7
+    +IGNORESKILL
+}
+
+actor AUGClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor GALILARClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 35
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 35
+    +IGNORESKILL
+}
+
+actor MAC10Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor MAG7Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 5
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 5
+    +IGNORESKILL
+}
+
+actor MP9Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+actor SCAR20Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 20
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 20
+    +IGNORESKILL
+}
+
+actor UMP45Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 25
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 25
+    +IGNORESKILL
+}
+
+actor MP7Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+
+actor NEGEVClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 150
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 150
+    +IGNORESKILL
+}
+
+
+actor GlockClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 20
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 20
+    +IGNORESKILL
+}
+
+actor HKP2000Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 13
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 13
+    +IGNORESKILL
+}
+
+actor P250Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 13
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 13
+    +IGNORESKILL
+}
+
+
+actor TEC9Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 24
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 24
+    +IGNORESKILL
+}
+
+
+
+actor SawedOffClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 7
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 7
+    +IGNORESKILL
+}
+
+
+
+actor FamasClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 25
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 25
+    +IGNORESKILL
+}
+
+
+
+actor Sg553Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 30
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}
+
+
+actor SSG08Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 10
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 10
+    +IGNORESKILL
+}
+
+
+actor CZ75AClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 12
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 12
+    +IGNORESKILL
+}
+
+actor RevolverClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 8
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 8
+    +IGNORESKILL
+}
+
+actor USPClip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 12
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 12
+    +IGNORESKILL
+}
+
+actor M4A1_sil_Clip : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 0
+    inventory.maxamount 20
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 20
+    +IGNORESKILL
+}

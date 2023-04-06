@@ -1,0 +1,5 @@
+// Blorc Game Info
+StartupTitle = "Counter-Strike Doom: Martian offensive"
+//STARTUPCOLORS = "85 85 85", "30 30 30"
+StartupSong = "D_STWIN"
+StartupType = "Hexen"

@@ -1,0 +1,14 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for mac10
+
+mac10/Ready		"sounds/weapons/mac10/W22A.ogg"
+mac10/Fire		"sounds/weapons/mac10/W22F.ogg"
+mac10/Reload	"sounds/weapons/mac10/W22R.ogg"

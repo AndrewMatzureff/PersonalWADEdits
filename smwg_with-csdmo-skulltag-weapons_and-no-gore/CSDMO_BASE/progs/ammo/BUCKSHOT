@@ -1,0 +1,9 @@
+actor BUCKSHOTAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 32
+    inventory.maxamount 32
+    ammo.backpackamount 32
+    ammo.backpackmaxamount 32
+    +IGNORESKILL
+}

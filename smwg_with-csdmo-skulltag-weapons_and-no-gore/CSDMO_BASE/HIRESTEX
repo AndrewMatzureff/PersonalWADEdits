@@ -1,0 +1,23 @@
+//Hirestex for generic stuffs
+//
+remap M_DOOM LOGO_CSD
+remap M_DOOM2 LOGO_CSD
+
+remap VICTA0 VICTA0H
+remap FFRGA0 FFRGA0H
+remap DOMNA0 DOMNA0H
+remap TDOMA0 TDOMA0H
+remap ACCUA0 ACCUA0H
+remap CAPTA0 CAPTA0H
+remap PFCTA0 PFCTA0H
+remap FISTA0 FISTA0H
+remap INCRA0 INCRA0H
+remap EXCLA0 EXCLA0H
+remap PRECA0 PRECA0H
+
+/*
+Note: I've did the whole mod using hirestex code. 
+However, on mid-development i've discovered that this feature is actually useless, since putting those sprites inside hires folder do the whole stuff automatically, therefore, this will be the last mode using hirestex.
+*/
+
+//remap SCOPB0 SCOPB0H

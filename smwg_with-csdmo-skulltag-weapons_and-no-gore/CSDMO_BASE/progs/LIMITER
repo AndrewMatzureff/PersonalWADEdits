@@ -1,0 +1,57 @@
+actor Slot2Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+actor Slot3Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+actor Slot4Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+actor Slot5Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+actor Slot6Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+actor Slot7Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 1
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 1
+    +IGNORESKILL
+}
+
+actor Slot8Filled : Ammo
+{
+    inventory.amount 0
+    inventory.maxamount 3
+    ammo.backpackamount 0
+    ammo.backpackmaxamount 3
+    +IGNORESKILL
+}

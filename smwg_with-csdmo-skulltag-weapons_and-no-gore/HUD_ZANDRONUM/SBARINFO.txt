@@ -1,0 +1,213 @@
+//This HUD Simulates the Counter-Strike 1.6 HUD Positions...
+
+//height 32;
+
+
+Mugshot "Normal", Health2
+{
+	ST00 1;
+}
+
+Mugshot "Pain",  Health2, directional 
+{
+	//{PN01, PN11, PN21} 1;
+	{PN02, PN12, PN22} 1;
+	//{PN03, PN13, PN23} 1;
+	{PN04, PN14, PN24} 1;
+	//{PN05, PN15, PN25} 1;
+	{PN06, PN16, PN26} 1;
+	//{PN07, PN17, PN27} 1;
+	{PN08, PN18, PN28} 1;
+	//{PN09, PN19, PN29} 1;
+	{PN00, PN10, PN20} 1;
+}
+
+Mugshot "Rampage", Health2
+{
+	ST00 1;
+}
+
+Mugshot "Ouch", directional 
+{
+	{PN01, PN11, PN21} 1;
+	{PN02, PN12, PN22} 1;
+	{PN03, PN13, PN23} 1;
+	{PN04, PN14, PN24} 1;
+	{PN05, PN15, PN25} 1;
+	{PN06, PN16, PN26} 1;
+	{PN07, PN17, PN27} 1;
+	{PN08, PN18, PN28} 1;
+	{PN09, PN19, PN29} 1;
+	{PN00, PN10, PN20} 1;
+}
+
+Mugshot "Grin"
+{
+	ST00 1;
+}
+
+Mugshot "God"
+{
+	ST00 1;
+}
+
+Mugshot "Death"
+{
+	ST00 -1;
+}
+
+
+
+// [BB] For the DoomSphere / TerminatorArtifact
+mugshot "Quad", health
+{
+	ST00 1;
+}
+
+
+//16:9 mode
+statusbar fullscreen, forcescaled
+{
+
+	drawimage "hudbase", -52, 0;
+
+	drawnumber 3, indexFONT, white, health, -30, 193;
+	drawnumber 3, indexFONT, white, armor, 14, 193;
+
+	drawbar "bar11", "bar10", health, horizontal, -26, 195;
+	drawbar "bar21", "bar20", armor, horizontal, 18, 195;
+
+	drawnumber 3, indexFONT, white, ammo1, 332, 193;
+	drawnumber 3, indexFONT, white, ammo2, 351, 193;
+
+	DrawMugshot 1,  disablegrin, disableouch, disablerampage, 0, 0;
+
+
+
+//Money System
+	//drawimage "NWNMS", 255, 163;
+	//drawnumber 5, WHL3HUDFONT, gold, ammo MoneySystem, 315, 163;
+
+
+
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", -43, 181; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", -34, 181;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", -25, 181;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", -16, 181;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", -7, 181;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 2, 181;
+		drawswitchableimage weaponslot 8, "STGNUM8", "STYSNUM8", 11, 181;
+
+
+
+
+
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 5, indexFONT, white, frags, 160, 190;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawswitchableimage BlueCard, "nullimage", "STKEYS0", 308, 2;
+		drawswitchableimage YellowCard, "nullimage", "STKEYS1", 308, 12;
+		drawswitchableimage RedCard, "nullimage", "STKEYS2", 308, 22;
+		drawswitchableimage BlueSkull, "nullimage", "STKEYS3", 298, 2;
+		drawswitchableimage YellowSkull, "nullimage", "STKEYS4", 298, 12;
+		drawswitchableimage RedSkull, "nullimage", "STKEYS5", 298, 22;
+	}
+	drawselectedinventory INDEXFON, 284, 127;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//4:3 mode
+
+statusbar normal, forcescaled
+{
+
+
+
+	drawimage "hudbase2", 0, 0;
+
+	drawnumber 3, indexFONT, white, health, 22, 193;
+	drawnumber 3, indexFONT, white, armor, 66, 193;
+
+	drawbar "bar11", "bar10", health, horizontal, 26, 195;
+	drawbar "bar21", "bar20", armor, horizontal, 70, 195;
+
+	drawnumber 3, indexFONT, white, ammo1, 280, 193;
+	drawnumber 3, indexFONT, white, ammo2, 299, 193;
+
+	DrawMugshot 1,  disablegrin, disableouch, disablerampage, 0, 0;
+
+
+
+//Money System
+	//drawimage "NWNMS", 255, 163;
+	//drawnumber 5, WHL3HUDFONT, gold, ammo MoneySystem, 315, 163;
+
+
+
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 9, 181; 
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 18, 181;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 27, 181;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 36, 181;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", 45, 181;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 54, 181;
+		drawswitchableimage weaponslot 8, "STGNUM8", "STYSNUM8", 63, 181;
+
+
+
+
+
+
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 5, indexFONT, white, frags, 160, 190;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawswitchableimage BlueCard, "nullimage", "STKEYS0", 308, 2;
+		drawswitchableimage YellowCard, "nullimage", "STKEYS1", 308, 12;
+		drawswitchableimage RedCard, "nullimage", "STKEYS2", 308, 22;
+		drawswitchableimage BlueSkull, "nullimage", "STKEYS3", 298, 2;
+		drawswitchableimage YellowSkull, "nullimage", "STKEYS4", 298, 12;
+		drawswitchableimage RedSkull, "nullimage", "STKEYS5", 298, 22;
+	}
+	drawselectedinventory INDEXFON, 284, 127;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+statusbar inventory
+{
+	drawinventorybar Doom, 4, INDEXFON, 110, 0;
+}
+
+statusbar inventoryfullscreen
+{
+	drawinventorybar Doom, 4, INDEXFON, 110, 0;
+}

@@ -1,0 +1,10 @@
+actor RevolverAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+//original inventory amount is 8, i've expanded it as my personal taste and also, to balance larger horde of monsters, in case ammo is low.
+    inventory.amount 32
+    inventory.maxamount 32
+    ammo.backpackamount 32
+    ammo.backpackmaxamount 32
+    +IGNORESKILL
+}

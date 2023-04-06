@@ -1,0 +1,60 @@
+//This is the "SndSeq" for WHL 3
+//Made by AlphaEnt
+//www.youtube.com/alphaent
+//www.freewebs.com/alphaent
+//hosted.filefront.com/alphaent
+//www.fotolog.com/alphaent
+
+// Doom Doors ---------------------------------
+
+:DoorOpenNormal
+	playREPEAT   DOORMOV1
+	stopsound	DOORSTO1
+end
+
+:DoorCloseNormal
+	playREPEAT   DOORMOV1
+	stopsound	DOORSTO1
+end
+
+:DoorOpenBlazing
+	play   DOORMOV2
+	stopsound	DOORSTO2
+end
+
+:DoorCloseBlazing
+	play   DOORMOV2
+	stopsound	DOORSTO2
+end
+
+[DoorNormal
+	0		DoorOpenNormal
+	1		DoorCloseNormal
+	2		DoorOpenBlazing
+	3		DoorCloseBlazing
+]
+
+// Not Doors ----------------------------------
+
+:CeilingNormal
+	playrepeat	TTRAIN1
+end
+
+:CeilingSemiSilent
+	stopsound	plat4
+end
+
+:Floor
+	playREPEAT   	PLAT3
+	stopsound	PLAT4
+end
+
+:Platform
+	playREPEAT   PLAT1
+	stopsound	PLAT2
+end
+
+:Silence
+end
+
+//Last Modified: 14/02/2009

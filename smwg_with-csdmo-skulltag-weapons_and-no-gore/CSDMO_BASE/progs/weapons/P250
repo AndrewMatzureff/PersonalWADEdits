@@ -1,0 +1,137 @@
+// --------------------------------------------------------------------------
+//
+// P250 (Weapon)
+//
+// --------------------------------------------------------------------------
+
+ACTOR "P250" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "P250Clip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "357sigAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //20
+	obituary "%k killed %o with P250."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a P250."
+	Tag "P250"
+	Weapon.UpSound "P250/Ready"
+	//AttackSound "P250/Fire" 
+	Scale 0.2
+	+NOAUTOFIRE
+
+	States
+	{
+	Ready:
+		W31E M 1 A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotReady")
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+
+	BobLoop:
+		W31Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 240, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+
+		W31A CDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31B ABCDEFGHIJKL 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+	Fire:
+
+	W31D U 0 A_JumpIfNoAmmo("AltFire")
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotFire")
+	
+		W31D A 1 A_GunFlash
+		W31D B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31D C 1 A_WEAPONREADY(WRF_NOFIRE)
+		//W31D D 1
+
+		//TNT1 A 0 A_Refire
+		W31D DEFGHIJKLMNOPQRSTUVWXYZ 1 A_WeaponReady
+		W31E ABCDEFGHIJKLM 1 A_WeaponReady
+		Goto Ready
+
+
+
+
+
+
+
+
+//Bot compatibility
+
+	BotReady:
+		
+		W31E M 1 A_WeaponReady
+		TNT1 A 0 A_REFIRE
+		Loop
+
+
+	BotFire:
+		W31D A 1 A_GunFlash
+		W31D B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31D CDE 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31D DEFGHIJKLMNOPQRSTUVWXYZ 1 A_Refire
+		W31E ABCDEFGHIJKLM 1 A_Refire
+
+		Goto Ready
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("P250Clip",13,"Ready")
+    TNT1 A 0 A_JumpIfInventory("357sigAmmo",1,"ReloadStart")
+    goto Ready
+
+
+	ReloadStart:
+		W31F ABCDEFGHIJK 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("P250/Reload", 6)
+		W31F LMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31G ABCDE 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+	
+	
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("P250Clip",1)
+    TNT1 A 0 A_TakeInventory("357sigAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("P250Clip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("357sigAmmo",1,"ReloadAmmo")
+    goto ReloadEnd		
+
+	ReloadEnd:
+		W31G FGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W31H ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+	TNT1 A 0 A_GiveInventory("CrosshairGrow", 7)
+	    TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,10,6)
+TNT1 A 0 A_PlaySound ("P250/FIRE")
+		TNT1 A 0 A_PlaySound("P250/Distant", 8)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 2 A_FireBullets(4, 3, -1, 6.6, "p250Bullet")
+		Goto LightDone
+ 	Spawn:
+		W31Z A -1
+		Stop
+	}
+}

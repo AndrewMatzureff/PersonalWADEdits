@@ -1,0 +1,301 @@
+// --------------------------------------------------------------------------
+//
+// SG553 (Weapon)
+//
+// --------------------------------------------------------------------------
+
+
+//Weapon Auxiliar
+Actor SG553willzoom: Inventory
+{
+Inventory.MaxAmount 1
+}
+
+ACTOR "SG553" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "SG553Clip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "556mmAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //20
+	obituary "%k killed %o with SG553."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up an SG553."
+	Tag "SG553"
+	Weapon.UpSound "SG553/Ready"
+	//AttackSound "SG553/Fire" 
+	Scale 0.145
+	//+NOAUTOFIRE
+
+	States
+	{
+	Ready:
+		
+		TNT1 A 0 A_JumpIfInventory("SG553willzoom",1,"READYZOOM")
+		W34D Z 1 A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotReady")
+		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+
+		Loop
+
+	BobLoop:
+		W34Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y A 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y E 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y D 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y C 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		W34Y B 1 A_WeaponReady		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		Goto Ready
+
+		
+	ReadyZoom:
+		SCOP B 1 A_WEAPONREADY
+		TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		Loop		
+		
+
+
+
+
+
+
+
+
+	ToZoom:
+					TNT1 A 0 A_ZoomFactor (2.0)
+					//TNT1 A 0 A_SetTranslucent(0.30)
+      TNT1 A 0 A_JumpIfInventory("SG553willzoom", 1, "ToUnzoom")
+        TNT1 A 0 A_Playsound("Rifle/ZoomIn")
+	  W34E A 1 A_GiveInventory("SG553willzoom", 1)
+	  		//SCOP B 1 A_TakeInventory(EnableCrosshair,999)
+		SCOP B 9 A_WeaponReady(WRF_NOFIRE)
+
+		Goto ReadyZoom
+		
+
+
+
+
+		
+		
+	ToUnzoom:
+        TNT1 A 0 A_ZoomFactor (1.0)
+	  TNT1 A 0 A_TakeInventory("SG553willzoom", 1)
+        TNT1 A 0 A_Playsound("Rifle/ZoomOut")
+
+		SCOP B 3 A_WeaponReady(WRF_NOFIRE)
+		//TNT1 A 0 A_SetTranslucent(1.0)
+	W34E A 1 ACS_Execute(792, 0, 0, 0, 0)
+		W34D Z 6 A_WeaponReady(WRF_NOFIRE)
+		Goto Ready
+
+
+
+
+	Deselect:
+	TNT1 A 0 A_StopSound (6)
+	TNT1 A 0 A_TakeInventory("SG553willzoom", 1)
+				TNT1 A 1 A_ZoomFactor(1.0)
+				//TNT1 A 0 A_SetTranslucent(1.0)
+                TNT1 AAAAAAAAAAAAAAAAA 0 A_Lower
+                TNT1 AAAAAA 1 A_Lower
+		Loop
+		
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 220, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+		W34A ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W34B ABCDEFGHI 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+	Fire:
+	W34E G 0 A_JumpIfNoAmmo("AltFire")	
+TNT1 A 0 A_JumpIfInventory("IsBot",1,"BotFire")
+	TNT1 A 0 A_JumpIfInventory("SG553willzoom",1,"ToFIREZOOM")
+		W34D A 1 A_GunFlash
+		W34D BC 1 A_WEAPONREADY(WRF_NOFIRE)
+		
+		
+		W34D D 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D E 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D F 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D G 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D H 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D I 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+		
+		W34D J 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D K 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D L 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D M 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D N 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D O 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D P 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D Q 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D R 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D S 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D T 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D U 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D V 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D W 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D X 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D Y 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+		W34D Z 1 A_WEAPONREADY
+        TNT1 A 0 A_JumpIfInventory("IsAltFire",1,"ToZOOM")
+
+
+
+
+		Goto Ready
+
+
+
+
+
+
+
+
+//Bot compatibility
+
+
+	BotReady:
+		
+		W34E G 1 A_WeaponReady
+		TNT1 A 0 A_REFIRE
+		Loop
+
+	BotFire:
+		W34D A 1 A_GunFlash
+		W34D BC 1 A_WEAPONREADY(WRF_NOFIRE)
+		W34D DEFGHIJKLMNOPQRSTUVWXYZ 1 A_REFIRE
+		Goto Ready
+
+
+
+
+
+	ToFireZoom:
+	SCOP B 0 A_JumpIfNoAmmo("AltFire")	
+		SCOP B 1 A_GunFlash
+		SCOP B 4 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReadyZoom
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("SG553Clip",30,"Ready")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadStart")
+    goto Ready
+
+	ReloadStart:
+							TNT1 A 0 A_ZoomFactor (1.0)
+							//TNT1 A 0 A_SetTranslucent(1.0)
+							TNT1 A 0  ACS_Execute(792, 0, 0, 0, 0)
+	TNT1 A 0 A_TakeInventory("SG553willzoom", 1)
+		W34F ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("SG553/Reload")
+		W34F OPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W34G ABCDEFGHI 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+
+
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("SG553Clip",1)
+    TNT1 A 0 A_TakeInventory("556mmAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("SG553Clip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadAmmo")
+    goto ReloadEnd
+
+
+	ReloadEnd:
+		W34G JKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W34H ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W34I ABCDEFGHIJKLMNOPQRSTU 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("CrosshairGrow", 12)
+	TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,9,2)
+TNT1 A 0 A_PlaySound ("SG553/FIRE")
+		TNT1 A 0 A_PlaySound("SG553/Distant", 8)
+	TNT1 A 0 A_JumpIfInventory("SG553willzoom", 1, "ToFlashzoom")
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 4 A_FireBullets(4, 4, -1, 9, "sg553Bullet")
+		Goto LightDone
+
+	ToFlashZoom:
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,16,-6)
+		TNT1 A 4 A_FireBullets(2, 2, -1, 9, "sg553Bullet")
+		Goto LightDone
+
+
+ 	Spawn:
+		W34Z A -1
+		Stop
+	}
+}

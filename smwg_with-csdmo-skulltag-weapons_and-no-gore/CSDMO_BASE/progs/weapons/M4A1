@@ -1,0 +1,107 @@
+// --------------------------------------------------------------------------
+//
+// M4A1 (Demo weapon "Appears on weapons training")
+//
+// --------------------------------------------------------------------------
+
+ACTOR "M4A1" : CSDMOWeapon //5010
+{
+
++AMMO_OPTIONAL
+
+	Weapon.SelectionOrder 1900
+  weapon.ammotype "M4A1Clip"
+  weapon.ammouse 1
+  weapon.ammogive 0
+  weapon.ammotype2 "556mmAmmo"
+  weapon.ammouse2 0
+  weapon.ammogive2 0 //30
+	obituary "%k killed %o with M4A4."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Picked up a M4A4."
+	Tag "M4A4"
+	Weapon.UpSound "M4A1/Ready"
+	//AttackSound "M4A1/Fire" 
+	Scale 0.155
+
+	States
+	{
+	Ready:
+		W20D Q 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+		
+	BobLoop:
+		W20Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready		
+		
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 225, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+		TNT1 A 2 A_WEAPONREADY(WRF_NOFIRE)
+		W20A EFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W20B ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+	Fire:
+	
+	W20D Q 0 A_JumpIfNoAmmo("AltFire")
+	
+	
+		W20D A 1 A_GunFlash
+		W20D B 1 A_WEAPONREADY(WRF_NOFIRE)
+		W20D C 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_Refire
+		W20D DEFGHIJKLMNOP 1 A_WeaponReady
+		Goto Ready
+
+
+
+
+
+  Altfire:
+    TNT1 A 0 A_JumpIfInventory("M4A1Clip",30,"Ready")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadStart")
+    goto Ready
+
+
+	ReloadStart:
+		W20E ABCDEFGHIJKLMN 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 0 A_PlaySound("M4A1/Reload", 6)
+		W20E OPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W20F ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto ReloadAmmo
+		
+  ReloadAmmo:
+    TNT1 A 0 A_GiveInventory("M4A1Clip",1)
+    TNT1 A 0 A_TakeInventory("556mmAmmo",1)
+    TNT1 A 0 A_JumpIfInventory("M4A1Clip",0,"ReloadEnd")
+    TNT1 A 0 A_JumpIfInventory("556mmAmmo",1,"ReloadAmmo")
+    goto ReloadEnd		
+
+
+	ReloadEnd:
+		W20G ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W20H ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W20I ABCDEFGH 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+
+	Flash:
+	TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)
+		TNT1 A 0 A_GiveInventory("CrosshairGrow", 6)
+TNT1 A 0 A_FireCustomMissile("WeaponSmokePuff",0,0,11,1)
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 A_AlertMonsters
+		TNT1 A 0 A_PlaySound ("M4A1/FIRE")
+		TNT1 A 0 A_PlaySound("M4A1/Distant", 8)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,12,-6)
+		TNT1 A 2 A_FireBullets(5, 5, -1, 7.15, "m4a1Bullet")
+		Goto LightDone
+ 	Spawn:
+		W20Z A -1
+		Stop
+	}
+}

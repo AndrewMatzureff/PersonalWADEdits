@@ -1,0 +1,14 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+
+//SNDINFO for mp7
+
+mp7/Ready		"sounds/weapons/mp7/W26A.ogg"
+mp7/Fire		"sounds/weapons/mp7/W26F.ogg"
+mp7/Reload		"sounds/weapons/mp7/W26R.ogg"

@@ -1,0 +1,178 @@
+//Hirestex for GLOCK
+
+//A
+remap W15AG0 W15AG0H 
+remap W15AH0 W15AH0H 
+remap W15AI0 W15AI0H 
+remap W15AJ0 W15AJ0H 
+remap W15AK0 W15AK0H 
+remap W15AL0 W15AL0H 
+remap W15AM0 W15AM0H 
+remap W15AN0 W15AN0H 
+remap W15AO0 W15AO0H 
+remap W15AP0 W15AP0H 
+remap W15AQ0 W15AQ0H 
+remap W15AR0 W15AR0H 
+remap W15AS0 W15AS0H 
+remap W15AT0 W15AT0H 
+remap W15AU0 W15AU0H 
+remap W15AV0 W15AV0H 
+remap W15AW0 W15AW0H 
+remap W15AX0 W15AX0H 
+remap W15AY0 W15AY0H 
+remap W15AZ0 W15AZ0H 
+                     
+                     
+//B                  
+remap W15BA0 W15BA0H 
+remap W15BB0 W15BB0H 
+remap W15BC0 W15BC0H 
+remap W15BD0 W15BD0H 
+remap W15BE0 W15BE0H 
+remap W15BF0 W15BF0H 
+remap W15BG0 W15BG0H 
+remap W15BH0 W15BH0H 
+remap W15BI0 W15BI0H 
+remap W15BJ0 W15BJ0H 
+remap W15BK0 W15BK0H 
+remap W15BL0 W15BL0H 
+remap W15BM0 W15BM0H 
+remap W15BN0 W15BN0H 
+remap W15BO0 W15BO0H 
+remap W15BP0 W15BP0H 
+remap W15BQ0 W15BQ0H 
+
+
+//D                  
+remap W15DA0 W15DA0H 
+remap W15DB0 W15DB0H 
+remap W15DC0 W15DC0H 
+remap W15DD0 W15DD0H 
+remap W15DE0 W15DE0H 
+remap W15DF0 W15DF0H 
+remap W15DG0 W15DG0H 
+remap W15DH0 W15DH0H 
+remap W15DI0 W15DI0H 
+remap W15DJ0 W15DJ0H 
+remap W15DK0 W15DK0H 
+remap W15DL0 W15DL0H 
+remap W15DM0 W15DM0H 
+remap W15DN0 W15DN0H 
+remap W15DO0 W15DO0H 
+remap W15DP0 W15DP0H 
+remap W15DQ0 W15DQ0H 
+remap W15DR0 W15DR0H 
+remap W15DS0 W15DS0H 
+remap W15DT0 W15DT0H 
+remap W15DU0 W15DU0H 
+remap W15DV0 W15DV0H 
+remap W15DW0 W15DW0H 
+remap W15DX0 W15DX0H 
+remap W15DY0 W15DY0H 
+remap W15DZ0 W15DZ0H 
+                     
+                     
+//E                  
+remap W15EA0 W15EA0H 
+remap W15EB0 W15EB0H 
+remap W15EC0 W15EC0H 
+remap W15ED0 W15ED0H 
+remap W15EE0 W15EE0H 
+remap W15EF0 W15EF0H 
+remap W15EG0 W15EG0H 
+remap W15EH0 W15EH0H 
+remap W15EI0 W15EI0H 
+remap W15EJ0 W15EJ0H 
+remap W15EK0 W15EK0H 
+
+
+//F                   
+remap W15FA0 W15FA0H  
+remap W15FB0 W15FB0H  
+remap W15FC0 W15FC0H  
+remap W15FD0 W15FD0H  
+remap W15FE0 W15FE0H  
+remap W15FF0 W15FF0H  
+remap W15FG0 W15FG0H  
+remap W15FH0 W15FH0H  
+remap W15FI0 W15FI0H  
+remap W15FJ0 W15FJ0H  
+remap W15FK0 W15FK0H  
+remap W15FL0 W15FL0H  
+remap W15FM0 W15FM0H  
+remap W15FN0 W15FN0H  
+remap W15FO0 W15FO0H  
+remap W15FP0 W15FP0H  
+remap W15FQ0 W15FQ0H  
+remap W15FR0 W15FR0H  
+remap W15FS0 W15FS0H  
+remap W15FT0 W15FT0H  
+remap W15FU0 W15FU0H  
+remap W15FV0 W15FV0H  
+remap W15FW0 W15FW0H  
+remap W15FX0 W15FX0H  
+remap W15FY0 W15FY0H  
+remap W15FZ0 W15FZ0H  
+                      
+                      
+//G                   
+remap W15GA0 W15GA0H  
+remap W15GB0 W15GB0H  
+remap W15GC0 W15GC0H  
+remap W15GD0 W15GD0H  
+remap W15GE0 W15GE0H  
+remap W15GF0 W15GF0H  
+remap W15GG0 W15GG0H  
+remap W15GH0 W15GH0H  
+remap W15GI0 W15GI0H  
+remap W15GJ0 W15GJ0H  
+remap W15GK0 W15GK0H  
+remap W15GL0 W15GL0H  
+remap W15GM0 W15GM0H  
+remap W15GN0 W15GN0H  
+remap W15GO0 W15GO0H  
+remap W15GP0 W15GP0H  
+remap W15GQ0 W15GQ0H  
+remap W15GR0 W15GR0H  
+remap W15GS0 W15GS0H  
+remap W15GT0 W15GT0H  
+remap W15GU0 W15GU0H  
+remap W15GV0 W15GV0H  
+remap W15GW0 W15GW0H  
+remap W15GX0 W15GX0H  
+remap W15GY0 W15GY0H  
+remap W15GZ0 W15GZ0H  
+                      
+//H                   
+remap W15HA0 W15HA0H  
+remap W15HB0 W15HB0H  
+remap W15HC0 W15HC0H  
+remap W15HD0 W15HD0H  
+remap W15HE0 W15HE0H  
+remap W15HF0 W15HF0H  
+remap W15HG0 W15HG0H  
+remap W15HH0 W15HH0H  
+remap W15HI0 W15HI0H  
+remap W15HJ0 W15HJ0H  
+remap W15HK0 W15HK0H  
+remap W15HL0 W15HL0H  
+remap W15HM0 W15HM0H  
+remap W15HN0 W15HN0H  
+remap W15HO0 W15HO0H  
+remap W15HP0 W15HP0H  
+remap W15HQ0 W15HQ0H  
+remap W15HR0 W15HR0H  
+remap W15HS0 W15HS0H  
+remap W15HT0 W15HT0H  
+remap W15HU0 W15HU0H  
+remap W15HV0 W15HV0H  
+remap W15HW0 W15HW0H  
+remap W15HX0 W15HX0H  
+remap W15HY0 W15HY0H  
+remap W15HZ0 W15HZ0H  
+                      
+                      
+//I                   
+remap W15IA0 W15IA0H  
+remap W15IB0 W15IB0H  
+remap W15IC0 W15IC0H  

@@ -1,0 +1,94 @@
+
+ACTOR D4ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel
+{
+	DeathSound "HEGRENADE/EXPLODE"
+	States
+	{
+	Spawn:
+		BAR1 AB 6
+		Loop
+	Death:
+		BEXP A 5 BRIGHT
+		BEXP B 5 BRIGHT A_Scream
+		TNT1 A 5 BRIGHT A_SpawnItemEx("NewExplosionMedium",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_PlaySound("explode/Distant", 8)
+		TNT1 A 5 BRIGHT A_Explode
+		TNT1 A 10 BRIGHT
+		TNT1 A 1050 BRIGHT A_BarrelDestroy
+		TNT1 A 5 A_Respawn
+		Wait
+	}
+}
+
+
+
+
+ACTOR MoneySystem : Inventory
+{
+	Inventory.MaxAmount 10000
+}
+
+
+//Multiplayer Deathmatch only XD
+ACTOR Killstreak : Inventory
+{
+    +IGNORESKILL
+	Inventory.MaxAmount 10000//Quite enough for a deathmatch (you receive one per kill, so, unless you play a single deathmatch round for around a month, without dying, then that's enough XD)
+}
+
+
+ACTOR EnemyDied : Inventory
+{
+    +IGNORESKILL
+	Inventory.MaxAmount 1//It block the script execution while no one died.
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------//
+
+//Altfire system (Also, usable as Zooming function)
+
+ACTOR IsAltfire : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+
+ACTOR Action_AltFire : CustomInventory
+{
+   Inventory.Amount 1
+   Inventory.MaxAmount 1
+   -INVBAR
+
+   States
+   {
+       Use:
+       TNT1 A 0 A_GiveInventory("IsAltfire",1)
+       TNT1 A 0 A_GiveInventory("KnifeWillStab",1)
+       Fail
+   }
+}
+
+ACTOR Action_AltFireCancel : CustomInventory
+{
+   Inventory.Amount 1
+   Inventory.MaxAmount 1
+   -INVBAR
+
+   States
+   {
+       Use:
+       TNT1 A 0 A_TakeInventory("IsAltfire",1)
+	   TNT1 A 0 A_TakeInventory("KnifeWillStab",1)
+
+       Fail
+   }
+}
+
+
+//Weight of the weapon - determines player speed
+actor Weight : Inventory
+{
+    inventory.amount 0
+    inventory.maxamount 6
+}

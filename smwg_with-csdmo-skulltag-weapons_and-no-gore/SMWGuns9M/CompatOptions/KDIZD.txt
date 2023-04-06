@@ -1,0 +1,13 @@
+///Copy the following lines into this PK3's KEYCONF lump
+///to make this mod compatible with KDiZD
+///Make sure this PK3 is loaded AFTER KDiZD
+
+weaponsection SMWGKDIZDallweaps
+
+setslot 1 QuickFist ADClaw
+setslot 2 p220gun Duap220gun
+setslot 3 Winchester Warhammer
+setslot 4 RapRPK Minigun
+setslot 5 M79Launcher Grenadelauncher
+setslot 6 GaussPlasmaR KDiZDGrenadeLauncher
+setslot 7 Rifle

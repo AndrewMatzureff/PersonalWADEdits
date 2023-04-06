@@ -1,0 +1,21 @@
+//Counter-Strike Doom: Martian Offensive Modified Monsters Includes
+
+
+#include "actors/csd3/possessed.txt"
+#include "actors/csd3/doomimp.txt"
+#include "actors/csd3/demon.txt"
+#include "actors/csd3/lostsoul.txt"
+#include "actors/csd3/cacodemon.txt"
+#include "actors/csd3/bruiser.txt"
+#include "actors/csd3/revenant.txt"
+#include "actors/csd3/arachnotron.txt"
+#include "actors/csd3/fatso.txt"
+#include "actors/csd3/painelemental.txt"
+#include "actors/csd3/archvile.txt"
+#include "actors/csd3/cyberdemon.txt"
+#include "actors/csd3/spidermaster.txt"
+#include "actors/csd3/keen.txt"
+
+
+
+//PS: This PK3 contains many work from LoganMTM (like projectiles). But the actor folder is mainly designed by AlphaEnt (except some monsters projectiles)

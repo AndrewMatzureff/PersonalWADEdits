@@ -1,0 +1,2346 @@
+ACTOR Here1911Player : HereticPlayer
+{
+	Player.StartItem "Hp220gun"
+	Player.StartItem "HQuickFist"
+	Player.DisplayName "Corvus"
+	Player.StartItem "GoldWandAmmo", 50
+	Player.StartItem "WeapMele1ON"
+	Player.StartItem "WeapMele1OFF"
+	player.viewheight 43
+	player.attackzoffset 12
+	Player.WeaponSlot 1, QuickFist, ADClaw, HQuickFist, HADClaw, CQuickFist, CADClaw
+	Player.WeaponSlot 2, p220gun, Cp220gun, Duap220gun, Hp220gun, HDuap220gun
+	Player.WeaponSlot 3, Winchester, Warhammer, HWinchester, CWinchester, CWarhammer
+	Player.WeaponSlot 4, RapRPK, Minigun, HRapRPK, CRapRPK
+	Player.WeaponSlot 5, M79Launcher, Grenadelauncher, HGaussPlasmaR, CM79Launcher
+	Player.WeaponSlot 6, GaussPlasmaR, Railgun, HM79Launcher, CGaussPlasmaR
+	Player.WeaponSlot 7, NoisyCricket, BFG10k, HWarhammer, HNoisyCricket, CNoisyCricket
+}
+
+actor Chex1911Player : ChexPlayer
+{
+	player.displayname "Chexman"
+	Player.StartItem "Cp220gun"
+	Player.StartItem "CQuickFist"
+	Player.StartItem "WeapMele1ON"
+	Player.StartItem "WeapMele1OFF"
+	player.viewheight 43
+	player.attackzoffset 12
+	player.startitem "MiniZorchRecharge", 50
+	Player.WeaponSlot 1, HQuickFist, HADClaw, CQuickFist, CADClaw
+   	Player.WeaponSlot 2, Cp220gun, Duap220gun, Hp220gun, HDuap220gun
+	Player.WeaponSlot 3, HWinchester, CWinchester, CWarhammer
+	Player.WeaponSlot 4, Minigun, HRapRPK, CRapRPK
+	Player.WeaponSlot 5, Grenadelauncher, HGaussPlasmaR, CM79Launcher
+	Player.WeaponSlot 6, Railgun, HM79Launcher, CGaussPlasmaR
+	Player.WeaponSlot 7, BFG10k, HWarhammer, HNoisyCricket, CNoisyCricket
+}
+
+ACTOR HQuickFist : QuickFist replaces Staff
+{
+	+THRUGHOST
+	States
+	{
+	Ready:
+		puf3 b 0
+		FIDR ABCDEFGHIJKLMNOPQ 1
+		FIDR RSTUVWX 1 A_WeaponReady
+	Readylop:
+		FIP1 A 1 A_WeaponReady
+		Loop
+	Spawn:
+		puf3 b 0
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR CQuickFist : QuickFist replaces Bootspoon
+{
+	States
+	{
+	Ready:
+		dino a 0
+		FIDR ABCDEFGHIJKLMNOPQ 1
+		FIDR RSTUVWX 1 A_WeaponReady
+	Readylop:
+		FIP1 A 1 A_WeaponReady
+		Loop
+	Spawn:
+		dino a 0
+		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR HADClaw : ADClaw replaces Gauntlets
+{
+	+WEAPON.WIMPY_WEAPON
+	+WEAPON.MELEEWEAPON
+	+WEAPON.NOALERT
+	+BLOODSPLATTER
+	game Heretic
+	States
+	{
+	Ready:
+		puf3 b 0
+		CLAD ABCDEFG 1
+		TNT1 A 0 a_playsoundex("claw/draw",soundslot6)
+		CLAD HIJ 1
+		CLAD K 1 A_CustomPunch(random(12,22),1,0,"ClawPuff")
+		CLAD L 1 A_CustomPunch(random(12,22),1,0,"ClawPuff")
+		CLAD MN 1
+		CLAD OPQRSTUV 1 a_WeaponReady
+	Readylop:
+		CLAI A 1 A_WeaponReady
+		Loop
+	Spawn:
+		puf3 b 0
+		CLGL A -1
+		stop
+	}
+}
+
+ACTOR CADClaw : ADClaw replaces SuperBootspork
+{
+	States
+	{
+	Ready:
+		dino a 0
+		CLAD ABCDEFG 1
+		TNT1 A 0 a_playsoundex("claw/draw",soundslot6)
+		CLAD HIJ 1
+		CLAD K 1 A_CustomPunch(random(12,22),1,0,"ClawPuff")
+		CLAD L 1 A_CustomPunch(random(12,22),1,0,"ClawPuff")
+		CLAD MN 1
+		CLAD OPQRSTUV 1 a_WeaponReady
+	Readylop:
+		CLAI A 1 A_WeaponReady
+		Loop
+	Spawn:
+		dino a 0
+		CLGL A -1
+		stop
+	}
+}
+
+ACTOR HDuap220gun : Duap220gun
+{
+	Weapon.AmmoType GoldWandAmmo
+	Weapon.SisterWeapon "HDuap220gunpowered"
+	States
+	{
+	Ready:
+		puf3 b 0
+		P2RD D 1
+		TNT1 A 0 A_GiveInventory("dualselected",1)
+		P2RD EFGHIJK 1
+		TNT1 a 0 a_gunflash
+		P2RD LM 1
+		TNT1 a 0 a_playsoundex("draw/spin",weapon)
+		P2RD nopqrstuvwxy 1
+		RP2D z 1
+		TNT1 a 0 ACS_ExecuteAlways(891,0,0,0,0) //Right Pistol
+		RP2E a 1
+		RP2E bcd 1 A_JumpIfInventory("dualfire1",1,"RightFire")
+	Readylop:
+		RP2E e 1 A_WeaponReady
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		Loop
+		TNT1 a 0 A_JumpIfInventory("dualfire1",1,"RightFire") //"DualFire" items act as an A_Refire of sorts.
+		Loop
+	DeSelect:
+		TNT1 a 0 A_TakeInventory("dualselected",1)
+		P2DD z 1 A_lower
+		P2DD y 0 A_lower
+		P2DD y 1 A_lower
+		P2DD x 0 A_lower
+		P2DD x 1 A_lower
+		TNT1 A 0 A_TakeInventory("dualfire1",1)
+		TNT1 A 0 A_TakeInventory("dualfire2",1)
+		P2DD w 0 A_lower
+		P2DD w 1 A_lower
+	DeSelectloop:
+		P2DD v 0 A_lower
+		P2DD v 1 A_lower
+		loop
+	Select:
+		TNT1 a 0 a_raise
+		loop
+	Flash:
+		P2PD cdef 1
+		TNT1 a 0 a_playsoundex("draw/spin",soundslot6)
+		P2PD ghijklmnopq 1
+		TNT1 a 0 ACS_ExecuteAlways(892,0,0,0,0) //Left Pistol
+		P2PD rstuvwxyz 1
+	Leftgunidle:
+		P2PI a 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		Loop
+		TNT1 a 0 A_JumpIfInventory("dualfire2",1,"Leftgunfire")
+		Loop
+	Leftgunfire:
+		TNT1 A 0 a_jump(128,"Leftgunfire2")
+		P2FF a 1 BRIGHT
+		TNT1 A 0 a_playsoundex("p220/fire2",sounslot6)
+		TNT1 a 0 A_FireBullets (2.6, 2.2, -1, 5, "sparkypuff")
+		P2FF b 1 BRIGHT A_Light1
+		TNT1 a 0 A_Light1
+		P2FF c 1 BRIGHT A_TakeInventory("dualfire2",1)
+		P2FF d 1 a_light1
+		P2FF e 1 A_Light0
+		P2FF f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto LeftEmpty
+		P2FF ghijklmno 1 A_JumpIfInventory("dualfire2",1,"Leftgunfire")
+		Goto Leftgunidle
+	Leftgunfire2:
+		P2PI a 1
+		TNT1 A 0 a_playsoundex("p220/fire2",sounslot6)
+		TNT1 a 0 A_FireBullets (4.8, 3, -1, 6, "sparkypuff")
+		P2FF b 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF c 1 BRIGHT A_TakeInventory("dualfire2",1)
+		P2FF d 1 a_light1
+		P2FF e 1 a_light0
+		P2FF f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto LeftEmpty
+		P2FF ghijklmno 1 A_JumpIfInventory("dualfire2",1,"Leftgunfire")
+		Goto Leftgunidle
+	LeftEmpty:
+		P2FF ghijklmno 1
+		Goto Leftgunidle
+	Fire:
+		RP2E e 0
+		Goto Readylop
+	Altfire:
+		stop
+	RightFire:
+		TNT1 A 0 a_jump(128,"RightFire2")
+		P2FF p 1 BRIGHT
+		TNT1 A 0 a_playsoundex("p220/fire1",weapon)
+		TNT1 a 0 A_FireBullets (1.5, 1.8, -1, 5, "sparkypuff")
+		P2FF q 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF r 1 BRIGHT A_TakeInventory("dualfire1",1)
+		RP2F d 1 a_light1
+		RP2F e 1 a_light0
+		RP2F f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto RightEmpty
+		RP2F ghijklmno 1 A_JumpIfInventory("dualfire1",1,"RightFire")
+		Goto Readylop
+	RightEmpty:
+		RP2F ghijklmno 1
+		Goto Readylop
+	RightFire2:
+		RP2E e 1
+		TNT1 A 0 a_playsoundex("p220/fire1",weapon)
+		TNT1 a 0 A_FireBullets (3.7, 2.6, -1, 6, "sparkypuff")
+		P2FF Q 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF R 1 BRIGHT A_TakeInventory("dualfire1",1)
+		RP2F d 1 a_light1
+		RP2F e 1 a_light0
+		RP2F f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto RightEmpty
+		RP2F ghijklmno 1 A_JumpIfInventory("dualfire1",1,"RightFire")
+		Goto Readylop
+	Spawn:
+		puf3 b 0
+		DPIT A -1
+		stop
+	}
+}
+
+ACTOR HDuap220gunpowered : HDuap220gun
+{
+	+WEAPON.POWERED_UP
+	Weapon.AmmoGive 0
+	Weapon.SisterWeapon "HDuap220gun"
+	States
+	{
+	Leftgunfire:
+		TNT1 A 0 a_jump(128,"Leftgunfire2")
+		P2FF a 1 BRIGHT
+		TNT1 A 0 a_playsoundex("p220/fire2",sounslot6)
+		TNT1 a 0 A_FireBullets (8, 4.2, 4, 4, "sparkypuff")
+		P2FF b 1 BRIGHT A_Light1
+		TNT1 a 0 A_Light1
+		P2FF c 1 BRIGHT A_TakeInventory("dualfire2",1)
+		P2FF d 1 a_light1
+		P2FF e 1 A_Light0
+		P2FF f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto LeftEmpty
+		P2FF ghijklmno 1 A_JumpIfInventory("dualfire2",1,"Leftgunfire")
+		Goto Leftgunidle
+	Leftgunfire2:
+		P2PI a 1
+		TNT1 A 0 a_playsoundex("p220/fire2",sounslot6)
+		TNT1 a 0 A_FireBullets (12, 5, 4, 4, "sparkypuff")
+		P2FF b 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF c 1 BRIGHT A_TakeInventory("dualfire2",1)
+		P2FF d 1 a_light1
+		P2FF e 1 a_light0
+		P2FF f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto LeftEmpty
+		P2FF ghijklmno 1 A_JumpIfInventory("dualfire2",1,"Leftgunfire")
+		Goto Leftgunidle
+	RightFire:
+		TNT1 A 0 a_jump(128,"RightFire2")
+		P2FF p 1 BRIGHT
+		TNT1 A 0 a_playsoundex("p220/fire1",weapon)
+		TNT1 a 0 A_FireBullets (6, 3.8, 4, 4, "sparkypuff")
+		P2FF q 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF r 1 BRIGHT A_TakeInventory("dualfire1",1)
+		RP2F d 1 a_light1
+		RP2F e 1 a_light0
+		RP2F f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto RightEmpty
+		RP2F ghijklmno 1 A_JumpIfInventory("dualfire1",1,"RightFire")
+		Goto Readylop
+	RightFire2:
+		RP2E e 1
+		TNT1 A 0 a_playsoundex("p220/fire1",weapon)
+		TNT1 a 0 A_FireBullets (10, 4.6, 4, 4, "sparkypuff")
+		P2FF Q 1 BRIGHT a_light1
+		TNT1 a 0 A_Light1
+		P2FF R 1 BRIGHT A_TakeInventory("dualfire1",1)
+		RP2F d 1 a_light1
+		RP2F e 1 a_light0
+		RP2F f 1
+		TNT1 a 0 A_JumpIfInventory("GoldWandAmmo",1,1)
+		goto RightEmpty
+		RP2F ghijklmno 1 A_JumpIfInventory("dualfire1",1,"RightFire")
+		Goto Readylop
+	}
+}
+
+ACTOR Hp220gun : p220gun replaces GoldWand
+{
+	Weapon.Kickback 100
+	Weapon.AmmoGive 25
+	Weapon.AmmoUse 1
+	Weapon.AmmoType GoldWandAmmo
+	weapon.ammotype2 CrossbowAmmo
+	Weapon.SisterWeapon "Hp220gunpowered"
+	game Heretic
+	States
+	{
+	Ready:
+		puf3 b 0
+		RP2D A 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		RP2D b 1
+		RP2D CDEFGHIJKL 1
+		TNT1 a 0 a_playsoundex("draw/spin",weapon)
+		RP2D MNOPQRSTUVWXYZ 1
+		RP2E ABCD 1 a_weaponready
+	Readylop:
+		RP2E E 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,4)
+		RP2E D 1
+		RP2E CB 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGDraw")
+		RP2E D 1
+		RP2E CB 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,1)
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGHold")
+		goto Punch
+	SGHold:
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		P2WE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		P2WF a 1 A_FireBullets (5.6, 2.2, 4, 8, "SparkyPuff",0)
+		P2WF bcdefgijklmnopqrstuvwxyz 1
+		P2WG abcdefghi 1 a_weaponready
+		goto SGready
+ 	Spawn:
+		puf3 b 0
+		PIST A -1
+		Stop
+	}
+}
+
+ACTOR Hp220gunpowered : Hp220gun
+{
+	+WEAPON.POWERED_UP
+	Weapon.AmmoGive 0
+	Weapon.SisterWeapon "Hp220gun"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefHold")
+		TNT1 A 0 a_jump(128,"Fire2")
+		RP2F a 1 A_Gunflash
+		TNT1 a 0 A_FireBullets (7, 0.6, 4, 4, "sparkypuff")
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		RP2F b 1
+		RP2F cdefghi 1
+		RP2F jklmno 1 A_weaponready
+		Goto Readylop
+	Fire2:
+		TNT1 a 0 a_giveinventory("markfi2",1)
+		RP2E E 1
+		TNT1 a 0 A_FireBullets (7, 1.1, 4, 4, "sparkypuff")
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 A_Gunflash
+		RP2F b 1 a_alertmonsters
+		RP2F cd 1
+		RP2F e 1 a_takeinventory("markfi2",1)
+		RP2F fghi 1
+		RP2F jklmno 1 A_weaponready
+		Goto Readylop
+	LefHold:
+		TNT1 A 0 a_jump(128,"LefHold2")
+		P2MF A 1 A_Gunflash
+		TNT1 a 0 A_FireBullets (7.5, 0.7, 4, 4, "sparkypuff")
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		P2MF b 1
+		P2MF cdefghi 1
+		P2MF jklmno 1 A_weaponready
+		Goto SGReady
+	LefHold2:
+		P2WE b 1 a_giveinventory("markfi2",1)
+		TNT1 a 0 A_FireBullets (7.5, 1.3, 4, 4, "sparkypuff")
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		P2MF b 1 A_Gunflash
+		TNT1 a 0 a_takeinventory("markfi2",1)
+		P2MF cdefghi 1
+		P2MF jklmno 1 A_weaponready
+		Goto SGReady
+	SGHold:
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		P2WE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		P2WF a 1 A_FireBullets (16, 2.2, 10, 5, "SparkyPuff",0)
+		P2WF bcdefghikmoqsuwy 1
+		P2WG ac 1
+		P2WG efghi 1 a_weaponready
+		goto SGready
+	}
+}
+
+ACTOR Cp220gun : p220gun replaces MiniZorcher
+{
+	States
+	{
+	Ready:
+		dino a 0
+		RP2D A 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		RP2D b 1
+		RP2D CDEFGHIJKL 1
+		TNT1 a 0 a_playsoundex("draw/spin",weapon)
+		RP2D MNOPQRSTUVWXYZ 1
+		RP2E ABCD 1 a_weaponready
+	Readylop:
+		RP2E E 1 A_WeaponReady
+		Loop
+ 	Spawn:
+		dino a 0
+		PIST A -1
+		Stop
+	}
+}
+
+ACTOR HWinchester : Winchester replaces Crossbow
+{
+	xscale .45
+	yscale .32
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive 10
+	Weapon.AmmoType "CrossbowAmmo"
+	Weapon.SisterWeapon "HWinchesterPowered"
+	weapon.ammotype2 Goldwandammo
+	game Heretic
+	States
+	{
+	Ready:
+		puf3 b 0
+		TNT1 A 0 A_jumpifinventory("winpickup",1,"Select2nd")
+		WNV2 bcdef 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		WNV2 gh 1
+		WNV2 i 1 A_giveinventory("winpickup",1)
+		Goto Readylop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Fire1:
+		TNT1 a 0 a_playsoundex("winch/shot",weapon)
+		WNS1 A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		WNS1 b 1 A_FireBullets (5.2, 1.8, 4, 8, "SparkyPuff")
+		WNS1 cdefghijklmopqrstuvwxyz 1
+		WNT1 a 1
+		WNT1 bcdef 1 a_weaponready
+		WNT1 ghij 1 a_weaponready
+		Goto Readylop
+	Fire2:
+		TNT1 A 0 A_Giveinventory("WinchS2",1)
+		TNT1 a 0 a_playsoundex("winch/shot",weapon)
+		WNS1 A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		WNS2 a 1 A_FireBullets (5.2, 1.8, 4, 8, "SparkyPuff")
+		WNS2 bcdefghiklmnopqrstuvwxy 1
+		WNS2 z 0 A_takeinventory("Winchs2",1)
+		WNS2 z 1
+		WNT2 abcde 1 a_weaponready
+		WNT2 fghi 1 a_weaponready
+		Goto Readylop
+	Leffire:
+		TNT1 A 0 A_Giveinventory("WinchL2",1)
+		TNT1 a 0 a_playsoundex("winch/rshot",weapon)
+		SGPI A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		SGRF a 1 A_FireBullets (5.5, 2, 4, 8, "SparkyPuff")
+		SGRF bcdefghiklmnopqrstuv 1
+		TNT1 A 0 A_takeinventory("WinchL2",1)
+		SGRF wxyz 1
+		SGRG abcdefghi 1 a_refire
+		Goto PIReady
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		WNDR "[" 1
+		WNDR z 1
+		SGPU m 1
+	Punch:
+		SGPU n 2
+		SGPU a 1
+		TNT1 A 0 A_jumpifinventory("PowerWeaponLevel2",1,3)
+		TNT1 A 0 A_jumpifinventory("PowerStrength",1,2)
+		SGPU b 1 A_CustomPunch(random(4,18),1,0,"FistPuff")
+		Goto Punchend
+		SGPU b 1 A_CustomPunch(random(30,142),1,0,"FistPuff")
+		Goto Punchend
+	Althold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,1)
+		goto Punch
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto PIHolst
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.8, 1.1, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("GoldWandAmmo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		SGPF A 1 A_Gunflash
+		SGPF bcdefghi 1
+		SGPF jklmno 1 A_refire
+		Goto PIReady
+	Spawn:
+		puf3 b 0
+		WINH A -1
+		stop
+	}
+}
+
+ACTOR HWinchesterPowered : HWinchester
+{
+	+WEAPON.POWERED_UP
+	Weapon.AmmoGive 0
+	Weapon.SisterWeapon "HWinchester"
+	States
+	{
+	Fire1:
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		WNS1 A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		WNS1 B 0 A_jump(256,1,10,21)
+		WNS1 bbbbbbbb 0 A_FireBullets (14, 2, -1, random(5,6), "SparkyPuff",0)
+		WNS1 b 1 A_FireBullets (14, 2, -1, random(5,6), "SparkyPuff")
+		Goto Fire1end
+		WNS1 bbbbbbbbbb 0 A_FireBullets (14, 2, -1, random(4,5), "SparkyPuff",0)
+		WNS1 b 1 A_FireBullets (14, 2, -1, random(4,5), "SparkyPuff")
+		Goto Fire1end
+		WNS1 bbbbbbb 0 A_FireBullets (14, 2, -1, random(6,7), "SparkyPuff",0)
+		WNS1 b 1 A_FireBullets (14, 2, -1, random(6,7), "SparkyPuff")
+	Fire1end:
+		WNS1 cdefghijklmopqrqpom 1
+		WNT1 fhj 1 a_weaponready
+		Goto Readylop
+	Fire2:
+		TNT1 A 0 A_Giveinventory("WinchS2",1)
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		WNS1 A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		WNS2 a 0 A_jump(256,1,10,21)
+		WNS2 aaaaaaaa 0 A_FireBullets (16.8, 2, -1, random(5,6), "SparkyPuff",0)
+		WNS2 a 1 A_FireBullets (16.8, 2, -1, random(5,6), "SparkyPuff")
+		Goto Fire2end
+		WNS2 aaaaaaaaaa 0 A_FireBullets (16.8, 2, -1, random(4,5), "SparkyPuff",0)
+		WNS2 a 1 A_FireBullets (16.8, 2, -1, random(4,5), "SparkyPuff")
+		Goto Fire2end
+		WNS2 aaaaaaaaaaaa 0 A_FireBullets (16.8, 2, -1, 4, "SparkyPuff",0)
+		WNS2 a 1 A_FireBullets (16.8, 2, -1, 4, "SparkyPuff")
+	Fire2end:
+		WNS2 bcdefghikmoqsuwy 1
+		WNS2 u 0 A_takeinventory("Winchs2",1)
+		WNT2 ace 1
+		WNT2 fghi 1 a_weaponready
+		Goto Readylop
+	Leffire:
+		TNT1 A 0 A_Giveinventory("WinchL2",1)
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		SGPI A 1 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		SGRF a 1 A_FireBullets (15, 2, 10, 5, "SparkyPuff")
+		SGRF bcdefghikmoqsuwy 1
+		TNT1 A 0 A_takeinventory("WinchL2",1)
+		SGRG ace 1
+		SGRG fghi 1 a_refire
+		Goto PIReady
+	}
+}
+
+ACTOR CWinchester : Winchester replaces LargeZorcher
+{
+	Inventory.Pickupmessage "Winchester. Hasta la vista, phlegm-face."
+	States
+	{
+	Ready:
+		dino a 0
+		TNT1 A 0 A_jumpifinventory("winpickup",1,"Select2nd")
+		WNV2 bcdef 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		WNV2 gh 1
+		WNV2 i 1 A_giveinventory("winpickup",1)
+		Goto Readylop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Spawn:
+		dino a 0
+		WING A 1 A_SpawnItemex("Smwg3Shell", 0, 0, 0, random(-2,1), random(-1,2), random(5,8), 0, 32, 235)
+		WING A -1
+		stop
+	}
+}
+
+ACTOR CWarhammer : Warhammer replaces SuperLargeZorcher
+{
+	States
+	{
+	Ready:
+		dino a 0
+		WARD defg 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		WARD hij 1
+		WAC1 a 1 a_playsoundex("short/click",soundslot6)
+		WAC1 bcdefghijklmn 1
+	Readylop:
+		WARI a 1 a_weaponready
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Spawn:
+		dino a 0
+		WARP A 1 A_SpawnItemex("Shell", random(-13,13), random(-12,12), 0, 0, 0, 0, 0, 32, 230)
+		WARP A -1
+		stop
+	}
+}
+
+ACTOR HRapRPK : RapRPK replaces blaster
+{
+	xscale .6
+	yscale .40
+	Weapon.AmmoType "BlasterAmmo"
+	+BLOODSPLATTER
+	Weapon.AmmoUse1 1
+	Weapon.AmmoGive 30
+	Weapon.SisterWeapon "HRapRPKPowered"
+	game Heretic
+	weapon.ammotype2 crossbowammo
+	States
+	{
+	Ready:
+		puf3 b 0
+		TNT1 A 0 A_Jump(128,"Select2")
+		RPDR BDFHJL 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		RPDR N 1 A_Playsound("raprpk/bolt")
+		RPDR PRTVWXYZ 1
+		RPDS ABCDEFGHIJK 1
+		RPDS LM 1 A_WeaponReady
+		Goto Readylop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFire")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 A_Gunflash
+		TNT1 A 0 A_Firebullets(.65, .41, -1, 4, "SparkyPuff")
+		TNT1 a 0 a_playsoundex("skorpion/fire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF1 ab 1 BRIGHT
+		RPS1 L 1
+		GoTo Fire2
+		RPF1 cd 1 BRIGHT
+		RPS1 L 1
+		GoTo Fire2
+		RPF1 ef 1 BRIGHT
+		RPS1 L 1
+		GoTo Fire2
+		RPF1 gh 1 BRIGHT
+		RPS1 L 1
+	Fire2:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 BRIGHT A_Firebullets(1.8, 1.14, -1, 4, "SparkyPuff", 0)
+		TNT1 a 0 BRIGHT a_playsoundex("skorpion/fire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF2 ab 1 BRIGHT
+		GoTo Fire2end
+		RPF2 cd 1 BRIGHT
+		GoTo Fire2end
+		RPF2 ef 1 BRIGHT
+		GoTo Fire2end
+		RPF2 gh 1 BRIGHT
+	Fire2end:
+		RPS1 K 1
+		RPS1 L 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 M 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",4)
+		GoTo readylop
+	Fire3:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 BRIGHT A_Firebullets(3, 1.9, -1, 4, "SparkyPuff")
+		TNT1 a 0 BRIGHT a_playsoundex("skorpion/fire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF3 ab 1 BRIGHT
+		RPS1 J 1
+		GoTo Fire4
+		RPF3 cd 1 BRIGHT
+		RPS1 J 1
+		GoTo Fire4
+		RPF3 ef 1 BRIGHT
+		RPS1 J 1
+		GoTo Fire4
+		RPF3 gh 1 BRIGHT
+		RPS1 J 1
+	Fire4:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 BRIGHT A_Firebullets(4.4, 2.79, -1, 4, "SparkyPuff", 0)
+		TNT1 a 0 BRIGHT a_playsoundex("skorpion/fire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF4 ab 1 BRIGHT
+		GoTo Fire4end
+		RPF4 cd 1 BRIGHT
+		GoTo Fire4end
+		RPF4 ef 1 BRIGHT
+		GoTo Fire4end
+		RPF4 gh 1 BRIGHT
+	Fire4end:
+		RPS1 I 1
+		RPS1 J 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 K 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 L 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 M 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",4)
+		GoTo readylop
+	Hold:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefHold")
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 A_Jumpifinventory("rpkhold",0,4)
+		TNT1 A 0 A_Jumpifinventory("rpkhold",3,"Fire4")
+		TNT1 A 0 A_Jumpifinventory("rpkhold",2,"Fire3")
+		TNT1 A 0 A_Jumpifinventory("rpkhold",1,"Fire2")
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 BRIGHT A_Firebullets(5.6, 3.55, -1, 4, "SparkyPuff")
+		TNT1 a 0 BRIGHT a_playsoundex("skorpion/fire",weapon)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF4 ab 1 BRIGHT
+		RPS1 H 1 a_jumpifinventory("holdin2",1,"holdend2")
+		GoTo Hold2
+		RPF4 cd 1 BRIGHT
+		RPS1 H 1 a_jumpifinventory("holdin2",1,"holdend2")
+		GoTo Hold2
+		RPF4 ef 1 BRIGHT
+		RPS1 H 1 a_jumpifinventory("holdin2",1,"holdend2")
+		GoTo Hold2
+		RPF4 gh 1 BRIGHT
+		RPS1 H 1 a_jumpifinventory("holdin2",1,"holdend2")
+		goto Hold2
+	Holdend2:
+		RPS1 I 1 a_takeinventory("holdin2",1)
+		Goto Hold2
+	Hold2:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 BRIGHT A_Firebullets(5.6, 3.55, -1, 4, "SparkyPuff", 0)
+		TNT1 a 0 BRIGHT a_playsoundex("skorpion/fire",weapon)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF4 ab 1 BRIGHT
+		GoTo Holdend3
+		RPF4 cd 1 BRIGHT
+		GoTo Holdend3
+		RPF4 ef 1 BRIGHT
+		GoTo Holdend3
+		RPF4 gh 1 BRIGHT
+	Holdend3:
+		RPS1 H 1 a_jumpifinventory("holdin2",1,"Holdend4")
+		RPS1 I 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 J 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 K 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 L 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 M 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",4)
+		GoTo readylop
+	Holdend4:
+		RPS1 I 1 a_takeinventory("holdin2",1)
+		RPS1 J 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 K 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 L 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPS1 M 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",4)
+		GoTo readylop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,5)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		RPLD bmf 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		RPLD bmf 1
+		goto Punch
+	Punchend:
+		RPPU cdefghijkl 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		RPLD f 3
+		RPLD n 1 a_refire
+		RPLD mba 1
+		Goto Readylop
+	PIDraw:
+		RPLD bmnf 1
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		RPPD cdefg 1
+		TNT1 a 0 a_playsoundex("draw/spin",weapon)
+		RPPD hijklmnopq 1
+		RPPD rstuvwxyz 1 a_refire
+	PIReady:
+		TNT1 a 0 A_jumpifinventory("MeleFlag1",1,"PIHolst")
+		RPPI a 0 A_refire
+		RPPI a 1 A_WeaponReady
+		Loop
+	PIHolst:
+		RPPA abcde 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		RPLD f 1
+		RPLD nm 1
+		RPLD ba 1 a_weaponready
+		goto readylop
+	PISwit:
+		RPPA abcde 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		goto SGDraw+4
+	SGHolst:
+		RPWE a 1
+		RPWD z 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		RPWD yxwvutsrqponmlkjih 1
+		RPLD mba 1
+		goto readylop
+	SGDeSelect:
+		RPWE a 1
+		RPWD z 1
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		RPWD yxwvutsrqponmlkjih 1
+		RPLD mb 1
+		RPDS M 1 A_lower
+		RPDS l 1 A_lower
+		RPDS k 0 A_lower
+		RPDS k 1 A_lower
+		RPDS j 0 A_lower
+		RPDS j 1 A_lower
+		RPDS i 0 A_lower
+		RPDS i 1 A_lower
+	SGDeSelectloop:
+		RPDS h 0 A_lower
+		RPDS h 1 A_lower
+		loop
+	Althold:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,2)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		RPWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		RPWF a 1 A_FireBullets (5.6, 2.2, 4, 8, "SparkyPuff",0)
+		RPWF bcdefgijklmnopqrstuvwxyz 1
+		RPWG abcdefgh 1 a_refire
+		RPWG i 0 a_refire
+		RPWG i 1 a_weaponready
+		goto SGready
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	AltFlash2:
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGAltflash")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	SGAltflash:
+		HWFL a 2 BRIGHT A_Light1
+		HWFL ef 1 BRIGHT A_Light2
+		HWFL g 1 BRIGHT A_Light2
+		TNT1 a 2 A_Light1
+		Goto LightDone
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.8, 1.1, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("GoldWandAmmo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		RPPF A 1 A_Gunflash
+		RPPF bcdefghi 1
+		RPPF jklmno 1 A_refire
+		Goto PIReady
+	LefFire:
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(1.6, 2.4, -1, 4, "SparkyPuff")
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF5 ab 1 BRIGHT
+		RPMS C 1
+		GoTo LefFire3
+		RPF5 cd 1 BRIGHT
+		RPMS C 1
+		GoTo LefFire3
+		RPF5 ef 1 BRIGHT
+		RPMS C 1
+		GoTo LefFire3
+		RPF5 gh 1 BRIGHT
+		RPMS C 1
+	LefFire3:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(3.7, 3.6, -1, 4, "SparkyPuff",0)
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF7 ab 1 BRIGHT
+		GoTo LefFire3end
+		RPF7 cd 1 BRIGHT
+		GoTo LefFire3end
+		RPF7 ef 1 BRIGHT
+		GoTo LefFire3end
+		RPF7 gh 1 BRIGHT
+	LefFire3end:
+		RPMS E 1
+		RPMS D 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS C 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS BA 1 A_refire
+		GoTo SGReady
+	LefFire4:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(5.7, 4.8, -1, 4, "SparkyPuff")
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 A 0 A_giveinventory("rpkhold",1)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF8 ab 1 BRIGHT
+		RPMS F 1
+		GoTo LefFire4Holding
+		RPF8 cd 1 BRIGHT
+		RPMS F 1
+		GoTo LefFire4Holding
+		RPF8 ef 1 BRIGHT
+		RPMS F 1
+		GoTo LefFire4Holding
+		RPF8 gh 1 BRIGHT
+		RPMS F 1
+	LefFire4Holding:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(7.7, 6, -1, 4, "SparkyPuff",0)
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF8 ab 1 BRIGHT
+		GoTo LefFire4End
+		RPF8 cd 1 BRIGHT
+		GoTo LefFire4End
+		RPF8 ef 1 BRIGHT
+		GoTo LefFire4End
+		RPF8 gh 1 BRIGHT
+	LefFire4End:
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefFire4end2")
+		RPMS F 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS E 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS D 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS CBA 1 A_refire
+		GoTo SGReady
+	LefFire4end2:
+		RPMS F 1 a_takeinventory("holdin2",1)
+		RPMS E 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS D 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS C 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS BA 1 A_refire
+		GoTo SGReady
+	LefHold:
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 A_Jumpifinventory("rpkhold",3,"LefHolding")
+		TNT1 A 0 A_Jumpifinventory("rpkhold",2,"LefFire4")
+		TNT1 A 0 A_Jumpifinventory("rpkhold",1,"LefFire3")
+		goto LefFire
+	LefHolding:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(7.7, 6, -1, 4, "SparkyPuff")
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 a 0 a_jump(192,4,7,10)
+		RPF8 ab 1 BRIGHT
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefHoldend2")
+		GoTo LefHolding2nd
+		RPF8 cd 1 BRIGHT
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefHoldend2")
+		GoTo LefHolding2nd
+		RPF8 ef 1 BRIGHT
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefHoldend2")
+		GoTo LefHolding2nd
+		RPF8 gh 1 BRIGHT
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefHoldend2")
+		GoTo LefHolding2nd
+	LefHoldend2:
+		RPMS F 1 a_takeinventory("holdin2",1)
+	LefHolding2nd:
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 A_Firebullets(7.7, 6, -1, 4, "SparkyPuff",0)
+		TNT1 a 0 a_playsoundex("skorpion/rfire",weapon)
+		TNT1 a 0 a_jump(192,3,5,7)
+		RPF8 ab 1 BRIGHT
+		GoTo LefHoldingEnd2nd
+		RPF8 cd 1 BRIGHT
+		GoTo LefHoldingEnd2nd
+		RPF8 ef 1 BRIGHT
+		GoTo LefHoldingEnd2nd
+		RPF8 gh 1 BRIGHT
+	LefHoldingEnd2nd:
+		RPMS G 1 a_jumpifinventory("holdin2",1,"LefHoldend22nd")
+		RPMS F 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS E 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS D 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS CBA 1 A_refire
+		GoTo SGReady
+	LefHoldend22nd:
+		RPMS F 1 a_takeinventory("holdin2",1)
+		RPMS E 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS D 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS C 1 A_refire
+		TNT1 A 0 A_takeinventory("rpkhold",1)
+		RPMS BA 1 A_refire
+		GoTo SGReady
+	Spawn:
+		puf3 b 0
+		RRPH A 1 A_SpawnItemex("HDuap220gun", 0, 0, 0, 0, 0, 0, 0, 32, 156)
+		RRPH A -1
+		stop
+
+	}
+}
+
+ACTOR BlasterFX1nuu : BlasterFX1
+{
+	Radius 10
+	Height 6
+	States
+	{
+	Spawn:
+		ACLO E 1
+		Loop
+	}
+}
+
+ACTOR HRapRPKPowered : HRapRPK
+{
+	+WEAPON.POWERED_UP
+	Weapon.AmmoUse 5
+	Weapon.AmmoGive 0
+	Weapon.SisterWeapon "HRapRPK"
+	States
+	{
+	Hold:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFire")
+		TNT1 A 1
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFire")
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 a_jump(256,1,4,7,10)
+		RPF4 a 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF4 b 1 BRIGHT
+		TNT1 a 0 a_jump(256,9)
+		RPF4 c 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF4 d 1 BRIGHT
+		TNT1 a 0 a_jump(256,6)
+		RPF4 e 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF4 f 1 BRIGHT
+		TNT1 a 0 a_jump(256,3)
+		RPF4 g 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF4 h 1 BRIGHT
+		RPS1 hijklmn 1
+		Goto readylop
+	Flash:
+		RPS1 f 1 A_Light1
+		RPS1 g 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		RPWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		TNT1 a 0 A_jump(128,13)
+		TNT1 aaaaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(4,5), "SparkyPuff",0)
+		RPWF a 1
+		Goto Fire2end2
+		TNT1 aaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(5,6), "SparkyPuff",0)
+		RPWF a 1
+	Fire2end:
+		RPWF bcdefghikmoqsuwy 1
+		RPWG ac 1
+		RPWG efgh 1 a_refire
+		RPWG i 0 a_refire
+		RPWG i 1 a_weaponready
+		goto SGready
+	Fire2end2:
+		RPWF bcdefghjlnprtvxz 1
+		RPWG bd 1
+		RPWG efgh 1 a_refire
+		RPWG i 0 a_refire
+		RPWG i 1 a_WeaponReady
+		Goto SGReady
+	LefFire:
+		TNT1 A 0 A_giveinventory("rpkhold",3)
+		TNT1 A 0 A_Gunflash
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 a_jump(256,1,4,7,10)
+		RPF8 a 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF8 b 1 BRIGHT
+		TNT1 a 0 a_jump(256,9)
+		RPF8 c 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF8 d 1 BRIGHT
+		TNT1 a 0 a_jump(256,6)
+		RPF8 e 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF8 f 1 BRIGHT
+		TNT1 a 0 a_jump(256,3)
+		RPF8 g 1 BRIGHT A_FireCustomMissile("BlasterFX1nuu", 0, 1, 5, 2)
+		RPF8 h 1 BRIGHT
+		TNT1 A 0 A_takeinventory("rpkhold",3)
+		RPMS GFEDCBA 1
+		Goto SGReady
+	Flash:
+		TNT1 A 0
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFlash")
+		TNT1 A 0 A_Jumpifinventory("rpkhold",0,32)
+		TNT1 A 0 A_Jumpifinventory("rpkhold",3,24)
+		TNT1 A 0 A_Jumpifinventory("rpkhold",2,16)
+		TNT1 A 0 A_Jumpifinventory("rpkhold",1,8)
+		TNT1 A 0 a_jump(128, 4)
+		RPS1 jk 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+		RPS1 jk 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+		TNT1 A 0 a_jump(128, 4)
+		RPS1 i 2 A_Light1
+		RPS1 j 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+		RPS1 i 2 A_Light2
+		RPS1 j 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+		TNT1 A 0 a_jump(128, 4)
+		RPS1 h 2 A_Light1
+		RPS1 i 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+		RPS1 h 2 A_Light2
+		RPS1 i 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+		TNT1 A 0 a_jump(128, 4)
+		RPS1 g 2 A_Light1
+		RPS1 h 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+		RPS1 g 2 A_Light2
+		RPS1 h 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+		TNT1 A 0 a_jump(128, 4)
+		RPS1 f 2 A_Light1
+		RPS1 g 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+		RPS1 g 1 A_Light2
+		RPS1 g 0 a_giveinventory("holdin2",1)
+		RPS1 g 1 A_Light2
+		RPS1 h 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+	LefFlash:
+		TNT1 A 0 a_jump(128, 4)
+		RPMS i 2 A_Light2
+		RPMS h 1 A_Light2
+		TNT1 a 3 A_Light2
+		Goto LightDone
+		RPMS i 2 A_Light1
+		RPMS h 1 A_Light1
+		TNT1 a 3 A_Light1
+		Goto LightDone
+	}
+}
+
+ACTOR CRapRPK : RapRPK replaces RapidZorcher
+{
+	States
+	{
+	Ready:
+		dino a 0
+		TNT1 A 0 A_Jump(128,"Select2")
+		RPDR BDFHJL 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		RPDR N 1 A_Playsound("raprpk/bolt")
+		RPDR PRTVWXYZ 1
+		RPDS ABCDEFGHIJK 1
+		RPDS LM 1 A_WeaponReady
+		Goto Readylop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("Shell",1,4)
+		RPLD bmf 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGDraw")
+		RPLD bmf 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("Shell",1,1)
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGHold")
+		goto Punch
+	Spawn:
+		dino a 0
+		RRPK A 1 A_SpawnItemex("Duap220gun", 0, 0, 0, random(-2,3), random(-3,2), random(2,4), 0, 32, 214)
+		RRPK A -1
+		stop
+	}
+}
+
+ACTOR HGaussPlasmaR : GaussPlasmaR replaces SkullRod
+{
+	xscale .41
+	yscale .29
+	Weapon.AmmoUse1 1
+	Weapon.AmmoGive1 50
+	Weapon.AmmoType1 "SkullRodAmmo"
+	Weapon.SisterWeapon "HGaussPlasmaRPowered"
+	weapon.ammotype2 crossbowammo
+	game Heretic
+	States
+	{
+	Ready:
+		puf3 b 0
+		HLUP ABCDEFGHIJKLMN 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		HLUP OP 1
+		HLUP QRSTUVWXYZ 1 a_weaponready
+		HLUQ ABCDEF 1 a_weaponready
+	Readylop:
+		HLGD A 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFire")
+		TNT1 a 0 a_alertmonsters
+		HLGD j 0 A_jumpifinventory("shotcount",3,"Fire4")
+		HLGD d 0 A_jumpifinventory("shotcount",2,"Fire3")
+		HLGD A 0 A_jumpifinventory("shotcount",1,"Fire2")
+		HLGD A 0 A_Gunflash
+		HLGD A 0 A_PlaySound("gauss/shot")
+		HLGD A 1 A_FireCustomMissile ("HGaussPlasma", 0, 1, 5, 2)
+		HLGS a 1
+		HLGD A 0 A_Giveinventory("Shotcount",1)
+		HLGS b 1
+		HLGS c 1 A_Gunflash
+		HLGD FGHIJKLMNOPQRSTUVWXY 1 A_weaponready
+		HLGD Z 1 A_weaponready
+		HLGE ABCD 1 A_weaponready
+		Goto Readylop
+	Fire2:
+		HLGD A 0 A_PlaySoundex("gauss/shot",weapon)
+		HLGS d 1 A_FireCustomMissile ("HGaussPlasma", 0, 1, 5, 2)
+		HLGS d 0 A_Giveinventory("Shotcount",1)
+		HLGS e 1
+		HLGS f 1 A_Gunflash
+		HLGS g 1
+		HLGD CDEFGHIJKLMNOPQRSTUV 1 A_weaponready
+		HLGD WXYZ 1 A_weaponready
+		HLGE ABCD 1 A_weaponready
+		Goto Readylop
+	Fire3:
+		HLGS h 0 A_Giveinventory("Shotcount",1)
+		HLGD A 0 A_PlaySound("gauss/shot")
+		HLGS h 1 A_FireCustomMissile ("HGaussPlasma", 0, 1, 5, 2)
+		HLGS i 1 A_Gunflash
+		HLGS jk 1
+		HLGD GHIJKLMNOPQRSTUVWXYZ 1 A_weaponready
+		HLGE ABCD 1 A_weaponready
+		Goto Readylop
+	Fire4:
+		HLGS l 0 A_Giveinventory("Shotcount",1)
+		HLGD A 0 A_PlaySoundex("gauss/shot",weapon)
+		HLGS l 0 A_FireCustomMissile ("HGaussPlasma", 0, 1, 5, 2)
+		HLGS l 1 A_Gunflash
+		HLGS j 0
+		HLGS mn 1
+		HLGE a 1 A_Takeinventory("Shotcount",4)
+		HLGD DEFGHIJKLMNOPQRSTUVW 1 A_weaponready
+		HLGD XYZ 1 A_weaponready
+		HLGE ABCD 1 A_weaponready
+		Goto Readylop
+	Flash:
+		TNT1 A 1 A_Light1
+		HLGD j 0 A_jumpifinventory("shotcount",4,12)
+		HLGD j 0 A_jumpifinventory("shotcount",3,9)
+		HLGD d 0 A_jumpifinventory("shotcount",2,6)
+		HLGD A 0 A_jumpifinventory("shotcount",1,3)
+		HLGF A 1 Bright A_Light1
+		TNT1 A 2 A_Light1
+		Goto LightDone
+		HLGF B 1 Bright A_Light1
+		TNT1 A 2 A_Light1
+		Goto LightDone
+		HLGF C 1 Bright A_Light1
+		TNT1 A 2 A_Light1
+		Goto LightDone
+		HLGF D 1 Bright A_Light1
+		TNT1 A 2 A_Light1
+		Goto LightDone
+		HLGF E 1 Bright A_Light1
+		TNT1 A 2 A_Light1
+		Goto LightDone
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,3)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		HLUQ e 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		HLUQ e 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,2)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.8, 1.1, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("GoldWandAmmo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		HLPF A 1 A_Gunflash
+		HLPF bcdefghi 1
+		HLPF jklmno 1 A_refire
+		Goto PIReady
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		HLWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		HLWF a 1 A_FireBullets (5.6, 2.2, 4, 8, "SparkyPuff",0)
+		HLWF bcdefgijklmnopqrstuvwxyz 1
+		HLWG abcdefgh 1 a_refire
+		HLWG i 0 a_refire
+		HLWG i 1 a_WeaponReady
+		Goto SGReady
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	AltFlash2:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,"SGAltflash")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	LefFire:
+		TNT1 a 0 a_alertmonsters
+		HLGD j 0 A_jumpifinventory("shotcount",3,"LefFire4")
+		HLGD d 0 A_jumpifinventory("shotcount",2,"LefFire3")
+		HLGD A 0 A_jumpifinventory("shotcount",1,"LefFire2")
+		HLGD A 0 A_Gunflash
+		HLGD A 0 A_PlaySound("gauss/shot")
+		HSGD A 1 A_FireCustomMissile ("HGaussPlasma", random(-1,1), 1, 5, 2, 0, random(-1,1))
+		HSGS a 1
+		HLGD A 0 A_Giveinventory("Shotcount",1)
+		HSGS b 1
+		HSGS c 1 A_Gunflash
+		HSGD FGHIJKLMNOPQRSTUVWXY 1 A_weaponready
+		HSGD Z 1 A_weaponready
+		HSGE ABCD 1 A_weaponready
+		Goto SGReady
+	LefFire2:
+		HLGD A 0 A_PlaySoundex("gauss/shot",weapon)
+		HSGS d 1 A_FireCustomMissile ("HGaussPlasma", random(-1,1), 1, 5, 2, 0, random(-1,1))
+		HLGS d 0 A_Giveinventory("Shotcount",1)
+		HSGS e 1
+		HSGS f 1 A_Gunflash
+		HSGS g 1
+		HSGD CDEFGHIJKLMNOPQRSTUV 1 A_weaponready
+		HSGD WXYZ 1 A_weaponready
+		HSGE ABCD 1 A_weaponready
+		Goto SGReady
+	LefFire3:
+		HSGS h 0 A_Giveinventory("Shotcount",1)
+		HLGD A 0 A_PlaySound("gauss/shot")
+		HSGS h 1 A_FireCustomMissile ("HGaussPlasma", random(-1,1), 1, 5, 2, 0, random(-1,1))
+		HSGS i 1 A_Gunflash
+		HSGS jk 1
+		HSGD GHIJKLMNOPQRSTUVWXYZ 1 A_weaponready
+		HSGE ABCD 1 A_weaponready
+		Goto SGReady
+	LefFire4:
+		HSGS l 0 A_Giveinventory("Shotcount",1)
+		HLGD A 0 A_PlaySoundex("gauss/shot",weapon)
+		HSGS l 0 A_FireCustomMissile ("HGaussPlasma", random(-1,1), 1, 5, 2, 0, random(-1,1))
+		HSGS l 1 A_Gunflash
+		HSGS j 0
+		HSGS mn 1
+		HSGE a 1 A_Takeinventory("Shotcount",4)
+		HSGD DEFGHIJKLMNOPQRSTUVW 1 A_weaponready
+		HSGD XYZ 1 A_weaponready
+		HSGE ABCD 1 A_weaponready
+		Goto SGReady
+	Spawn:
+		puf3 b 0
+		GAUH A -1
+		stop
+	}
+}
+
+ACTOR HornRodFX2nuu : HornRodFX2
+{
+	Radius 10
+	Height 6
+	scale .5
+	SeeSound "none"
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 1 a_playsound("weapons/hornrodpowshoot")
+		FX00 C 2 BRIGHT
+		FX00 D 3 BRIGHT A_SeekerMissile(10, 30)
+		FX00 E 3 BRIGHT
+		FX00 F 3 BRIGHT A_SeekerMissile(10, 30)
+	Flyin:
+		FX00 C 3 BRIGHT
+		FX00 D 3 BRIGHT A_SeekerMissile(10, 30)
+		FX00 E 3 BRIGHT
+		FX00 F 3 BRIGHT A_SeekerMissile(10, 30)
+		Loop
+	}
+}
+
+ACTOR HGaussPlasmaRPowered : HGaussPlasmaR
+{
+	+WEAPON.POWERED_UP
+	Weapon.AmmoUse1 5
+	Weapon.AmmoGive1 0
+	Weapon.SisterWeapon "HGaussPlasmaR"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"LefFire")
+		HLGD A 1
+		HLGS ABCDEFGHI 1
+		TNT1 a 0 a_alertmonsters
+		HLGD J 1 A_FireCustomMissile ("HornRodFX2nuu", 0, 1, 5, 2)
+		HLGS KLMN 1
+		HLGD A 1
+		HLGS ABCDE 1
+		HLGD CD 1 a_refire
+		HLGD EFGHIJKLMNOPRSTUVWXYZ 1 a_weaponready
+		HLGE ABCD 1 a_weaponready
+		Goto Readylop
+	LefFire:
+		HSGD A 1
+		HSGS ABCDEFGHI 1
+		TNT1 a 0 a_alertmonsters
+		HSGD J 1 A_FireCustomMissile ("HornRodFX2nuu", random(-1,1), 1, 5, 2, 0, random(-1,1))
+		HSGS KLMN 1
+		HSGD A 1
+		HSGS ABCDE 1
+		HSGD CD 1 a_refire
+		HSGD EFGHIJKLMNOPRSTUVWXYZ 1 a_weaponready
+		HSGE ABCD 1 a_weaponready
+		Goto SGReady
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		HLWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		TNT1 a 0 A_jump(128,13)
+		TNT1 aaaaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(4,5), "SparkyPuff",0)
+		HLWF a 1
+		Goto Fire2end2
+		TNT1 aaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(5,6), "SparkyPuff",0)
+		HLWF a 1
+	Fire2end:
+		HLWF bcdefghikmoqsuwy 1
+		HLWG ac 1
+		HLWG efgh 1 a_refire
+		HLWG i 0 a_refire
+		HLWG i 1 a_weaponready
+		goto SGready
+	Fire2end2:
+		HLWF bcdefghjlnprtvxz 1
+		HLWG bd 1
+		HLWG efgh 1 a_refire
+		HLWG i 0 a_refire
+		HLWG i 1 a_WeaponReady
+		Goto SGReady
+	}
+}
+
+ACTOR CGaussPlasmaR : GaussPlasmaR replaces PhasingZorcher
+{
+	States
+	{
+	Ready:
+		dino a 0
+		HLUP ABCDEFGHIJKLMN 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		HLUP OP 1
+		HLUP QRSTUVWXYZ 1 a_weaponready
+		HLUQ ABCDEF 1 a_weaponready
+	Readylop:
+		HLGD A 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("Shell",1,3)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		HLUQ e 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		HLUQ e 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("Shell",1,2)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	Spawn:
+		dino a 0
+		GAUP A -1
+		stop
+	}
+}
+
+actor HGaussPlasma : GaussPlasma
+{
+  speed 24
+  damage 3
+  +WINDTHRUST
+  -NOBLOCKMAP
+////  DeathSound "weapons/hornrodhit"
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 0 a_jump(256,"Flyin","flyin2")
+	Flyin:
+		PLFL B 5 BRIGHT Thrustthingz(0,random(0,1),random(0,1),1)
+		PLFL A 5 BRIGHT ThrustThing(angle*256/360+random(-126,126),  random(0,2), 1, 0)
+		Loop
+	}
+}
+
+ACTOR Sparkyflame : PhoenixFX2
+{
+	Height 7
+   yscale .19
+   xscale .28
+	speed 19
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 1 A_jump(256, "spawn1", "spawn2", "spawn3", "spawn4")
+		stop
+	Spawn1:
+		SPPU ACEGI 1 Bright
+		SPPU K 1 Bright A_FlameEnd
+		SPPU M 1 Bright A_FlameEnd
+		SPPU OQSU 1 Bright
+		stop
+	Spawn2:
+		TPPU ACEGI 1 Bright
+		TPPU K 1 Bright A_FlameEnd
+		TPPU M 1 Bright A_FlameEnd
+		TPPU OQSU 1 Bright
+		stop
+	Spawn3:
+		SPPU BDFHJ 1 Bright
+		SPPU L 1 Bright A_FlameEnd
+		SPPU N 1 Bright A_FlameEnd
+		SPPU PRTV 1 Bright
+		stop
+	Spawn4:
+		TPPU BDFHJ 1 Bright
+		TPPU L 1 Bright A_FlameEnd
+		TPPU N 1 Bright A_FlameEnd
+		TPPU PRTV 1 Bright
+		stop
+	}
+}
+
+ACTOR Sparkyflame2 : PhoenixFX2
+{
+	Height 7
+   yscale .2
+   xscale .25
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 1 A_jump(256, "spawn1", "spawn2")
+		stop
+	Spawn1:
+		SPPU BCDEFGHIJK 1 Bright
+		SPPU L 1 Bright A_FlameEnd
+		SPPU MNOPQRSTUV 1 Bright
+		stop
+	Spawn2:
+		TPPU BCDEFGHIJK 1 Bright
+		TPPU L 1 Bright A_FlameEnd
+		TPPU MNOPQRSTUV 1 Bright
+		stop
+	}
+}
+
+ACTOR HWarhammer : Warhammer
+{
+	yscale .274
+	xscale .33
+	+WEAPON.PRIMARY_USES_BOTH 
+	weapon.ammouse1 3
+	weapon.ammouse2 1
+	weapon.ammogive1 33
+	weapon.ammogive2 4
+	Weapon.SelectionOrder 3
+	Weapon.AmmoType1 "MaceAmmo"
+	weapon.ammotype2 crossbowammo
+	States
+	{
+	Ready:
+		puf3 b 0
+		WARD defg 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		WARD hij 1
+		WAC1 a 1 a_playsoundex("short/click",soundslot6)
+		WAC1 bcdefghijklmn 1
+	Readylop:
+		WARI a 1 a_weaponready
+		Loop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		SHPA fgh 1
+		TNT1 a 0 a_jumpifinventory("goldwandammo",1,"PIDraw")
+		Goto PIDraw
+	Althold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,1)
+		goto Readylop
+		TNT1 a 0 a_jumpifinventory("goldwandammo",1,"PIHold")
+		goto PIHolst
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.8, 1.2, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("goldwandammo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		SHPF A 1 A_Gunflash
+		SHPF bcdefgh 1
+		SHPF ijklmno 1 A_refire
+		Goto PIReady
+	Spawn:
+		puf3 b 0
+		WARH A -1
+		stop
+	}
+}
+
+ACTOR Macedrop1
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemex("HWarhammer", 0, 0, 0, 0, 0, 0, 0, 32)
+		TNT1 A 1 A_SpawnItemex("HNoisyCricket", 0, 0, 0, random(-2,1), random(-1,2), random(3,5), 0, 32, 160)
+		Stop
+	}
+}
+
+ACTOR Macedrop2
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1 A_SpawnItemex("HNoisyCricket", 0, 0, 0, 0, 0, 0, 0, 32)
+		TNT1 A 1 A_SpawnItemex("HWarhammer", 0, 0, 0, random(-2,1), random(-1,2), random(3,5), 0, 32, 154)
+		Stop
+	}
+}
+
+actor HMaceReplacer : RandomSpawner replaces Mace
+{
+    DropItem "Macedrop1" 255 1
+    DropItem "Macedrop2" 255 1
+}
+
+actor HNoisyCricket : NoisyCricket
+{
+	Weapon.AmmoUse 17
+	Weapon.AmmoGive1 40
+	Weapon.AmmoType "MaceAmmo"
+	Weapon.SelectionOrder 3
+	Weapon.SisterWeapon "HNoisyCricketPowered"
+	weapon.ammotype2 crossbowammo
+	States
+	{
+	Ready:
+		puf3 b 0
+		NCDR abcd 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		NCDR e 1 a_playsoundex("noisy/clik",soundslot6)
+		NCDR fghijklmnopqrstuvwxyz 1
+		NCDS ab 1 A_weaponready
+	Readylop:
+		NCF1 A 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 a 0 a_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"SGHolst")
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 a_playsoundex("noisy/fire",weapon)
+		TNT1 A 0 a_recoil(4)
+		NCF1 A 1 A_FireCustomMissile ("HNCBFGBall", 0, 1, 4, 5)
+		NCF1 b 1 A_Light1
+		NCF1 cde 1 A_Light2
+		NCF1 fg 1 A_Light1
+		NCF1 h 1 A_Light0
+		NCF1 ijklmnopqrst 1
+		NCF1 uvw 1 A_ReFire
+		NCF1 ayz 1 A_weaponready
+		NCF2 acdb 1 A_weaponready
+		NCF1 zy 1 A_weaponready
+		Goto Readylop
+		NCF1 xyz 1 A_weaponready
+		NCF2 abcdefghijk 1 A_weaponready
+		Goto Readylop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,4)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		NCLD ab 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		NCLD ab 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,2)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.6, 1.1, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("GoldWandAmmo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		NCPF A 1 A_Gunflash
+		NCPF bcdefghi 1
+		NCPF jklmno 1 A_refire
+		Goto PIReady
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		NCWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		NCWF a 1 A_FireBullets (5.6, 2.2, 4, 8, "SparkyPuff",0)
+		NCWF bcdefgijklmnopqrstuvwxyz 1
+		NCWG abcdefgh 1 a_refire
+		NCWG i 0 a_refire
+		NCWG i 1 a_weaponready
+		goto SGReady
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	AltFlash2:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,"SGAltflash")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	SGAltflash:
+		HWFL a 2 BRIGHT A_Light1
+		HWFL ef 1 BRIGHT A_Light2
+		HWFL g 1 BRIGHT A_Light2
+		TNT1 a 2 A_Light1
+		Goto LightDone
+	Spawn:
+		puf3 b 0
+		NCIT A -1
+		Stop
+	}
+}
+
+actor HNoisyCricketPowered : HNoisyCricket
+{
+	+WEAPON.POWERED_UP
+	Weapon.SisterWeapon "HNoisyCricket"
+	Weapon.AmmoUse 20
+	game Heretic
+	States
+	{
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"SGHolst")
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 a_playsoundex("noisy/fire",weapon)
+		TNT1 A 0 a_recoil(6)
+		NCF1 A 1 A_FireCustomMissile ("HNCBFGBallp", 0, 1, 4, 5)
+		NCF1 b 1 A_Light1
+		NCF1 cde 1 A_Light2
+		NCF1 fg 1 A_Light1
+		NCF1 h 1 A_Light0
+		NCF1 ijklmnopqrst 1
+		NCF1 uvw 1 A_ReFire
+		NCF1 ayz 1 A_weaponready
+		NCF2 acdb 1 A_weaponready
+		NCF1 zy 1 A_weaponready
+		Goto Readylop
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		NCWE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		TNT1 a 0 A_jump(128,13)
+		TNT1 aaaaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(4,5), "SparkyPuff",0)
+		NCWF a 1
+		Goto Fire2end2
+		TNT1 aaaaaaaaa 0 A_FireBullets (16, 2.2, -1, random(5,6), "SparkyPuff",0)
+		NCWF a 1
+	Fire2end:
+		NCWF bcdefghikmoqsuwy 1
+		NCWG ac 1
+		NCWG efgh 1 a_refire
+		NCWG i 0 a_refire
+		NCWG i 1 a_weaponready
+		goto SGready
+	Fire2end2:
+		NCWF bcdefghjlnprtvxz 1
+		NCWG bd 1
+		NCWG efgh 1 a_refire
+		NCWG i 0 a_refire
+		NCWG i 1 a_WeaponReady
+		Goto SGReady
+	}
+}
+
+ACTOR HNCBFGBall : NCBFGBall
+{
+	decal BFGScorch
+	scale .46
+	Radius 6
+	Height 4
+	Speed 34
+	Damage 7
+	States
+	{
+	Death:
+		NCE1 A 4 Bright
+		NCE1 B 2 Bright
+		NCE1 B 2 Bright A_BFGSpray("NCBFGExtra",10,3)
+		NCE1 C 1 Bright A_Explode(54,138,0)
+		NCE1 C 2 Bright
+		NCE1 C 1 Bright A_BFGSpray("NCBFGExtra",10,2)
+		NCE1 D 3 Bright
+		NCE1 E 3 Bright
+		NCE1 F 2 Bright
+		Stop
+	}
+}
+
+ACTOR HNCBFGBallp : HNCBFGBall
+{
+	+TELESTOMP
+	decal BFGScorch
+	scale .7
+	Radius 9
+	Height 6
+	Speed 39
+	Damage 12
+	States
+	{
+	Death:
+		NCE1 A 2 Bright
+		NCE1 B 1 Bright
+		NCE1 B 1 Bright A_BFGSpray("NCBFGExtra",15,3)
+		NCE1 C 1 Bright A_Explode(66,150,0)
+		NCE1 C 1 Bright
+		NCE1 D 1 Bright A_BFGSpray("NCBFGExtra",20,2)
+		NCE1 D 1 Bright
+		NCE1 E 2 Bright
+		NCE1 F 2 Bright
+		Stop
+	}
+}
+
+actor CNoisyCricket : NoisyCricket replaces LAZDevice
+{
+	Inventory.PickupMessage "Noisy Cricket? I'm gonna break this darn thing!"
+	States
+	{
+	Ready:
+		dino a 0
+		NCDR abcd 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		NCDR e 1 a_playsoundex("noisy/clik",soundslot6)
+		NCDR fghijklmnopqrstuvwxyz 1
+		NCDS ab 1 A_weaponready
+	Readylop:
+		NCF1 A 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 a 0 a_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"SGHolst")
+		TNT1 a 0 a_alertmonsters
+		TNT1 A 0 a_playsoundex("noisy/fire",weapon)
+		TNT1 A 0 a_recoil(7)
+		NCF1 A 1 A_FireCustomMissile ("CNCBFGBall", 0, 1, 4, 5)
+		NCF1 b 1 A_Light1
+		NCF1 cde 1 A_Light2
+		NCF1 fg 1 A_Light1
+		NCF1 h 1 A_Light0
+		NCF1 ijklmnopqrst 1
+		NCF1 uvw 1 A_ReFire
+		NCF1 ayz 1 A_weaponready
+		NCF2 acdb 1 A_weaponready
+		NCF1 zy 1 A_weaponready
+		Goto Readylop
+		NCF1 xyz 1 A_weaponready
+		NCF2 abcdefghijk 1 A_weaponready
+		Goto Readylop
+		NCF1 B 10 A_GunFlash
+		NCF1 B 10 A_FireBFG
+		NCF1 B 20 A_ReFire
+		Goto Readylop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		TNT1 a 0 a_jumpifinventory("Shell",1,4)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		NCLD ab 1
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		NCLD ab 1
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("Shell",1,2)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	Spawn:
+		dino a 0
+		NCIT A -1
+		Stop
+	}
+}
+
+ACTOR CNCBFGBall : NCBFGBall
+{
+	decal BFGScorch
+}
+
+
+
+ACTOR HM79Rocket : M79Rocket
+{
+	+THRUGHOST
+	+SPECIALFIREDAMAGE
+	DamageType Fire
+	speed 39
+	Damage 20
+	States
+	{
+	Death:
+		TNT1 A 0 A_NoGravity
+		TNT1 A 0 a_playsoundex("riotl/boom",soundslot6)
+		TNT1 A 0 a_jump(256, "death1","death2")
+		Stop
+	Death1:
+		GRXP A 1 BRIGHT A_Explode
+		GRXP B 1 BRIGHT
+		GRXP CDFHJLNPRTVXYZ 1 Bright
+		Stop
+	Death2:
+		GRXP A 1 BRIGHT A_Explode
+		GRXP B 1 BRIGHT
+		GRXP CDEGIKMOQSUWYZ 1 Bright
+		Stop
+	}
+}
+
+actor HM79Launcher : M79Launcher replaces PhoenixRod
+{
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive 2
+	Weapon.AmmoType "PhoenixRodAmmo"
+	Weapon.SelectionOrder 2
+	weapon.ammotype2 crossbowammo
+	States
+	{
+	Ready:
+		puf3 b 0
+		M79D ABCDEFG 1
+		TNT1 A 0 a_playsoundex("m79la/draw",soundslot6)
+		M79D HIJKLMNO 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		M79D PQR 1
+		M79R abcdef 1
+		M79R g 1 A_WeaponReady
+	Readylop:
+		M79R h 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"SGHolst")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		M79R h 1
+		TNT1 a 0 a_jump(128,"Firing2nd")
+		M79F d 1 BRIGHT a_playsoundex("m79la/fire",weapon)
+		M79F j 1 BRIGHT A_FireCustomMissile ("HM79Rocket", 0, 1, 4, 0, 0)
+		M79F o 1 BRIGHT a_recoil(1)
+		TNT1 a 0 a_alertmonsters
+		M79F RSQPONML 1
+		M79F kjihgfedcba 1
+		Goto Readylop
+	Firing2nd:
+		M79F c 1 BRIGHT a_playsoundex("m79la/fire",weapon)
+		M79F i 1 BRIGHT A_FireCustomMissile ("HM79Rocket", 0, 1, 4, 0, 0)
+		M79F n 1 BRIGHT a_recoil(2)
+		TNT1 a 0 a_alertmonsters
+		M79F qSQPONML 1
+		M79F kjihgfedcba 1
+		Goto Readylop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		M79D qpon 1
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,2)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIDraw")
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,2)
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("GoldWandAmmo",1,"PIHold")
+		goto Punch
+	SGHold:
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PISwit")
+		TNT1 a 0 a_playsoundex("winch/lshot",weapon)
+		M7WE b 1 A_Gunflash
+		TNT1 a 0 A_giveinventory("SGsidearmitem",1)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_Takeinventory("CrossbowAmmo",1)
+		M7WF a 1 A_FireBullets (5.6, 2.2, 4, 8, "SparkyPuff",0)
+		M7WF bcdefgijklmnopqrstuvwxyz 1
+		M7WG abcdefgh 1 a_refire
+		M7WG i 0 a_refire
+		M7WG i 1 a_weaponready
+		goto SGReady
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("HWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	AltFlash2:
+		TNT1 a 0 a_jumpifinventory("CrossbowAmmo",1,"SGAltflash")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	SGAltflash:
+		HWFL a 2 BRIGHT A_Light1
+		HWFL ef 1 BRIGHT A_Light2
+		HWFL g 1 BRIGHT A_Light2
+		TNT1 a 2 A_Light1
+		Goto LightDone
+	PIHold:
+		TNT1 a 0 A_FireBullets (2.8, 1.2, -1, random(5,6), "sparkypuff",0)
+		TNT1 a 0 A_giveinventory("PIsidearmitem",1)
+		TNT1 a 0 A_Takeinventory("GoldWandAmmo",1)
+		TNT1 A 0 a_playsoundex("p220/fire",weapon)
+		TNT1 a 0 a_alertmonsters
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		M7PF A 1 A_Gunflash
+		M7PF bcdefghi 1
+		M7PF jklmno 1 A_refire
+		Goto PIReady
+	Spawn:
+		puf3 b 0
+		M79P A -1
+		stop
+	}
+}
+
+ACTOR CM79Rocket : M79Rocket
+{
+	donthurtshooter
+	-ROCKETTRAIL
+	-DEHEXPLOSION
+}
+
+actor CM79Launcher : M79Launcher replaces ZorchPropulsor
+{
+	Inventory.PickupMessage "M79 Launcher. Blast 'em to Flemos."
+	States
+	{
+	Ready:
+		dino a 0
+		M79D ABCDEFG 1
+		TNT1 A 0 a_playsoundex("m79la/draw",soundslot6)
+		M79D HIJKLMNO 1
+		TNT1 a 0 A_takeinventory("PIsidearmitem",1)
+		TNT1 a 0 A_takeinventory("SGsidearmitem",1)
+		M79D PQR 1
+		M79R abcdef 1
+		M79R g 1 A_WeaponReady
+	Readylop:
+		M79R h 1 A_WeaponReady
+		Loop
+	Select:
+		TNT1 A 0 A_raise
+		loop
+	Fire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"SGHolst")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"PIHolst")
+		M79R h 1
+		TNT1 a 0 a_jump(128,"Firing2nd")
+		M79F d 1 BRIGHT a_playsoundex("m79la/fire",weapon)
+		M79F j 1 BRIGHT A_FireCustomMissile ("CM79Rocket", 0, 1, 4, 0, 0)
+		M79F o 1 BRIGHT a_recoil(1)
+		TNT1 a 0 a_alertmonsters
+		M79F RSQPONML 1
+		M79F kjihgfedcba 1
+		Goto Readylop
+	Firing2nd:
+		M79F c 1 BRIGHT a_playsoundex("m79la/fire",weapon)
+		M79F i 1 BRIGHT A_FireCustomMissile ("CM79Rocket", 0, 1, 4, 0, 0)
+		M79F n 1 BRIGHT a_recoil(2)
+		TNT1 a 0 a_alertmonsters
+		M79F qSQPONML 1
+		M79F kjihgfedcba 1
+		Goto Readylop
+	Altfire:
+		TNT1 A 0 A_jumpifinventory("SGsidearmitem",1,"Althold")
+		TNT1 A 0 A_jumpifinventory("PIsidearmitem",1,"Althold")
+		M79D qpon 1
+		TNT1 a 0 a_jumpifinventory("Shell",1,2)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGDraw")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIDraw")
+		goto Punch
+	Althold:
+		TNT1 a 0 a_jumpifinventory("Shell",1,2)
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+		TNT1 a 0
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"SGHold")
+		TNT1 a 0 a_jumpifinventory("clip",1,"PIHold")
+		goto Punch
+	AltFlash:
+		TNT1 a 0 a_jumpifinventory("CWinchester",1,"Altflash2")
+		SHRF b 2 BRIGHT A_light1
+		SHRF a 1 BRIGHT A_light1
+		SHRF c 1 BRIGHT A_light1
+		Goto LightDone
+	Spawn:
+		dino a 0
+		M79P A -1
+		stop
+	}
+}

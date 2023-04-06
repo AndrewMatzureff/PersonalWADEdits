@@ -1,0 +1,9 @@
+actor 338MAGAmmo : Ammo
+{
+    inventory.icon "CLIPA0"
+    inventory.amount 30
+    inventory.maxamount 30
+    ammo.backpackamount 30
+    ammo.backpackmaxamount 30
+    +IGNORESKILL
+}

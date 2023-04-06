@@ -1,0 +1,162 @@
+// --------------------------------------------------------------------------
+//
+// Flashbang (Demo weapon "Appears on weapons training")
+//
+// --------------------------------------------------------------------------
+
+ACTOR "Flashbang" : CSDMOWeapon //5010
+{
+
+	+WEAPON.CHEATNOTWEAPON
+
+	Weapon.SelectionOrder 1900
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive 1
+	Weapon.AmmoType "HEGRENADEAmmo"
+	obituary "%k killed %o with Flashbang."
+	+WEAPON.WIMPY_WEAPON
+	Inventory.Pickupmessage "Pickep up a Flashbang."
+	Tag "Flashbang"
+	Weapon.UpSound "HEGRENADE/Ready"
+	AttackSound "HEGRENADE/Fire" 
+	Scale 0.2
+	 +IGNORESKILL
+	 +WEAPON.EXPLOSIVE
+	//+NOAUTOFIRE
+
+	States
+	{
+	Ready:
+		W12B I 1 A_WeaponReady
+TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(809,0,0,0)==1),"BobLoop")
+		Loop
+
+
+	BobLoop:
+		W12Y AABBCDDEEEDDCBB 1 A_WeaponReady
+		Goto Ready
+
+	Select:
+	TNT1 A 1 A_Raise
+	TNT1 AA 0 A_Raise
+	TNT1 A 0 ACS_ExecuteAlways(798, 0, 245, 0, 0)//Weapon Weight
+	TNT1 A 1 ACS_Execute(792, 0, 0, 0, 0)
+	TNT1 A 1 A_Print("Test Animation", 0.5)
+		TNT1 A 7 A_WEAPONREADY(WRF_NOFIRE)
+		W12A JKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W12B ABCDEFGH 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+	SelectUsed:
+		TNT1 A 9 A_PlaySound("HEGRENADE/Ready")
+		W12A JKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+		W12B ABCDEFGH 1 A_WEAPONREADY(WRF_NOFIRE)
+		Goto Ready
+
+
+	Fire:
+		TNT1 A 4 A_FireCustomMissile(FlashbangGrenadePROJECTILE,0,1,0,0)//A_GunFlash
+		W16F EFGH 1 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 3 A_WEAPONREADY(WRF_NOFIRE)
+		TNT1 A 1 A_JumpIfNoAmmo("SetWeapon")
+		Goto SelectUsed
+
+
+//	AltFire:
+//		TNT1 A 0 A_FireCustomMissile(AccurateGRENADEPROJECTILE,0,0,0,0)
+//		W16B J 16 A_WeaponReady
+//		Goto Ready
+
+
+//		W16F ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 A_WEAPONREADY(WRF_NOFIRE)
+
+
+
+             SetWeapon:  
+        TNT1 A 1 A_SelectWeapon("Knife")
+        Goto Ready	
+
+
+
+	Flash:
+		TNT1 A 0 Bright //A_Light1
+		TNT1 A 0 A_TakeInventory("Slot8Filled", 1)//A_AlertMonsters
+		TNT1 A 2 A_FireCustomMissile(FlashbangGrenadePROJECTILE,0,1,0,0)
+		Goto LightDone
+ 	Spawn:
+		W12Z A -1
+		Stop
+	}
+}
+
+
+
+
+
+// --------------------------------------------------------------------------
+//
+// Grenade -- Taken and adapted from Skulltag, with MBF stuff added to it
+//
+// --------------------------------------------------------------------------
+
+ACTOR FlashbangGrenadeProjectile
+{
+	Game Doom
+	SpawnID 216
+	Radius 8
+	Height 8
+	Speed 25
+	Damage 20
+	Projectile
+	-NOGRAVITY
+	+RANDOMIZE
+	+DEHEXPLOSION
+	+GRENADETRAIL
+	+doombounce
+	//BounceType "Doom"
+//	Gravity 0.25
+	SeeSound "HEGRENADE/BOUNCE"
+	DeathSound "HEGRENADE/EXPLODE"
+	//BounceSound "weapons/grbnce"
+	Obituary "%k killed %o with Flashbang."
+	DamageType Grenade
+
+   ExplosionRadius 192
+   ExplosionDamage 256
+  Speed 35
+  BounceFactor 0.7
+  ReactionTime 60
+
+
+	States
+	{
+	Spawn:
+		SGRN A 1 Bright 
+		Loop
+	Death:
+	TNT1 A 1 A_NoGravity
+MISL B 1 A_AlertMonsters
+		MISL B 7 Bright A_Explode
+		MISL C 6 Bright
+		MISL D 4 Bright
+		Stop
+	Grenade:
+		MISL A 1000 A_Die
+		Wait
+	Detonate:
+	TNT1 A 1 A_NoGravity
+MISL B 1 A_AlertMonsters
+		MISL B 3 A_Scream
+		MISL C 6 A_Detonate
+		MISL D 10
+		Stop
+	Mushroom:
+		MISL B 8 A_Mushroom
+		Goto Death+1
+	}
+}
+
+
+
+
+

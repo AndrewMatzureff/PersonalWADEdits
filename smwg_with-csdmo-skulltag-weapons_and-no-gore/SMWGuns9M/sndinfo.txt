@@ -1,0 +1,69 @@
+$random gauss/shot { gauss/shot1 gauss/shot2 gauss/shot3 }
+gauss/shot1 dspsmg1
+gauss/shot2 dspsmg2
+gauss/shot3 dspsmg3
+$limit gauss/shot 0
+gausspl/death gplsdet
+$limit gausspl/death 4
+$random p220/fire { p220/fire1 p220/fire3 }
+$random p220/lfire { p220/fire2 p220/fire4 }
+p220/fire1 p210r2
+p220/fire2 p210l2
+p220/fire3 p210r2
+p220/fire4 p210l2
+$random claw/swing1 { claw/slash1 }
+$random claw/swing2 { claw/slash3 }
+$random claw/swing3 { claw/slash4 }
+claw/slash1 knifeh13
+$limit claw/slash1 8
+claw/slash3 knifeh12
+$limit claw/slash3 8
+claw/slash4 knifeh14
+$limit claw/slash4 8
+$limit claw/swing1 1
+$limit claw/swing2 1
+$limit claw/swing3 1
+claw/draw knifede
+$limit claw/draw 3
+claw/wall knifehw2
+$limit claw/wall 1
+$limit baby/shotx 6
+winch/lshot m3trenL1
+winch/rshot m3trenR2
+winch/shot m3tren2
+riotl/boom m79gren
+$limit riotl/boom 3
+$rolloff riotl/boom 160 1300
+raprpk/bolt rpkbpull
+short/click shopu5
+skorpion/fire skorst1
+skorpion/rfire skorstR1
+
+draw/slide umpdr
+draw/slfas umpdf
+draw/spin markdra
+
+$random fist/hitmon { fist/slash1 fist/slash2 fist/slash3 }
+fist/slash1 fihit4
+fist/slash2 fihit5
+fist/slash3 fihit6
+fist/wall fihitwa
+
+
+$random noisy/fire { noisy/fire1 noisy/fire2 }
+noisy/fire1 ncf1
+noisy/fire2 ncf2
+noisy/clik ncclik
+
+m79la/draw m79lose
+m79la/fire m79fire
+
+$random m79mis/flyn { m79mis/flyn1 m79mis/flyn2 }
+$rolloff m79mis/flyn 120 1350
+m79mis/flyn1 mislla3
+m79mis/flyn2 mislla5
+
+warh/fire warshr1
+$random warh/cock { warh/cock1 warh/cock2 }
+warh/cock1 warpu3
+warh/cock2 warpu4
