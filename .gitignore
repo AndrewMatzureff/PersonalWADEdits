@@ -1,5 +1,8 @@
 # backup files
 *.bak
 
-# build
+# build artifacts
 /out/
+
+# hidden files
+.*

@@ -15,49 +15,8 @@ Spawn:
       LOOP 
 Pickup://It checks if there's a weapon, then checks the ammo amount for that weapon and if it's not full, then gives the ammo, else fails
     TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("Glock",1,"AmmoPickup3")
-    TNT1 A 0 A_JumpIfInventory("HKP2000",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("P250",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("tec9",1,"AmmoPickup3")
-    TNT1 A 0 A_JumpIfInventory("Deagle",1,"AmmoPickup4")
-    TNT1 A 0 A_JumpIfInventory("Fiveseven",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("Elite",1,"AmmoPickup3")
-    TNT1 A 0 A_JumpIfInventory("CZ75A",1,"AmmoPickup6")
     TNT1 A 0 A_JumpIfInventory("Revolver",1,"AmmoPickup5")
-    TNT1 A 0 A_JumpIfInventory("USP",1,"AmmoPickup6")
       Goto FailPickup//If no weapon detected, it fails
-
-
-
-
-  AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("357SIGAmmo",0,"FailPickup")
-
-
-      TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
-      STOP
-
-  AmmoPickup2:
-    TNT1 A 0
-	TNT1 A 0 A_JumpIfInventory("57MMAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
-      STOP
-
-  AmmoPickup3:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("9MMAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
-      STOP
-
-  AmmoPickup4:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("50AEAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
-      STOP
 
 
   AmmoPickup5:
@@ -67,105 +26,11 @@ Pickup://It checks if there's a weapon, then checks the ammo amount for that wea
       TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
       STOP
 
-  AmmoPickup6:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("45ACPAmmo",0,"FailPickup")
-
-    TNT1 A 1 ACS_EXECUTE(793,0,2,0,0)
-    Stop
-
 
   FailPickup:
     CLIP B 1
     fail
 	
-	}
-  }
-
-
-actor DeadClip3Inv : custominventory 
-{
-Inventory.PickupMessage "You picked up some Slot 3 ammo." 
-Inventory.PickupSound "misc/i_pkup" 
-  +INVENTORY.AUTOACTIVATE
-//+INVENTORY.ALWAYSPICKUP
-Inventory.MaxAmount 1
-states
-{
-Spawn: 
-      SHEL A -1 
-      LOOP
-	  
-Pickup:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("Nova",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("Mag7",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("SawedOff",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("XM1014",1,"AmmoPickup1")
-      Goto FailPickup	  
-	  
-AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("BuckshotAmmo",0,"FailPickup")
-      TNT1 A 1 ACS_EXECUTE(793,0,3,0,0)
-      STOP
-  FailPickup:
-    SHEL A 1
-    fail	  
-}
-  }
-
-
-actor DeadClip4Inv : custominventory 
-{
-Inventory.PickupMessage "You picked up some Slot 4 ammo." 
-Inventory.PickupSound "misc/i_pkup" 
-  +INVENTORY.AUTOACTIVATE
-//+INVENTORY.ALWAYSPICKUP
-Inventory.MaxAmount 1
-states
-{
-Spawn: 
-      CLIP C -1 
-      LOOP
-	  
-	  
-Pickup:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("Bizon",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("Mac10",1,"AmmoPickup3")
-    TNT1 A 0 A_JumpIfInventory("MP7",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("MP9",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("P90",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("Ump45",1,"AmmoPickup3")
-      Goto FailPickup	  
-	  
-	  
-	AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("57MMAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,4,0,0)
-      STOP
-	  
-  AmmoPickup2:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("9MMAmmo",0,"FailPickup")
-
-    TNT1 A 1 ACS_EXECUTE(793,0,4,0,0)
-    Stop
-
-
-  AmmoPickup3:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("45ACPAmmo",0,"FailPickup")
-
-    TNT1 A 1 ACS_EXECUTE(793,0,4,0,0)
-    Stop
-
-  FailPickup:
-    CLIP C 1
-    fail
 	}
   }
 
@@ -185,18 +50,8 @@ Spawn:
 	  
 Pickup:
     TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("G3SG1",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("Scar20",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("SSG08",1,"AmmoPickup1")
     TNT1 A 0 A_JumpIfInventory("AWP",1,"AmmoPickup2")
-      Goto FailPickup		  
-	  
-	  
-AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("762MMAmmo",0,"FailPickup")
-      TNT1 A 1 ACS_EXECUTE(793,0,5,0,0)
-      STOP
+      Goto FailPickup	
 
 AmmoPickup2:
     TNT1 A 0
@@ -229,23 +84,8 @@ Spawn:
 	  
 Pickup:
     TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("Galilar",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("Famas",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("Ak47",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("M4A1",1,"AmmoPickup1")
-    TNT1 A 0 A_JumpIfInventory("M4A1 Silenced",1,"AmmoPickup1")
     TNT1 A 0 A_JumpIfInventory("AUG",1,"AmmoPickup2")
-    TNT1 A 0 A_JumpIfInventory("SG553",1,"AmmoPickup1")
-      Goto FailPickup		  
-	  
-	  
-	  
-AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("556MMAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,6,0,0)
-      STOP
+      Goto FailPickup		
 	  
   AmmoPickup2:
       TNT1 A 0
@@ -261,54 +101,3 @@ AmmoPickup1:
 
 }
   }
-
-actor DeadClip7Inv : custominventory 
-{
-Inventory.PickupMessage "You picked up some Slot 7 ammo." 
-Inventory.PickupSound "misc/i_pkup" 
-  +INVENTORY.AUTOACTIVATE
-//+INVENTORY.ALWAYSPICKUP
-Inventory.MaxAmount 1
-states
-{
-Spawn: 
-      AMMO D -1 
-      LOOP 
-	  
-Pickup:
-    TNT1 A 0
-
-    TNT1 A 0 A_JumpIfInventory("M249",1,"AmmoPickup3")
-    TNT1 A 0 A_JumpIfInventory("Negev",1,"AmmoPickup3")
-      Goto FailPickup		  
-	  
-	  
-AmmoPickup1:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("338MAGAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,7,0,0)
-      STOP
-
-  AmmoPickup2:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("762MMAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,7,0,0)
-      STOP
-	
-  AmmoPickup3:
-    TNT1 A 0
-    TNT1 A 0 A_JumpIfInventory("556MMBOXAmmo",0,"FailPickup")
-
-      TNT1 A 1 ACS_EXECUTE(793,0,7,0,0)
-      STOP
-
-  FailPickup:
-    AMMO D 1
-    fail
-
-
-}
-  }
-

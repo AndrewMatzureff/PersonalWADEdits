@@ -2732,7 +2732,7 @@ ACTOR GaussPlasmaR : PlasmaRifle replaces PlasmaRifle
 	}
 }
 
-actor GaussPlasma
+actor GaussPlasma : PlasmaBall
 {
   projectile
   decal PlasmaScorchLower

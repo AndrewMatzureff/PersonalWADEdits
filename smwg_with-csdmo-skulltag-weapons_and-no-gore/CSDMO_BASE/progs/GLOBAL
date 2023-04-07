@@ -64,7 +64,6 @@ ACTOR Action_AltFire : CustomInventory
    {
        Use:
        TNT1 A 0 A_GiveInventory("IsAltfire",1)
-       TNT1 A 0 A_GiveInventory("KnifeWillStab",1)
        Fail
    }
 }
@@ -79,7 +78,6 @@ ACTOR Action_AltFireCancel : CustomInventory
    {
        Use:
        TNT1 A 0 A_TakeInventory("IsAltfire",1)
-	   TNT1 A 0 A_TakeInventory("KnifeWillStab",1)
 
        Fail
    }
