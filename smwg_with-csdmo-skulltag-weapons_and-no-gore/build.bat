@@ -10,6 +10,6 @@ for %%I in (.) do set output=..\out\%%~nxI
 
 mkdir %output% && echo Created output directory, "%output%".
 rem create the output directory and then for each subfolder in the working directory, compile a corresponding pk3
-for /d %%G in (*) do %archiver_exe% a -tzip %output%\%%G.pk3 .\%%G\* && echo Finished compiling archive to %%G.pk3!
+for /d %%G in (*.) do %archiver_exe% a -tzip %output%\%%G.pk3 .\%%G\* && echo Finished compiling archive to %%G.pk3!
 
 echo: && echo Done. && pause

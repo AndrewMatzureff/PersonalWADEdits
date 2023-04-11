@@ -1,0 +1,81 @@
+//Counter-Strike Doom: Martian Offensive
+//Made by AlphaEnt2
+
+//www.youtube.com/alphaent2
+//www.taringa.net/perfil/alphaent
+//twitter: @alphaent2
+//soundcloud: Pr0totyp3
+//Deviantart: Blorc
+                  
+setslot 1 QuickFist ADClaw
+setslot 2 p220gun Duap220gun
+setslot 3 Winchester Warhammer
+setslot 4 RapRPK "AUG"
+setslot 5 M79Launcher "He Grenade"
+setslot 6 GaussPlasmaR "AWP"
+setslot 7 NoisyCricket BFG10k
+setslot 8 "REVOLVER"
+setslot 9 "Taser"
+
+//weaponsection CSDoom_MO_Weapons
+
+//setslot 1 "Knife" "Taser"//"Golden Knife"
+//setslot 2 "Glock" "HKP2000" "P250" "Tec9" "Deagle" "Fiveseven" "Elite" "CZ75A" "REVOLVER" "USP"
+//setslot 3 "Nova" "XM1014" "SawedOff" "MAG7"
+//setslot 4 "Bizon" "MAC10" "MP7" "MP9" "P90" "UMP45" 
+//setslot 5 "G3SG1" "SCAR20" "SSG08" "AWP"
+//setslot 6 "GALILAR" "FAMAS" "AK47" "M4A1" "AUG" "SG553" "M4A1 Silenced"
+//setslot 7  "M249" "NEGEV"
+//setslot 8 "He Grenade" 
+//setslot 8 "He Grenade" "Flashbang" "Smoke Grenade" "Incendiary Grenade" "Molotov" "Decoy"
+//setslot 9 //Quick change (Q)
+//setslot 0 "C4"//L4D2_Pointer
+
+//Weapons List: (As far as I could cheated)
+//Note: the weapons are numered in alphabetical order, nothing special.
+
+//WXX 	= 	weapon_"name" 		(Short developer comment XD)
+
+
+//W01	=	weapon_ak47 		(included in demo "appears in training course")
+//W02	=	weapon_aug			"ripped for test02"
+//W03	=	weapon_awp 			(included in demo "appears in training course")
+//W04	=	weapon_bizon 		(included in demo "appears in training course")
+//W05	=	weapon_c4			"ripped for test03" (Animation testing)
+//W06	=	weapon_cubemap 		(unused, not a valid weapon)
+//W07	=	weapon_deagle		(included in demo)
+//W08	=	weapon_decoy		"ripped for test03" (Animation testing)
+//W09	=	weapon_elite		(included in demo)
+//W10	=	weapon_famas		"ripped for test02"
+//W11	=	weapon_fiveseven 	(included in demo "appears in training course")
+//W12	=	weapon_flashbang	"ripped for test03" (Animation testing)
+//W13	=	weapon_g3sg1		(included in demo)
+//W14	=	weapon_galilar		"ripped for test02"
+//W15	=	weapon_glock		"ripped for test02"
+//W16	=	weapon_hegrenade 	(included in demo "appears in training course")
+//W17	=	weapon_hkp2000		"ripped for test02"
+//W18	=	weapon_incgrenade	"ripped for test03" (Animation testing)
+//W19	=	weapon_knife 		(included in demo "appears in training course")
+//W20	=	weapon_m4a1 		(included in demo "appears in training course")
+//W21	=	weapon_m249			(included in demo)
+//W22	=	weapon_mac10		"ripped for test02"
+//W23	=	weapon_mag7			"ripped for test02"
+//W24	=	weapon_manifest 	(unused, not a valid weapon)
+//W25	=	weapon_molotov		"ripped for test03" (Animation testing)
+//W26	=	weapon_mp7			"ripped for test02"
+//W27	=	weapon_mp9			"ripped for test02"
+//W28	=	weapon_negev		"ripped for test02"
+//W29	=	weapon_nova			(included in demo)
+//W30	=	weapon_p90 			(included in demo "appears in training course")
+//W31	=	weapon_p250			"ripped for test02"
+//W32	=	weapon_sawedoff		"ripped for test02"
+//W33	=	weapon_scar20		"ripped for test02"
+//W34	=	weapon_sg556		"ripped for test02"
+//W35	=	weapon_smokegrenade	"ripped for test03" (Animation testing)
+//W36	=	weapon_ssg08		"ripped for test02"
+//W37	=	weapon_taser		(included in demo)
+//W38	=	weapon_tec9			"ripped for test02"
+//W39	=	weapon_ump45		"ripped for test02"
+//W40	=	weapon_xm1014		(included in demo)
+//W41	=	weapon_gknife 		(Just a golden knife "it couldn't be cheated")
+
